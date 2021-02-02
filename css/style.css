@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+}
+
+#header {    
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5D5C61;
+    height: 300px;
+    
+}
+
+h1 {
+    font-size: 5em;
+}
+
+/* Background Picture **********************/
+
+#gsr750 {
+    background-image: url("../img/gsr750.JPG");
+    background-size: cover;
+    height: 1100px;
+    width: 100%;
+}
+
+/* Footer Section ************************/
+
+#footerContainer {
+    display: flex;
+    
+    height: 10em;
+    
+}
+
+.footerBox1 {
+    display: flex;
+    
+    justify-content: center;
+    flex-grow: 1;
+    
+}
+
+.footerBox2 {
+    display: flex;
+    flex-grow: 1;
+}
