@@ -41,27 +41,7 @@ h1 {
     width: 100%;
 }
 
-/* Footer Section ************************/
 
-#footerContainer {
-    display: flex;
-    
-    height: 10em;
-    
-}
-
-.footerBox1 {
-    display: flex;
-    
-    justify-content: center;
-    flex-grow: 1;
-    
-}
-
-.footerBox2 {
-    display: flex;
-    flex-grow: 1;
-}
 
 /* =====BASIC STYLING (MOBILE FIRST)===== */
 
@@ -114,7 +94,20 @@ header {
   align-self:flex-end;
 }
 
-
+/* ====FOOTER STYLES (MOBILE FIRST)==== */
+footer{ /*basic footer styles and turn into flexbox*/
+  background-color: #9ec4fa;
+  display:flex;
+  flex-flow:row nowrap;
+}
+footer div{ /*only show first flexbox item*/
+  display:none;
+}
+footer div:first-child{
+  display:block;
+  padding: 2em;
+  margin: 0 auto;
+}
 
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul{ /*clearing out form list styles*/
@@ -178,28 +171,11 @@ p.response{
 }
 
 
-/* ====FOOTER STYLES (MOBILE FIRST)==== */
-footer{ /*basic footer styles and turn into flexbox*/
-  background-color: #9ec4fa;
-  display:flex;
-  flex-flow:row nowrap;
-}
-footer div{ /*only show first flexbox item*/
-  display:none;
-}
-footer div:first-child{
-  display:block;
-  padding: 2em;
-  margin: 0 auto;
-}
-
-
 @media screen and (min-width: 600px) {
   /* =====BASIC STYLING=====*/
   h1{ /*increase font size*/
     font-size: 3em;
   }
-
 
   /* ==== HEADER STYLES ==== */
   .menu ul li{ /*show all navigation items except for burger menu*/
@@ -209,25 +185,6 @@ footer div:first-child{
   .menu ul li.burger {
     display: none;
   }
-
-
-  /* =====INDEX STYLES==== */
-  #lpimages{ /*change flex flow and positioning of teasers, set max-width*/
-    flex-flow: row wrap;
-    justify-content: space-around;
-    max-width:50em;
-  }
-
-
-  /* ====PRODUCTS STYLES FOR PIZZA, SALAD, SOFT DRINKS==== */
-  #container{ /*change flex flow and positioning (override)*/
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items:flex-start;
-  }
-
-
-
 
 
   /* ====FOOTER STYLES====*/
