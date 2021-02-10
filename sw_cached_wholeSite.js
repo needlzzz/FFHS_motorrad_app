@@ -1,4 +1,4 @@
-const cacheName = "v2";
+const cacheName = "v1";
 
 //installation of the sw
 //call Install event
