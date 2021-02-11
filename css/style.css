@@ -11,8 +11,7 @@ body {
 html {
     box-sizing: border-box;
   }
-#header {    
-}
+
 
 main {
     margin: 0 2.5%;
@@ -54,31 +53,51 @@ ul{ /*clearing out list-style for all ul*/
 }
 
 
-/* ====BASIC HEADER STYLES==== */
+/* ====HEADER STYLES (MOBILE FIRST)====*/
 header {
-  background-color: #9ec4fa;
+  background-color: white;
 }
+
+#menu_top{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  margin: 0.5em 2.5%;
+}
+#logo{
+  max-width: 70px;
+}
+#login{
+  margin-top: auto;
+  margin-bottom:auto;
+  margin-left:auto;
+  width: 8em;
+  height: 2em;
+  background-color: white;
+  color: darkgreen;
+  border: 2px solid darkgreen;
+}
+
 .menu ul { /*transform navigation into flexbox with flex-direction row*/
   display:flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1em;
+  padding: 1em 0;
+  border-top: 1px solid lightgrey;
+  margin: auto 2.5%;
 }
-.menu ul li:first-child{ /*adjust font-size of first child and let it align left through auto-margin*/
-  font-size:1.5em;
-  margin-right: auto;
-}
-.menu ul li:first-child a{ /*remove text-decoration for first child*/
+
+.menu ul li a{ /*remove text-decoration for all children*/
   text-decoration: none;
 }
 
-/* ====HEADER STYLES (MOBILE FIRST)====*/
 .menu ul li{
   display:none;
 }
-.menu ul li:first-child, .menu ul li.burger{ /*display only first child and burger menu item*/
+.menu ul li.burger{ /*display only burger menu item*/
   display:block;
+  margin-left: auto;
 }
 .menu.responsive ul{ /*onclick: change menu flexbox direction to column*/
   flex-direction:column;
@@ -86,9 +105,7 @@ header {
 .menu.responsive ul li{ /*onclick: display all flex items*/
   display:block;
 }
-.menu.responsive ul li:first-child{
-  display:none;
-}
+
 .menu.responsive ul li.burger{ /*display burger menu as first flex-item aligned to the right*/
   order:-1;
   align-self:flex-end;
@@ -96,9 +113,10 @@ header {
 
 /* ====FOOTER STYLES (MOBILE FIRST)==== */
 footer{ /*basic footer styles and turn into flexbox*/
-  background-color: #9ec4fa;
+  background-color: lightgrey;
   display:flex;
   flex-flow:row nowrap;
+  color: rgb(65, 65, 65);
 }
 footer div{ /*only show first flexbox item*/
   display:none;
@@ -182,8 +200,14 @@ p.response{
     display:block;
     margin: 0 1em;
   }
+  .menu ul li:first-child{
+    margin-left: 0;
+  }
   .menu ul li.burger {
     display: none;
+  }
+  .menu ul li:first-child{
+    
   }
 
 
