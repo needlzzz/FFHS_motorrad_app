@@ -3,7 +3,13 @@
 const cacheName = 'v1';
 
 const cacheAssets = [
-  '../html/index.html'
+  '/html/index.html',
+  '/html/feedback.html',
+  '/css/style.css',
+  '/img/gsr750.JPG',
+  '/js/form.js',
+  '/js/nav.js',
+  '/js/sw_main.js'
 ];
 
 // Call Install Event
