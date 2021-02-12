@@ -1,0 +1,251 @@
+*{
+    box-sizing: inherit;
+  }
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: white;
+    margin: 0; /*remove margin for body (i.e. header and footer)*/
+}
+
+html {
+    box-sizing: border-box;
+  }
+
+
+main {
+    margin: 0 2.5%;
+  }
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5D5C61;
+    height: 300px;
+    
+}
+
+h1 {
+    font-size: 5em;
+    text-align: center;
+}
+
+/* Background Picture **********************/
+
+#gsr750 {
+    background-image: url("../img/gsr750.JPG");
+    background-size: cover;
+    height: 1100px;
+    width: 100%;
+}
+
+
+
+/* =====BASIC STYLING (MOBILE FIRST)===== */
+
+
+p, ul{ /*clearing out standard margins for p and ul*/
+  margin:0;
+}
+ul{ /*clearing out list-style for all ul*/
+  list-style:none;
+}
+
+
+/* ====HEADER STYLES (MOBILE FIRST)====*/
+header {
+  background-color: white;
+}
+
+#menu_top{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  margin: 0.5em 2.5%;
+}
+#logo{
+  max-width: 70px;
+}
+#login{
+  margin-top: auto;
+  margin-bottom:auto;
+  margin-left:auto;
+  width: 8em;
+  height: 2em;
+  background-color: white;
+  color: darkgreen;
+  border: 2px solid darkgreen;
+}
+
+.menu ul { /*transform navigation into flexbox with flex-direction row*/
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em 0;
+  border-top: 1px solid lightgrey;
+  margin: auto 2.5%;
+}
+
+.menu ul li a{ /*remove text-decoration for all children*/
+  text-decoration: none;
+}
+
+.menu ul li{
+  display:none;
+}
+.menu ul li.burger{ /*display only burger menu item*/
+  display:block;
+  margin-left: auto;
+}
+.menu.responsive ul{ /*onclick: change menu flexbox direction to column*/
+  flex-direction:column;
+}
+.menu.responsive ul li{ /*onclick: display all flex items*/
+  display:block;
+}
+
+.menu.responsive ul li.burger{ /*display burger menu as first flex-item aligned to the right*/
+  order:-1;
+  align-self:flex-end;
+}
+
+/* ====FOOTER STYLES (MOBILE FIRST)==== */
+footer{ /*basic footer styles and turn into flexbox*/
+  background-color: lightgrey;
+  display:flex;
+  flex-flow:row nowrap;
+  color: rgb(65, 65, 65);
+}
+footer div{ /*only show first flexbox item*/
+  display:none;
+}
+footer div:first-child{
+  display:block;
+  padding: 2em;
+  margin: 0 auto;
+}
+
+/* =====FEEDBACK STYLES (MOBILE FIRST)==== */
+form ul{ /*clearing out form list styles*/
+  margin:0;
+  padding:0;
+}
+form ul li{ /*adding space below list items except for radio buttons*/
+  margin-bottom:1em;
+}
+.radio li{
+  margin:0;
+}
+form{ /*form dimensions and styling*/
+  max-width: 50em;
+  padding: 1em;
+  margin: 2em auto;
+}
+form ul li{ /*turn each form element into flexbox with flex-direction column*/
+  display: flex;
+  flex-flow: column nowrap;
+}
+ul.radio{ /*turn radio buttons into flexbox*/
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content:space-between;
+}
+input[type="text"] { /*adjust input form styles*/
+  height: 2em;
+  border: black 1px solid;
+}
+textarea { /*adjust textarea form styles*/
+  height: 10em;
+  border: black 1px solid;
+  overflow: auto;
+  resize: none;
+}
+input[type="submit"] { /*adjust submit button styles and align right*/
+  height: 2em;
+  width: 10em;
+  border: black 1px solid;
+  margin-left: auto;
+}
+li.invalid{ /*when errormessage li-element is created apply styles*/
+  display:block;
+  color:red;
+  margin-top:-1em;
+}
+li.valid{
+  display:none;
+}
+p.response{
+  color: red;
+  margin-top: 1em;
+}
+.submitted{
+  display:none;
+}
+#chartContainer{
+  max-width: 300px;
+  margin: 1em auto;
+}
+
+
+@media screen and (min-width: 600px) {
+  /* =====BASIC STYLING=====*/
+  h1{ /*increase font size*/
+    font-size: 3em;
+  }
+
+  /* ==== HEADER STYLES ==== */
+  .menu ul li{ /*show all navigation items except for burger menu*/
+    display:block;
+    margin: 0 1em;
+  }
+  .menu ul li:first-child{
+    margin-left: 0;
+  }
+  .menu ul li.burger {
+    display: none;
+  }
+  .menu ul li:first-child{
+    
+  }
+
+
+  /* ====FOOTER STYLES====*/
+  footer div, footer div:first-child {/*show all footer flexbox items and let them grow/shrink equally with viewport size*/
+    display:block;
+    flex:1;
+    padding: 1.5em;
+    margin: 0 1em;
+  }
+}
+
+@media screen and (min-width: 800px) { /*angepasst*/
+  /* =====FEEDBACK STYLES====*/
+  form ul li{ /*change flex-direction for flexbox elements*/
+    flex-flow: row wrap;
+  }
+  label, .radiolabel { /*fix labels at 18ems wide*/
+    flex: 0 0 18em;
+    text-align: end;
+    margin-right: 1em;
+  }
+  input, textarea, .radio { /*let form input/textarea/radio buttons fill whole width*/
+    flex: 1 1 29em; /*angepasst*/
+  }
+  .radio label{ /*override previous label settings for radio buttons*/
+    flex: 1 1 auto;
+    margin:0;
+  }
+  input[type="submit"] {
+    flex: 0 0 10em;
+  }
+  li.invalid{ /*when error message is displayed with min-width800px viewport apply responsive styles*/
+    width: 29em;
+    margin-left:auto;
+  }
+  p.response{
+    text-align: center;
+  }
+
+}
