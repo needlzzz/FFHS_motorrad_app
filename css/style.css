@@ -91,6 +91,22 @@ header {
 .menu ul li a{ /*remove text-decoration for all children*/
   text-decoration: none;
 }
+.menu ul li a:link{ /*unvisited link*/
+  color: black;
+}
+.menu ul li a:visited{ /*visited link*/
+  color: black;
+}
+.menu ul li a:hover{ /*mouse over link*/
+  color: darkgreen;
+}
+.menu ul li a:active{ /*selected link*/
+  color: darkgreen;
+}
+.menu ul li a.current{ /*mark current link*/
+  color: darkgreen;
+  font-weight: bold;
+}
 
 .menu ul li{
   display:none;
@@ -106,6 +122,7 @@ header {
   display:block;
 }
 
+
 .menu.responsive ul li.burger{ /*display burger menu as first flex-item aligned to the right*/
   order:-1;
   align-self:flex-end;
@@ -115,17 +132,30 @@ header {
 footer{ /*basic footer styles and turn into flexbox*/
   background-color: lightgrey;
   display:flex;
-  flex-flow:row nowrap;
+  flex-flow:column nowrap;
   color: rgb(65, 65, 65);
+  margin: 0 2.5%;
 }
-footer div{ /*only show first flexbox item*/
-  display:none;
+footer>div, footer div:first-child {/*let flexbox items grow/shrink equally with viewport size*/
+  flex:1;
+  padding: 1.5em;
+  margin: 0 2em;
 }
-footer div:first-child{
-  display:block;
-  padding: 2em;
-  margin: 0 auto;
+.ftitle { /*center footer titles*/
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
+.fbody { /*flex footer bodies and justify content space-around*/
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  text-align:center;
+}
+footer div img{ /*fix width (and height) of icons*/
+  width: 50px;
+}
+
 
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul{ /*clearing out form list styles*/
@@ -210,14 +240,10 @@ p.response{
     
   }
 
-
   /* ====FOOTER STYLES====*/
-  footer div, footer div:first-child {/*show all footer flexbox items and let them grow/shrink equally with viewport size*/
-    display:block;
-    flex:1;
-    padding: 1.5em;
-    margin: 0 1em;
-  }
+  footer{
+    flex-flow: row nowrap;
+  }  
 }
 
 @media screen and (min-width: 800px) { /*angepasst*/
