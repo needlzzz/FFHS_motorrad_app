@@ -275,3 +275,39 @@ p.response{
   }
 
 }
+
+
+/* ===== Route Search Page ===== */
+
+#flexContainerImg {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+ 
+}
+
+#imgContainer {
+  display: block;
+  margin: 20px;
+  width: 50%;
+}
+
+#mapImage {
+  width: 100%;
+}
+
+#dropdownContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+select {
+  display: block;
+  margin: 2%;
+}
+
+#routeBtn {
+  margin: 2%;
+  align-self: center;
+}
+
