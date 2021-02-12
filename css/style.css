@@ -91,6 +91,22 @@ header {
 .menu ul li a{ /*remove text-decoration for all children*/
   text-decoration: none;
 }
+.menu ul li a:link{ /*unvisited link*/
+  color: black;
+}
+.menu ul li a:visited{ /*visited link*/
+  color: black;
+}
+.menu ul li a:hover{ /*mouse over link*/
+  color: darkgreen;
+}
+.menu ul li a:active{ /*selected link*/
+  color: darkgreen;
+}
+.menu ul li a.current{
+  color: darkgreen;
+  font-weight: bold;
+}
 
 .menu ul li{
   display:none;
@@ -105,6 +121,7 @@ header {
 .menu.responsive ul li{ /*onclick: display all flex items*/
   display:block;
 }
+
 
 .menu.responsive ul li.burger{ /*display burger menu as first flex-item aligned to the right*/
   order:-1;
