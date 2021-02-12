@@ -3,7 +3,7 @@
   }
 
 body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: white;
     margin: 0; /*remove margin for body (i.e. header and footer)*/
 }
