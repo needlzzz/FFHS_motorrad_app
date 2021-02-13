@@ -162,12 +162,6 @@ form ul{ /*clearing out form list styles*/
   margin:0;
   padding:0;
 }
-form ul li{ /*adding space below list items except for radio buttons*/
-  margin-bottom:1em;
-}
-.radio li{
-  margin:0;
-}
 form{ /*form dimensions and styling*/
   max-width: 50em;
   padding: 1em;
@@ -176,11 +170,7 @@ form{ /*form dimensions and styling*/
 form ul li{ /*turn each form element into flexbox with flex-direction column*/
   display: flex;
   flex-flow: column nowrap;
-}
-ul.radio{ /*turn radio buttons into flexbox*/
-  display:flex;
-  flex-flow:row nowrap;
-  justify-content:space-between;
+  margin-bottom: 1em;
 }
 input[type="text"] { /*adjust input form styles*/
   height: 2em;
@@ -251,17 +241,13 @@ p.response{
   form ul li{ /*change flex-direction for flexbox elements*/
     flex-flow: row wrap;
   }
-  label, .radiolabel { /*fix labels at 18ems wide*/
+  label { /*fix labels at 18ems wide*/
     flex: 0 0 18em;
     text-align: end;
     margin-right: 1em;
   }
-  input, textarea, .radio { /*let form input/textarea/radio buttons fill whole width*/
+  input, textarea { /*let form input/textarea fill whole width*/
     flex: 1 1 29em; /*angepasst*/
-  }
-  .radio label{ /*override previous label settings for radio buttons*/
-    flex: 1 1 auto;
-    margin:0;
   }
   input[type="submit"] {
     flex: 0 0 10em;
