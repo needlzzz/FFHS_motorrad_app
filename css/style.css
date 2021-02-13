@@ -226,9 +226,6 @@ p.response{
   .menu ul li.burger {
     display: none;
   }
-  .menu ul li:first-child{
-    
-  }
 
   /* ====FOOTER STYLES====*/
   footer{
