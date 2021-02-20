@@ -4,6 +4,7 @@
   "description": "All required packages for the FFHS Motorcycle App Project",
   "main": "index.js",
   "dependencies": {
+    "leaflet": "^1.7.1",
     "tailwind": "^4.0.0"
   },
   "devDependencies": {},

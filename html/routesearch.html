@@ -11,6 +11,17 @@
     <script src="../js/nav.js"></script>
     <script src="../js/sw_main.js"></script>
     <script src="https://use.fontawesome.com/99e1d5e686.js"></script>
+    <script src="../js/openroute_api_calls.js" defer></script>
+    <!-- This is the required leaflet CSS file-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- This is the required leaflet JS file-->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+    
 </head>
 
 
@@ -33,6 +44,10 @@
     </header>
     
 <main>
+
+    <div id="leafletMapContainer">
+
+    </div>
     <div id="flexContainerImg">
         <div id="imgContainer">
             <img id="mapImage" src="../img/4_seen_tour.PNG" alt="Image of a map">
@@ -54,8 +69,8 @@
             <option>Berne Area</option>
             <option>Lucerne area</option>
         </select>
-        <div id="routeBtn">
-            <button>Get route!</button>
+        <div>
+            <button id="routeBtn">Get route!</button>
         </div>
     </div>
 
@@ -91,6 +106,7 @@
         </div>
 	</div>
 </footer>
-    
+
+<script src="../js/leaflet.js" defer></script>
 </body>
 </html>
