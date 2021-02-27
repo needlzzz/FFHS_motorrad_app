@@ -156,6 +156,44 @@ footer div img{ /*fix width (and height) of icons*/
   width: 50px;
 }
 
+/* ===== Landing Page ===== */
+
+.responsive {
+  width: 75%;
+  height: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+  
+@media all and (min-width: 100em) {
+    .flex-container {
+        width: 33.33%;
+        }
+      }
+
+      .flex-container1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.RegisterBtn {
+  margin: 2%;
+  align-self: center;
+}
+
 
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul{ /*clearing out form list styles*/
