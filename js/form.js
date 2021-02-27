@@ -34,7 +34,7 @@ function checkform( event ) {
         error1.className    = "valid"; /*if name is valid, set error1 element class to valid*/
     }
     else{
-        if( t1.vfalue.length === 0 ) { /*if no name has been entered, show message and add +1 to fehler variable*/
+        if( t1.value.length === 0 ) { /*if no name has been entered, show message and add +1 to fehler variable*/
             error1.className    = "invalid";
             error1.innerHTML    = `This field is mandatory`;
             formContainer.insertBefore( error1, formAnchor1 );
@@ -103,62 +103,156 @@ function checkform( event ) {
 }
 
 
-//------------ 3 SEND FORM INPUT (POST) --------------//
+// //------------ 3 SEND FORM INPUT (POST) --------------//
 
-function sendfeedback( ) {
-    let likevalue;
-    for( let t = 0 ; t < likes.length ; t++ ) { /*retrieve checked radio button and assign to variable*/
-        if(likes[t].checked){
-            likevalue = likes[t].value;
-            break; /*only one radio button can be checked, break loop*/
-        }
-    }
-    let prizevalue;
-    for (let u = 0 ; u < prizes.length ; u++) { /*retrieve checked radio button and assign to variable*/
-        if(prizes[u].checked){
-            prizevalue = prizes[u].value;
-            break;
-        }
-    }
-
-
-    let obj             = { }; /*create string with form inputs, stringify and executre sendData function*/
-    obj["id"]           = 1;
-    obj["pizzaRating"]  = likevalue;
-    obj["prizeRating"]  = prizevalue;
-    obj["name"]         = t1.value;
-    obj["email"]        = t2.value;
-    obj["feedback"]     = ta1.value;
-    let data            = JSON.stringify( obj );
-    sendData( data );
-}
+// function sendfeedback( ) {
+//     let likevalue;
+//     for( let t = 0 ; t < likes.length ; t++ ) { /*retrieve checked radio button and assign to variable*/
+//         if(likes[t].checked){
+//             likevalue = likes[t].value;
+//             break; /*only one radio button can be checked, break loop*/
+//         }
+//     }
+//     let prizevalue;
+//     for (let u = 0 ; u < prizes.length ; u++) { /*retrieve checked radio button and assign to variable*/
+//         if(prizes[u].checked){
+//             prizevalue = prizes[u].value;
+//             break;
+//         }
+//     }
 
 
-function sendData( data ){ /*send data via POST*/
-    let xhr                 = new XMLHttpRequest( ) ;
-    const url               = "https://tonyspizzafactory.herokuapp.com/api/feedback";
-    xhr.onreadystatechange  = stateChange1 ;
-    xhr.ontimeout           = timeout ;
-    xhr.onerror             = error ;
-    xhr.open( "POST", url, true ) ;
-    xhr.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.MQ.bYceSpllpyYQixgNzDt7dpCkEojdv3NKD-85XLXfdI4" );
-    xhr.setRequestHeader( 'Content-type',  'application/json; charset=utf-8' ) ;
-    xhr.send( data ) ;
-}
-function stateChange1( )
-{
-    if( this.readyState === 4 ) {
-        if( this.status     >= 200 && this.status < 300 ) {
-            console.log(JSON.parse(this.responseText));
-        }
-        else {
-            console.log( "Fehler: status " + this.status ) ;
-        }
-    }
-}
-function timeout( ) {
-    console.log( "Fehler: timeout" ) ;
-}
-function error( ) {
-    console.log( "Fehler: error" ) ;
-}
+//     let obj             = { }; /*create string with form inputs, stringify and executre sendData function*/
+//     obj["id"]           = 1;
+//     obj["pizzaRating"]  = likevalue;
+//     obj["prizeRating"]  = prizevalue;
+//     obj["name"]         = t1.value;
+//     obj["email"]        = t2.value;
+//     obj["feedback"]     = ta1.value;
+//     let data            = JSON.stringify( obj );
+//     sendData( data );
+// }
+
+
+// function sendData( data ){ /*send data via POST*/
+//     let xhr                 = new XMLHttpRequest( ) ;
+//     const url               = "https://tonyspizzafactory.herokuapp.com/api/feedback";
+//     xhr.onreadystatechange  = stateChange1 ;
+//     xhr.ontimeout           = timeout ;
+//     xhr.onerror             = error ;
+//     xhr.open( "POST", url, true ) ;
+//     xhr.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.MQ.bYceSpllpyYQixgNzDt7dpCkEojdv3NKD-85XLXfdI4" );
+//     xhr.setRequestHeader( 'Content-type',  'application/json; charset=utf-8' ) ;
+//     xhr.send( data ) ;
+// }
+// function stateChange1( )
+// {
+//     if( this.readyState === 4 ) {
+//         if( this.status     >= 200 && this.status < 300 ) {
+//             console.log(JSON.parse(this.responseText));
+//         }
+//         else {
+//             console.log( "Fehler: status " + this.status ) ;
+//         }
+//     }
+// }
+// function timeout( ) {
+//     console.log( "Fehler: timeout" ) ;
+// }
+// function error( ) {
+//     console.log( "Fehler: error" ) ;
+// }
+
+
+
+// //------------ 4 FEEDBACK STATISTICS AFTER SUBMISSION --------------//
+
+// function getData( ) { /*retrieve all submitted form inputs*/
+//     let xhr                 = new XMLHttpRequest( ) ;
+//     const url               = "https://tonyspizzafactory.herokuapp.com/api/feedback" ;
+//     xhr.onreadystatechange  = stateChange ;
+//     xhr.ontimeout         = timeout ;
+//     xhr.onerror           = error ;
+//     xhr.open( "GET", url, true ) ;
+//     xhr.setRequestHeader("Authorization","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.MQ.bYceSpllpyYQixgNzDt7dpCkEojdv3NKD-85XLXfdI4" );
+//     xhr.setRequestHeader( 'Content-type', 'application/json; charset=utf-8' ) ;
+//     xhr.send( null ) ;
+// }
+
+// function stateChange( ) { /*parse JSON data, assign to statistics variable and execute pieChart function*/
+//     if( this.readyState === 4 ) {
+//         if( this.status     >= 200 && this.status < 300 ) {
+//             let statistics = JSON.parse( this.responseText );
+//             pieChart ( statistics );
+//         }
+//         else {
+//             console.log ( "Fehler: status " + this.status ) ;
+//         }
+//     }
+// }
+
+
+// function pieChart(statistics) { /*create new div element for pie chart*/
+//     let div             = document.createElement("div");
+//     div.id              = "chartContainer";
+//     form.appendChild( div );
+
+
+//     let counterFair         = 0; /*retrieve all prize ratings from JSON file and transform into target array pieChartData*/
+//     let counterOkay         = 0;
+//     let counterExpensive    = 0;
+//     for (let i5 = 0; i5 < statistics.length; i5++) {
+//         if ( statistics[i5].prizeRating === "fair" ) {
+//             counterFair++;
+//         } else if ( statistics[i5].prizeRating === "okay" ) {
+//             counterOkay++;
+//         } else if ( statistics[i5].prizeRating === "expensive" ) {
+//             counterExpensive++;
+//         }
+//     }
+//     let pieChartData = [
+//         {"prize-opinion": "fair", "votes": counterFair},
+//         {"prize-opinion": "okay", "votes": counterOkay},
+//         {"prize-opinion": "expensive", "votes": counterExpensive}
+//     ];
+
+
+//     let svg         = dimple.newSvg ( "#chartContainer", 300, 300 ); /*create pieChart for prizeRatings with dimple js*/
+//     let chart       = new dimple.chart( svg, pieChartData );
+//     chart.addMeasureAxis( "p", "votes" );
+//     chart.addSeries( "prize-opinion", dimple.plot.pie );
+//     chart.addLegend(225, 10, 90, "100%", "left");
+//     chart.draw( );
+
+
+//     let counterAwesome      = 0; /*retrieve all like ratings from JSON file and transform into target array pieChartData*/
+//     let counterGood         = 0;
+//     let counterOk           = 0;
+//     let counterPoor         = 0;
+//     for (let i6 = 0; i6 < statistics.length; i6++) {
+//         if ( statistics[i6].pizzaRating === "awesome" ) {
+//             counterAwesome++;
+//         } else if ( statistics[i6].pizzaRating === "good" ) {
+//             counterGood++;
+//         } else if ( statistics[i6].pizzaRating === "okay" ) {
+//             counterOk++;
+//         } else if ( statistics[i6].pizzaRating === "poor") {
+//             counterPoor++;
+//         }
+
+//     }
+//     let pieChartData2 = [
+//         {"pizza-opinion": "awesome", "votes": counterAwesome},
+//         {"pizza-opinion": "good", "votes": counterGood},
+//         {"pizza-opinion": "okay", "votes": counterOk},
+//         {"pizza-opinion": "poor", "votes": counterPoor}
+//     ];
+
+
+//     let svg2         = dimple.newSvg ( "#chartContainer", 300, 300 ); /*create pieChart for prizeRatings with dimple js*/
+//     let chart2       = new dimple.chart( svg2, pieChartData2 );
+//     chart2.addMeasureAxis( "p", "votes" );
+//     chart2.addSeries( "pizza-opinion", dimple.plot.pie );
+//     chart2.addLegend(235, 10, 90, "100%", "left");
+//     chart2.draw( );
+// }

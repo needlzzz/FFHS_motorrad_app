@@ -1,0 +1,26 @@
+{
+  "name": "ffhs_motorrad_app",
+  "version": "1.0.0",
+  "description": "All required packages for the FFHS Motorcycle App Project",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "tailwind": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/needlzzz/FFHS_motorrad_app.git"
+  },
+  "author": "Marc Kaelin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/needlzzz/FFHS_motorrad_app/issues"
+  },
+  "homepage": "https://github.com/needlzzz/FFHS_motorrad_app#readme"
+}
