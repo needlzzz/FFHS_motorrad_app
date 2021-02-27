@@ -159,15 +159,31 @@ footer div img{ /*fix width (and height) of icons*/
 /* ===== Landing Page ===== */
 
 .responsive {
-  width: 75%;
+  max-width: 60%;
   height: auto;
 }
 
 .flex-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
+  margin-bottom: 4em;
 }
+#btnRegister {
+  display:block;
+  width: 30em;
+  height: 3em;
+  background-color: grey;
+  border: 1px solid darkgreen;
+  color: white;
+  margin: 1em auto;
+  margin-bottom: 4em;
+}
+
+.plp {
+  text-align: center;
+}
+
   
 @media all and (min-width: 100em) {
     .flex-container {
