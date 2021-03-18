@@ -169,6 +169,61 @@ footer div img {
   width: 50px;
 }
 
+/* ===== Landing Page ===== */
+
+.responsive {
+  max-width: 60%;
+  height: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 4em;
+}
+#btnRegister {
+  display:block;
+  width: 30em;
+  height: 3em;
+  background-color: grey;
+  border: 1px solid darkgreen;
+  color: white;
+  margin: 1em auto;
+  margin-bottom: 4em;
+}
+
+.plp {
+  text-align: center;
+}
+
+  
+@media all and (min-width: 100em) {
+    .flex-container {
+        width: 33.33%;
+        }
+      }
+
+      .flex-container1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.RegisterBtn {
+  margin: 2%;
+  align-self: center;
+}
+
+
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul {
   /*clearing out form list styles*/
