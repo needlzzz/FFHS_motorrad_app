@@ -1,9 +1,11 @@
-let routeBtn = document.getElementById("routeBtn");
+function eventListener() {
+  let routeBtn = document.getElementById("routeBtn");
 
-routeBtn.addEventListener("click", () => {
-  console.log("button pressed");
-  getRouteData();
-});
+  routeBtn.addEventListener("click", () => {
+    console.log("button pressed");
+    getRouteData();
+  });
+}
 
 const getRouteData = () => {
   const openrouteXHR = new XMLHttpRequest();
