@@ -1,12 +1,12 @@
 const router = require("express").Router();
 
-// dashboard route
+// myProfile route
 router.get("/", (req, res) => {
   res.json({
     error: null,
     data: {
-      title: "My dashboard",
-      content: "dashboard content",
+      title: "My profile",
+      content: "profile content",
       user: req.user,
     },
   });

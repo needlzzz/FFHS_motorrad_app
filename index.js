@@ -17,7 +17,7 @@ mongoose.connect(
 
 // import routes
 const authRoutes = require("./routes/auth");
-const dashboardRoutes = require("./routes/dashboard");
+const myProfileRoutes = require("./routes/profile");
 const verifyToken = require("./routes/validate-token");
 
 // middlewares
@@ -25,6 +25,6 @@ app.use(express.json()); // for body parser
 
 // route middlewares
 app.use("/api/user", authRoutes);
-app.use("/api/dashboard", verifyToken, dashboardRoutes);
+app.use("/api/profile", verifyToken, myProfileRoutes);
 
 app.listen(3000, () => console.log("server is running..."));
