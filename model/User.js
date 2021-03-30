@@ -1,7 +1,7 @@
 //import mongoose
 const mongoose = require("mongoose");
 
-// create user schema
+// create user schema and define collection "users"
 const userSchema = new mongoose.Schema({
     // define object name and its properties
     name: {
