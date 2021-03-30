@@ -13,6 +13,7 @@ and not up-to-date with the server.
 
 if the project is to be run locally, run npm i before ng serve.
 
+Hint: see all version of installed packages: npm ls --depth=0
 
 -----Service Worker-----
 ServiceWorker has been implemented for index.html with sw_cached_pages.js and sw_main.js. 
