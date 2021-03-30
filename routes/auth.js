@@ -32,9 +32,11 @@ router.post("/register", async (req, res) => {
 
   try {
     // save user using async await (asynchronous process)
-    const savedUser = await user.save();
+    const response = await user.save();
+    // write in console log that user has been created successfully
+    console.log("User created successfully: ", response.name)
     // in case of success return the userId
-    res.json({ error: null, data: { userId: savedUser._id } });
+    res.json({ error: null, data: { userId: response._id } });
   } catch (error) {
     res.status(400).json({ error });
   }
@@ -49,7 +51,7 @@ router.post("/login", async (req, res) => {
 
   // check availability of email in request body in mongodb and throw error if email/user is not available
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).json({ error: "Email is wrong" });
+  if (!user) return res.status(400).json({ error: "This email address does not exist" });
 
   // process the password with bcrypt and compare with hash password. Throw error if password is wrong.
   const validPassword = await bcrypt.compare(req.body.password, user.password);

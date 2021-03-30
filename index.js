@@ -15,7 +15,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("connection to DB established")
+  () => console.log("connected to DB")
 );
 
 // import routes
@@ -31,4 +31,4 @@ app.use("/api/user", authRoutes);
 app.use("/api/profile", verifyToken, myProfileRoutes); //myProfile route protected with jwt token
 
 // define port
-app.listen(3000, () => console.log("server is running..."));
+app.listen(3000, () => console.log("server running at 3000"));
