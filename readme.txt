@@ -20,3 +20,11 @@ ServiceWorker has been implemented for index.html with sw_cached_pages.js and sw
 The sw_main.js registers the service worker, while the sw_cached_pages.js installs and activates the service worker. 
 Thanks to the service worker (and the cache-build-up), index.html can be viewed offline.
 
+
+----structure and how auth works----
+package.json: define start index.js such that it can be started by npm start
+index.js: Express sw_main
+routes: define different routes middleware
+.env: since db URL is explicit configure it via environment variable (dotenv package installed)
+model / User.js: create User model-schema for User collection, i.e. how user model and proeprties should be
+
