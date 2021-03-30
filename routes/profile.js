@@ -1,6 +1,7 @@
+// import express
 const router = require("express").Router();
 
-// myProfile route
+// myProfile route GET
 router.get("/", (req, res) => {
   res.json({
     error: null,

@@ -1,12 +1,16 @@
+//import mongoose
 const mongoose = require("mongoose");
 
+// create user schema
 const userSchema = new mongoose.Schema({
+  // define object name and its properties
   name: {
     type: String,
     required: true,
     min: 6,
     max: 255,
   },
+  // define object email and its properties
   email: {
     type: String,
     required: true,
@@ -14,16 +18,19 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 255,
   },
+  // define object password and its properties
   password: {
     type: String,
     required: true,
     min: 6,
     max: 1024,
   },
+  // define object date
   date: {
     type: Date,
     default: Date.now,
   },
 });
 
+// export user schema model as "User"
 module.exports = mongoose.model("User", userSchema);

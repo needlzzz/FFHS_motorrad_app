@@ -1,31 +1,29 @@
+// import express, jsonwebtoken, bcryptjs and User model
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-
 const User = require("../model/User");
 
-// validation
+// import registerValidation and loginValidation from validation.js
 const { registerValidation, loginValidation } = require("../validation");
 
-// register route
+// register route POST
 router.post("/register", async (req, res) => {
-  // validate the user
+  // validate registration data (validation.js) and throw error details from JOI validation object (if any)
   const { error } = registerValidation(req.body);
-
-  // throw validation errors
   if (error) return res.status(400).json({ error: error.details[0].message });
 
-  const isEmailExist = await User.findOne({ email: req.body.email });
+  // check availability of email in request body in mongodb and throw error if email is already registered
+  const emailChecker = await User.findOne({ email: req.body.email });
+  if (emailChecker)
+    return res.status(400).json({ error: "Email address is already used by another user" });
 
-  // throw error when email already registered
-  if (isEmailExist)
-    return res.status(400).json({ error: "Email already exists" });
 
-  // generate a random complex string with complexity 10
+  // generate a random complex string with complexity 10 and generate has password
   const salt = await bcrypt.genSalt(10);
-  // generate hash password to a complex generated string
   const password = await bcrypt.hash(req.body.password, salt);
 
+  // create user object with data from request body
   const user = new User({
     name: req.body.name,
     email: req.body.email,
@@ -33,6 +31,7 @@ router.post("/register", async (req, res) => {
   });
 
   try {
+    // save user using async await (asynchronous process)
     const savedUser = await user.save();
     // in case of success return the userId
     res.json({ error: null, data: { userId: savedUser._id } });
@@ -42,26 +41,23 @@ router.post("/register", async (req, res) => {
 });
 
 
-// login route
+// login route POST
 router.post("/login", async (req, res) => {
-  // validate the user i.e. the request body inputs email and password
+  // validate login data (validation.js) and throw error details from JOI validation object (if any)
   const { error } = loginValidation(req.body);
-
-  // throw validation errors
   if (error) return res.status(400).json({ error: error.details[0].message });
 
-  // check if email is available in db otherwise throw error
+  // check availability of email in request body in mongodb and throw error if email/user is not available
   const user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).json({ error: "Email is wrong" });
 
   // process the password with bcrypt and compare with hash password. Throw error if password is wrong.
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword)
-    return res.status(400).json({ error: "Password is wrong" });
+    return res.status(400).json({ error: "Wrong password, try again" });
 
-  // if no errors occurred, create token
+  // if no errors occurred, create jwt token from payload data and secret key (.env)
   const token = jwt.sign(
-    // payload data
     {
       name: user.name,
       id: user._id,
