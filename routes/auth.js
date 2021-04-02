@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 
 // import registerValidation and loginValidation from validation.js
-const { registerValidation, loginValidation } = require("../validation");
+const { registerValidation, loginValidation } = require("../controllers/validation");
 
 // register route POST
 router.post("/register", async (req, res) => {

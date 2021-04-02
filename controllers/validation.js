@@ -1,6 +1,15 @@
 // import @hapi/joi
 const Joi = require("@hapi/joi");
 
+// const onError = (x) => {
+//   switch (x[0].type) {
+//     case 'any.required': {
+//       return new Error('this input is required')
+//     }
+//     case 'string.regex'
+//   }
+// };
+
 // create function registerValidation
 const registerValidation = (data) => {
   // create Joi.object and define validation rules
