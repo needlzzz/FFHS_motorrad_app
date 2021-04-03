@@ -10,9 +10,10 @@ router.get("/", (req, res) => {
   res.send("this is bikeroutes!");
 });
 
+//
 router.post("/history", async (req, res) => {
   const route1 = new BikeRouteCoordinates({
-    coordinates: [1234.88, 12345.99],
+    coordinates: [111111111111111.88, 111111111111111.99],
   });
 
   try {

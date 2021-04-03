@@ -26,7 +26,7 @@ const fetchDataFromAPI = () => {
 };
 
 const sendAPIResponseToBackend = (APIdata) => {
-  // here belongs the code that sends the POST request to the /bikeroute route on the backend
+  // here belongs the code that sends the POST request to the /bikeroute route in the backend
 };
 
 console.log(route1Zurich);

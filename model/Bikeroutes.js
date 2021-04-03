@@ -27,15 +27,5 @@ const BikeRouteCoordinates = mongoose.model(
   bikeroutesSchema
 );
 
-//create test document
-const bikeRoute1 = new BikeRouteCoordinates({
-  coordinates: [1234.88, 12345.99],
-});
-
-//calling the .save methid, saves the newly created "bikeRoute1" object to the DB
-bikeRoute1.save((error, bikeRoute1) => {
-  if (error) return console.error(error);
-});
-
 //export model called "BikeRouteCoordinates" with the integrated schema "bikeroutesSchema"
 module.exports = mongoose.model("BikeRouteCoordinates", bikeroutesSchema);
