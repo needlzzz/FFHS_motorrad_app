@@ -3,7 +3,7 @@ let routeBtn = document.getElementById("routeBtn");
 routeBtn.addEventListener("click", () => {
   console.log("button pressed");
   //getRouteData();
-  fetchData();
+  fetchDataFromAPI();
 });
 
 let route1Zurich;
@@ -11,7 +11,7 @@ let route2Zurich;
 let route1Lucerne;
 let route2Lucerne;
 
-const fetchData = () => {
+const fetchDataFromAPI = () => {
   fetch(
     "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318",
     { method: "GET" }
@@ -25,7 +25,9 @@ const fetchData = () => {
   });
 };
 
-export { route1Zurich };
+const sendAPIResponseToBackend = (APIdata) => {
+  // here belongs the code that sends the POST request to the /bikeroute route on the backend
+};
 
 console.log(route1Zurich);
 
