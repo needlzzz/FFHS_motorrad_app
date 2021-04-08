@@ -1,3 +1,6 @@
+//i must find a way to save the requested coordinates from the openrouteservice API
+//into a variable, which can then be sent to our backend and to the DB
+
 let routeBtn = document.getElementById("routeBtn");
 
 routeBtn.addEventListener("click", () => {

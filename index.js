@@ -37,3 +37,9 @@ app.use("/api/bikeroutes", bikerouteData);
 
 // define port
 app.listen(3000, () => console.log("server running at 3000"));
+
+//this is to test if the post method sends the request body to the backend and if the backend can handle it
+app.post("/", (req, res) => {
+  console.log(req.body);
+  res.send("this is the test post method");
+});
