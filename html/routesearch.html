@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
+    <!-- Include the GL JS CSS file  -->
+
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+
     <!-- This is the required leaflet JS file-->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -46,9 +54,29 @@
     
 <main>
 
+
+    <div id="mapboxDiv">
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow';
+        var mapBoxMap = new mapboxgl.Map({
+        container: 'mapboxDiv',
+        style: 'mapbox://styles/mapbox/streets-v11'
+        });
+        </script>
+    </div>
+
+
     <div id="leafletMapContainer">
+        
+
+
 
     </div>
+
+
+
+
+
     <div id="flexContainerImg">
         <div id="imgContainer">
             <img id="mapImage" src="../img/4_seen_tour.PNG" alt="Image of a map">

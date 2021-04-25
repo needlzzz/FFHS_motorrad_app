@@ -183,7 +183,7 @@ footer div img {
   margin-bottom: 4em;
 }
 #btnRegister {
-  display:block;
+  display: block;
   width: 30em;
   height: 3em;
   background-color: grey;
@@ -197,19 +197,17 @@ footer div img {
   text-align: center;
 }
 
-  
 @media all and (min-width: 100em) {
-    .flex-container {
-        width: 33.33%;
-        }
-      }
+  .flex-container {
+    width: 33.33%;
+  }
+}
 
-      .flex-container1 {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
+.flex-container1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
 .flex-center {
   display: flex;
@@ -217,12 +215,10 @@ footer div img {
   justify-content: center;
 }
 
-
 .RegisterBtn {
   margin: 2%;
   align-self: center;
 }
-
 
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul {
@@ -375,5 +371,9 @@ select {
 /*********** This section is for the leaflet API ************/
 
 #leafletMapContainer {
+  height: 50em;
+}
+
+#mapboxDiv {
   height: 50em;
 }

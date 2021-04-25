@@ -3,7 +3,12 @@
   zoom: 13,
 }); */
 
-var myMap = L.map("leafletMapContainer").setView([51.505, -0.09], 13);
+let mapboxTiles = L.tileLayer();
+
+let myMap = L.map("leafletMapContainer").setView(
+  [47.398253091585815, 8.522810160908335],
+  10
+);
 
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow",
@@ -14,6 +19,7 @@ L.tileLayer(
     id: "mapbox/streets-v11",
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: "your.mapbox.access.token",
+    accessToken:
+      "ypk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow'",
   }
 ).addTo(myMap);
