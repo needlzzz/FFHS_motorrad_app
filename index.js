@@ -4,7 +4,12 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const db = mongoose.connection;
 
+// cors is for disabling CORS security policy
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+
 dotenv.config();
 
 // connect to mongodb atlas

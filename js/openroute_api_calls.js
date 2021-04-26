@@ -1,15 +1,22 @@
 //i must find a way to save the requested coordinates from the openrouteservice API
 //into a variable, which can then be sent to our backend and to the DB
 
+//created 2 promises which will handled by the async function dowork()
+
+//const { func } = require("@hapi/joi");
+
 let routeBtn = document.getElementById("routeBtn");
 
 routeBtn.addEventListener("click", () => {
   console.log("button pressed");
   //getRouteData();
-  fetchDataFromAPI();
-  sendAPIResponseToBackend(route1Zurich);
+  /*   fetchDataFromAPI();
+  sendDataToBackend(); */
+  doWork();
 });
 
+//backend URL
+let backendURL = "http://localhost:3000/api/bikeroutes/history";
 let URLroute1Zurich =
   "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318";
 
@@ -19,35 +26,62 @@ let route1Lucerne;
 let route2Lucerne;
 
 //this function makes the GET request to the external API
-const fetchDataFromAPI = () => {
-  fetch(URLroute1Zurich, { method: "GET" })
-    .then((res) => {
-      if (res.ok) {
-        route1Zurich = res.json();
 
-        console.log(route1Zurich.PromiseResult);
-        return route1Zurich;
-        console.log(route1Zurich);
-        console.log("API call successful");
-      }
+function fetchDataFromAPI() {
+  return new Promise((resolve, reject) => {
+    resolve(
+      fetch(URLroute1Zurich, { method: "GET" }).then((res) => {
+        if (res.ok) {
+          console.log("SUCCESS");
+          return res.json();
+        }
+      })
+    );
+  })
+    .then((data) => {
+      route1Zurich = data;
+      console.log(route1Zurich);
+      return route1Zurich;
     })
-    .then(console.log(route1Zurich))
     .catch((error) => {
       console.log(`This is the error-message: ${error}`);
     });
-};
+}
 
-const sendAPIResponseToBackend = (APIdata) => {
-  setTimeout(
-    (logStuff = () => {
-      console.log(APIdata);
+const sendDataToBackend = (route1Zurich) => {
+  console.log("THIS IS SENDING IT!");
+  fetch(backendURL, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      route1Zurich,
+      //coordinates: [777755555555777, 8888855555558888],
     }),
-    1500
-  );
-  // here belongs the code that sends the POST request to the /bikeroute route in the backend
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
 };
 
-console.log(route1Zurich);
+async function doWork() {
+  try {
+    const reponse1 = await fetchDataFromAPI();
+    console.log("dowork1");
+    const response2 = sendDataToBackend(reponse1);
+    console.log("dowork2");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+/* fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => console.log(json)); */
+// here belongs the code that sends the POST request to the /bikeroute route in the backend
 
 //XML http request
 /*const getRouteData = () => {

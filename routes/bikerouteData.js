@@ -13,15 +13,18 @@ router.get("/", (req, res) => {
 // this is the route for post requests to /api/bikeroutes/history (check index.js)
 router.post("/history", async (req, res) => {
   // this is some testdata to test the route until the real data from the external API call can be used
-  const route1 = new BikeRouteCoordinates({
+  /*  const route1 = new BikeRouteCoordinates({
     coordinates: [111111111111111.88, 111111111111111.99],
-  });
+  }); */
+
+  let data = req.body;
+  console.log(data);
 
   try {
     // save coordinates using async await (asynchronous process)
-    const response = route1.save();
+    //const response = route1.save();
     // write in console log that coordinates have been saved successfully
-    console.log("User history saved!", route1.coordinates);
+    console.log(data, "User history saved!", route1.coordinates);
   } catch (error) {
     res.status(400).json({ error });
   }
