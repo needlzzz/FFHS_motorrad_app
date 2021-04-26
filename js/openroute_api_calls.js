@@ -40,8 +40,9 @@ function fetchDataFromAPI() {
   })
     .then((data) => {
       route1Zurich = data;
+      route1Zurich;
       console.log(route1Zurich);
-      return route1Zurich;
+      return route1Zurich.bbox;
     })
     .catch((error) => {
       console.log(`This is the error-message: ${error}`);
@@ -56,7 +57,7 @@ const sendDataToBackend = (route1Zurich) => {
       "Content-type": "application/json",
     },
     body: JSON.stringify({
-      route1Zurich,
+      coordinates: route1Zurich,
       //coordinates: [777755555555777, 8888855555558888],
     }),
   })
