@@ -16,11 +16,10 @@ routeBtn.addEventListener("click", () => {
 });
 
 //backend URL
-let backendURL = "http://localhost:3000/api/bikeroutes/history";
 let URLroute1Zurich =
   "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318";
 
-let route1Zurich = {};
+let route1Zurich;
 let route2Zurich;
 let route1Lucerne;
 let route2Lucerne;
@@ -40,7 +39,6 @@ function fetchDataFromAPI() {
   })
     .then((data) => {
       route1Zurich = data;
-      route1Zurich;
       console.log(route1Zurich);
       return route1Zurich.bbox;
     })
@@ -50,16 +48,16 @@ function fetchDataFromAPI() {
 }
 
 const sendDataToBackend = (route1Zurich) => {
-  console.log("THIS IS SENDING IT!");
+  let backendURL = "http://localhost:3000/api/bikeroutes/history";
+  console.log(route1Zurich);
   fetch(backendURL, {
     method: "POST",
+    body: JSON.stringify(route1Zurich),
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({
-      coordinates: route1Zurich,
-      //coordinates: [777755555555777, 8888855555558888],
-    }),
+
+    //coordinates: [777755555555777, 8888855555558888],
   })
     .then((res) => {
       return res.json();
