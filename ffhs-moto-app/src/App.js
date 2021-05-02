@@ -1,7 +1,9 @@
-import Header from "./components/Header";
+import { render } from 'react-dom';
+import Header from './components/Header';
+import Map from './components/Routemap';
 
 function App() {
-  return <Header />;
+  return (<Map />), (<Header />);
 }
 
-export default App;
+export { Map, Header };
