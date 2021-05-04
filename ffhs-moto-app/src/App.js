@@ -1,7 +1,13 @@
-import Header from "./components/Header";
+import { render } from 'react-dom';
+import Header from './components/Header';
+import Map from './components/Routemap';
 
-function App() {
+function Head() {
   return <Header />;
 }
 
-export default App;
+function RouteMap() {
+  return <Map />;
+}
+
+export { RouteMap, Head };
