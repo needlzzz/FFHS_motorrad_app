@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <React.Fragment>
       <div id='menu_top'>
-        <img id='logo' im src={motorbike2} alt='Homepage logo'></img>
+        <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
         <button id='login' type='button'>
           Login
         </button>

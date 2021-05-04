@@ -30,7 +30,7 @@ const Map = () => {
   }, []);
 
   return (
-    <div>
+    <div id='container'>
       <div className='map-container' ref={mapContainer} />
       <div>
         <div className='sidebar'>

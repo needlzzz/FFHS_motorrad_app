@@ -2,8 +2,12 @@ import { render } from 'react-dom';
 import Header from './components/Header';
 import Map from './components/Routemap';
 
-function App() {
-  return (<Map />), (<Header />);
+function Head() {
+  return <Header />;
 }
 
-export { Map, Header };
+function RouteMap() {
+  return <Map />;
+}
+
+export { RouteMap, Head };

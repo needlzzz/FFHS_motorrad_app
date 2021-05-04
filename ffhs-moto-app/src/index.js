@@ -4,16 +4,24 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
-import App from './App';
+//import App from './App';
+import { App, Head } from './App';
 import reportWebVitals from './reportWebVitals';
-import { Header, Map } from './App';
+import Header from './components/Header';
+import Routemap from './components/Routemap';
+
+ReactDOM.render(
+  <React.Fragment>
+    <Header />
+  </React.Fragment>,
+  document.getElementById('header')
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Map />
+    <Routemap />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('routemap')
 );
 
 //ReactDOM.render(<Map />, document.getElementById('app'));
