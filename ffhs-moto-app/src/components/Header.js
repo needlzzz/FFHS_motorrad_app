@@ -1,7 +1,14 @@
+// import
 import React from 'react';
+
+// import css
 import '../css/style.css';
+import { Link } from 'react-router-dom';
+
+//import images
 import motorbike2 from '../img/motorbike2.png';
 
+// create Header component
 const Header = () => {
   return (
     <React.Fragment>
@@ -14,15 +21,17 @@ const Header = () => {
       <nav className='menu' id='myMenu'>
         <ul>
           <li>
-            <a href='../html/index.html'>Home</a>
+            <Link to='/home'>Home</Link>
           </li>
           <li>
-            <a className='current' href='../html/routesearch.html'>
-              Route search
-            </a>
+            <Link className='current' to='/routes'>Route search</Link>
+            
           </li>
           <li>
-            <a href='contact.html'>Contact form</a>
+            <Link to='/contact'>Contact form</Link>
+          </li>
+          <li>
+            <Link to='/profile'>MyProfile</Link>
           </li>
           <li className='burger'>
             <a href='javascript:void(0);' onClick='myFunction()'>

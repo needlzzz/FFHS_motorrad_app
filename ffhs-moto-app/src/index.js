@@ -1,46 +1,52 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+//import browserRouter, Route and Navlink from react-router-dom
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 //import App from './App';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+//import Components
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Header from './components/Header';
+import Home from './components/Home';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Register from './components/Register';
 import Routemap from './components/Routemap';
 
-ReactDOM.render(
-  <React.Fragment>
-    <Routemap />
-  </React.Fragment>,
-  document.getElementById('routemap')
-);
-
-ReactDOM.render(
-  <React.Fragment>
-    <Header />
-  </React.Fragment>,
-  document.getElementById('header')
-);
-
-/* ReactDOM.render(
-  <React.Fragment>
-    <Header />
-  </React.Fragment>,
-  document.getElementById('header')
-);
-
+// provide routes and add header/footer component to Router
 ReactDOM.render(
   <React.StrictMode>
-    <Routemap />
+    <BrowserRouter>
+      <Header />
+      <Route exact path='/' component={Home} />
+      <Route exact path='/home' component={Home} />
+      <Route exact path='/routes' component={Routemap} />
+      <Route exact path='/profile' component={Profile} />
+      <Route exact path='/contact' component={Contact} />
+      <Footer />
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('routemap')
-);  */
+  document.getElementById('root')
+);
+
+// ReactDOM.render(
+//   <React.Fragment>
+//     <Header />
+//   </React.Fragment>,
+//   document.getElementById('header')
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Routemap />
+//   </React.StrictMode>,
+//   document.getElementById('routemap')
+// );
 
 //ReactDOM.render(<Map />, document.getElementById('app'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
