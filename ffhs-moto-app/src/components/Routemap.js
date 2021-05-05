@@ -1,8 +1,11 @@
+// import 
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
+// create Map component
 const Map = () => {
   mapboxgl.workerClass = MapboxWorker;
   mapboxgl.accessToken =
