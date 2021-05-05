@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 //import App from './App';
-import App from './App';
+import { Map } from './App';
 import reportWebVitals from './reportWebVitals';
 
 //import Components

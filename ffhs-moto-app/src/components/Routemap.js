@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 // create Map component
-const Routemap = () => {
+const Map = () => {
   mapboxgl.workerClass = MapboxWorker;
   mapboxgl.accessToken =
     'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow';
@@ -42,4 +42,4 @@ const Routemap = () => {
   );
 };
 
-export default Routemap;
+export default Map;
