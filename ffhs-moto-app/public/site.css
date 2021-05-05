@@ -1,9 +1,14 @@
 .map-container {
-  position: absolute;
+  position: relative;
+  height: 50em;
+  width: auto;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+}
+
+.mapboxgl-map {
 }
 
 .sidebar {
@@ -19,8 +24,10 @@
   border-radius: 4px;
 }
 
-.header {
+#header {
+  margin-bottom: 3em;
   height: 5em;
+  width: auto;
 }
 
 #container {

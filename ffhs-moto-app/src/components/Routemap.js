@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
-const Map = () => {
+const RouteMap = () => {
   mapboxgl.workerClass = MapboxWorker;
   mapboxgl.accessToken =
     'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow';
@@ -30,16 +30,13 @@ const Map = () => {
   }, []);
 
   return (
-    <div id='container'>
-      <div className='map-container' ref={mapContainer} />
-      <div>
-        <div className='sidebar'>
-          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        </div>
-        <div className='map-container' ref={mapContainer} />
+    <div>
+      <div className='sidebar'>
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
+      <div className='map-container' ref={mapContainer} />
     </div>
   );
 };
 
-export default Map;
+export default RouteMap;

@@ -5,12 +5,26 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 //import App from './App';
-import { App, Head } from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/Header';
 import Routemap from './components/Routemap';
 
 ReactDOM.render(
+  <React.Fragment>
+    <Routemap />
+  </React.Fragment>,
+  document.getElementById('routemap')
+);
+
+ReactDOM.render(
+  <React.Fragment>
+    <Header />
+  </React.Fragment>,
+  document.getElementById('header')
+);
+
+/* ReactDOM.render(
   <React.Fragment>
     <Header />
   </React.Fragment>,
@@ -22,7 +36,7 @@ ReactDOM.render(
     <Routemap />
   </React.StrictMode>,
   document.getElementById('routemap')
-);
+);  */
 
 //ReactDOM.render(<Map />, document.getElementById('app'));
 

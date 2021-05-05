@@ -1,13 +1,31 @@
 import { render } from 'react-dom';
+import React from 'react';
 import Header from './components/Header';
-import Map from './components/Routemap';
+import RouteMap from './components/Routemap';
 
-function Head() {
+const Map = () => {
+  return (
+    <div className='container'>
+      <RouteMap />
+      <div></div>
+    </div>
+  );
+};
+
+const Head = () => {
+  return (
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
+  );
+};
+
+/* function Head() {
   return <Header />;
 }
 
 function RouteMap() {
   return <Map />;
-}
+}  */
 
-export { RouteMap, Head };
+export { Map, Head };
