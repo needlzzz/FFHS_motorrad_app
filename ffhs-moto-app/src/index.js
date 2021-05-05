@@ -1,27 +1,23 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 //import App from './App';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/Header';
 import Routemap from './components/Routemap';
 
 ReactDOM.render(
   <React.Fragment>
-    <Routemap />
+    <Header />
   </React.Fragment>,
-  document.getElementById('routemap')
+  document.getElementById('header')
 );
 
 ReactDOM.render(
   <React.Fragment>
-    <Header />
+    <Routemap />
   </React.Fragment>,
-  document.getElementById('header')
+  document.getElementById('routemap')
 );
 
 /* ReactDOM.render(
