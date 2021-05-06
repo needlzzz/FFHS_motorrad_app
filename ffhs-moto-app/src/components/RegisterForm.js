@@ -5,10 +5,10 @@ import React, {useState} from 'react'
 import '../css/style.css';
 
 // create hook, import Login and error props
-function LoginForm({ Login, error}) {
+function RegisterForm({ Login, error}) {
     
     // create state for details
-    const [details, setDetails] = useState({email: "", password:""});
+    const [details, setDetails] = useState({name: "", email: "", password: ""});
     
     // create function for handling submits
     const submitHandler = e => {
@@ -19,7 +19,7 @@ function LoginForm({ Login, error}) {
 
     //needs to be in login.js
     const Login2 = (data) => {
-        fetch('http://localhost:3000/api/user/login', {
+        fetch('http://localhost:3000/api/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,6 +28,7 @@ function LoginForm({ Login, error}) {
         })
         .then(response => response.json())
         .then(json => console.log(json));
+        })
     }
 
     //register (delete afterwards)
@@ -36,8 +37,12 @@ function LoginForm({ Login, error}) {
     return (
         <form onSubmit = {submitHandler}>
             <div className= "form-inner">
-                <h2>Login </h2>
+                <h2>Register </h2>
                 {(error != "") ? (<div className="error"> {error} </div>) : ""}
+                <div className = "form-group">
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" name="name" id="name" onChange={e => setDetails({...details, name: e.target.value })} value={details.name} />
+                </div>
                 <div className = "form-group">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value })} value={details.email} />
@@ -46,10 +51,10 @@ function LoginForm({ Login, error}) {
                     <label htmlFor="password">Password: </label>
                     <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value })} value={details.password} />
                 </div>
-                <input type="submit" value="LOGIN" />
+                <input type="submit" value="REGISTER" />
             </div>
         </form>
     )
 }
 
-export default LoginForm
+export default RegisterForm

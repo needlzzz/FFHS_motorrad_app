@@ -1,17 +1,26 @@
+// import
 import React, {useState} from 'react';
+
+// import CSS
 import '../css/style.css';
+
+// import
 import LoginForm from './LoginForm';
 
-const TestBody = () => {
+// create hook
+const LoginBody = () => {
 
+  // dummy-user ****delete afterwards****
   const adminUser = {
     email: "admin@admin.com",
     password: "admin123"
   }
 
+  // create states
   const [user, setUser] = useState({name: "", email: ""});
   const [error, setError] = useState("");
 
+  // 
   const Login = (details) => {
     console.log(details);
     setUser({
@@ -22,15 +31,16 @@ const TestBody = () => {
     if(details.email == adminUser.email && details.password == adminUser.password) {
       console.log("Logged in");
     } else {
-      console.log("Details do not match!");
       setError("Details do not match")
     }
   }
 
+  //
   const Logout = () => {
     setUser({ name: "", email: ""});
   }
 
+  // if user.email state is not empty show text and logout, else show login form
   return (
     <React.Fragment>
       <div className="App">
@@ -47,4 +57,4 @@ const TestBody = () => {
   );
 };
 
-export default TestBody;
+export default LoginBody;

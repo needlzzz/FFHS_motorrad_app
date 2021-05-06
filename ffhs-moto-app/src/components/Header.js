@@ -1,9 +1,9 @@
 // import
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // import css
 import '../css/style.css';
-import { Link } from 'react-router-dom';
 
 //import images
 import motorbike2 from '../img/motorbike2.png';
@@ -35,6 +35,9 @@ const Header = () => {
           </li>
           <li>
             <Link to='/login'>Login</Link>
+          </li>
+          <li>
+            <Link to='/register'>Register</Link>
           </li>
           <li className='burger'>
             <a href='javascript:void(0);' onClick='myFunction()'>
