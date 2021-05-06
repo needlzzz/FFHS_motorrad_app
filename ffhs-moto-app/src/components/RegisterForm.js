@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 import '../css/style.css';
 
 // create hook, import Register and error props
-function RegisterForm({ Register, error}) {
+function RegisterForm({ totesttomorrow, error}) {
     
     // create state for details
     const [details, setDetails] = useState({name: "", email: "", password: ""});

@@ -36,6 +36,7 @@ const RegisterBody = () => {
     }
   }
 
+
   //
   const Logout = () => {
     setUser({ name: "", email: ""});
