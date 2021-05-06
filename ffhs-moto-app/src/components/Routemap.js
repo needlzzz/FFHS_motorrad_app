@@ -1,5 +1,12 @@
-// import
+import {
+  fetchDataFromAPI,
+  sendDataToBackend,
+  asyncAPIandBackendCall,
+  route1Zurich,
+} from '../js/openroute_api_calls';
 import React, { useRef, useEffect, useState } from 'react';
+// This library is for adding HTML-like js script files to a REACT component
+import ScriptTag from 'react-script-tag';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -33,12 +40,37 @@ const Map = () => {
   }, []);
 
   return (
-    <div>
+    <React.Fragment>
       <div className='sidebar'>
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
-      <div className='map-container' ref={mapContainer} />
-    </div>
+      <div id='mapboxgl-container'>
+        <div className='map-container' ref={mapContainer} />
+      </div>
+
+      <div className='dropdownContainer'>
+        <select>
+          <option selected disabled>
+            --- Choose your route type ---
+          </option>
+          <option>Sporty</option>
+          <option>Scenic</option>
+        </select>
+
+        <select>
+          <option selected disabled>
+            --- Choose your area ---
+          </option>
+          <option>Berne Area</option>
+          <option>Lucerne area</option>
+        </select>
+        <div>
+          <button id='routeBtn' onClick={asyncAPIandBackendCall}>
+            Get route!
+          </button>
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 
