@@ -1,9 +1,4 @@
-import {
-  fetchDataFromAPI,
-  sendDataToBackend,
-  asyncAPIandBackendCall,
-  route1Zurich,
-} from '../js/openroute_api_calls';
+import { asyncAPIandBackendCall } from '../js/openroute_api_calls';
 import React, { useRef, useEffect, useState } from 'react';
 // This library is for adding HTML-like js script files to a REACT component
 import ScriptTag from 'react-script-tag';

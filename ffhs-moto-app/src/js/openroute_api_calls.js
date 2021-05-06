@@ -17,7 +17,7 @@
 
 //backend URL
 
-let route1Zurich = {};
+let route1Zurich;
 let route2Zurich;
 let route1Lucerne;
 let route2Lucerne;
@@ -27,7 +27,6 @@ let route2Lucerne;
 function fetchDataFromAPI() {
   let URLroute1Zurich =
     'https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318';
-
   return new Promise((resolve, reject) => {
     resolve(
       fetch(URLroute1Zurich, { method: 'GET' }).then((res) => {
@@ -39,10 +38,11 @@ function fetchDataFromAPI() {
     );
   })
     .then((data) => {
-      route1Zurich = data;
+      //route1Zurich = data;
+      route1Zurich = data.bbox.coordinates;
 
       console.log(route1Zurich);
-      return route1Zurich.bbox;
+      return route1Zurich;
     })
     .catch((error) => {
       console.log(`This is the error-message: ${error}`);
@@ -57,10 +57,7 @@ const sendDataToBackend = (route1Zurich) => {
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({
-      coordinates: route1Zurich,
-      //coordinates: [777755555555777, 8888855555558888],
-    }),
+    body: JSON.stringify(route1Zurich),
   })
     .then((res) => {
       return res.json();
@@ -72,13 +69,13 @@ const sendDataToBackend = (route1Zurich) => {
 async function asyncAPIandBackendCall() {
   try {
     const reponse1 = await fetchDataFromAPI();
-    console.log('dowork1');
     const response2 = sendDataToBackend(reponse1);
-    console.log('dowork2');
   } catch (err) {
     console.log(err);
   }
 }
+
+//const coordinates = {coordinates: [112221.1212]}
 
 export {
   fetchDataFromAPI,
