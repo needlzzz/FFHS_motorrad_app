@@ -4,8 +4,8 @@ import React, {useState} from 'react'
 // import CSS
 import '../css/style.css';
 
-// create hook, import Login and error props
-function RegisterForm({ Login, error}) {
+// create hook, import Register and error props
+function RegisterForm({ Register, error}) {
     
     // create state for details
     const [details, setDetails] = useState({name: "", email: "", password: ""});
@@ -14,11 +14,11 @@ function RegisterForm({ Login, error}) {
     const submitHandler = e => {
         e.preventDefault();
 
-        Login2(details);
+        Register(details);
     }
 
-    //needs to be in login.js
-    const Login2 = (data) => {
+    //needs to be in register.js
+    const Register = (data) => {
         fetch('http://localhost:3000/api/user/register', {
             method: 'POST',
             headers: {
@@ -28,11 +28,7 @@ function RegisterForm({ Login, error}) {
         })
         .then(response => response.json())
         .then(json => console.log(json));
-        })
-    }
-
-    //register (delete afterwards)
-    const test1 = {name: "Friday2", email: "friday2@gmail.com", password: "Test.1"}
+        }
 
     return (
         <form onSubmit = {submitHandler}>
