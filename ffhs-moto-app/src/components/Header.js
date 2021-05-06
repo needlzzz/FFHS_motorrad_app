@@ -33,6 +33,9 @@ const Header = () => {
           <li>
             <Link to='/profile'>MyProfile</Link>
           </li>
+          <li>
+            <Link to='/login'>Login</Link>
+          </li>
           <li className='burger'>
             <a href='javascript:void(0);' onClick='myFunction()'>
               <i class='fa fa-bars'></i>

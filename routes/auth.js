@@ -7,6 +7,7 @@ const User = require("../model/User");
 // import registerValidation and loginValidation from validation.js
 const { registerValidation, loginValidation } = require("../validation");
 
+
 // register route POST
 router.post("/register", async (req, res) => {
   // validate registration data (validation.js) and throw error details from JOI validation object (if any)
