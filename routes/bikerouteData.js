@@ -17,10 +17,9 @@ router.post('/history', async (req, res) => {
   /*  const route1 = new BikeRouteCoordinates({
     coordinates: [111111111111111.88, 111111111111111.99],
   }); */
-  console.log('REQUEST BODY: ', req.body.coordinates);
+  console.log('REQUEST BODY: ', req.body);
   const coordinatesRequest = new BikeRouteCoordinates({
-    coordinates: req.body.coordinates,
-    date: Date.now,
+    coordinates: req.body.bbox,
   });
   /*   let data = req.body;
   console.log(data); */
@@ -31,7 +30,7 @@ router.post('/history', async (req, res) => {
     // write in console log that coordinates have been saved successfully
 
     const response = await coordinatesRequest.save();
-    console.log('User coordinates saved successfully: ', response.bbox);
+    console.log('User coordinates saved successfully: ');
     res.json({ error: null, data: { coordinates: response.bbox } });
 
     /* console.log(

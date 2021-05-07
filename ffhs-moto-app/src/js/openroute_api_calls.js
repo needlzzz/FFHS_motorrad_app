@@ -17,7 +17,7 @@
 
 //backend URL
 
-let route1Zurich;
+let route1Zurich = [];
 let route2Zurich;
 let route1Lucerne;
 let route2Lucerne;
@@ -39,7 +39,7 @@ function fetchDataFromAPI() {
   })
     .then((data) => {
       //route1Zurich = data;
-      route1Zurich = data.bbox.coordinates;
+      route1Zurich = data;
 
       console.log(route1Zurich);
       return route1Zurich;
