@@ -1,3 +1,5 @@
+/***** CSS Styles for the Routemap Component *****/
+
 .map-container {
   position: relative;
   height: 50em;
@@ -6,9 +8,13 @@
   right: 0;
   left: 0;
   bottom: 0;
+  margin-bottom: 4em;
+  margin-top: 2em;
 }
 
-.mapboxgl-map {
+#mapboxgl-container {
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .sidebar {
