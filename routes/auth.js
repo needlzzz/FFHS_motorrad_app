@@ -7,6 +7,7 @@ const User = require("../model/User");
 // import registerValidation and loginValidation from validation.js
 const { registerValidation, loginValidation } = require("../validation");
 
+
 // register route POST
 router.post("/register", async (req, res) => {
   // validate registration data (validation.js) and throw error details from JOI validation object (if any)
@@ -36,7 +37,7 @@ router.post("/register", async (req, res) => {
     // write in console log that user has been created successfully
     console.log("User created successfully: ", response.name)
     // in case of success return the userId
-    res.json({ error: null, data: { userId: response._id } });
+    res.json({ error: null, data: { userId: response._id, name: response.name, email: response.email } });
   } catch (error) {
     res.status(400).json({ error });
   }
