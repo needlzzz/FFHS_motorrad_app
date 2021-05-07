@@ -1,7 +1,7 @@
 # FFHS_toeff_app
 
 
-FThis is our FFHS school project.
+FFThis is our FFHS school project.
 
 
 mockups see here: https://ffhsrwm.invisionapp.com/freehand/WireFrame-Moto-Project-oRcGAEwCe
