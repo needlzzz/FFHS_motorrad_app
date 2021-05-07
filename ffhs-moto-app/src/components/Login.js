@@ -10,47 +10,45 @@ import LoginForm from './LoginForm';
 // create hook
 const LoginBody = () => {
 
-  // dummy-user ****delete afterwards****
-  const adminUser = {
-    email: "admin@admin.com",
-    password: "admin123"
-  }
-
   // create states
-  const [user, setUser] = useState({name: "", email: ""});
+  const [user, setUser] = useState({ token: "" });
   const [error, setError] = useState("");
 
-  // 
-  const Login = (details) => {
-    console.log(details);
-    setUser({
-      name: details.name,
-      email: details.email
+  // create Login request, setStates with received data
+  const Login2 = (data) => {
+    fetch('http://localhost:3000/api/user/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
     })
-
-    if(details.email == adminUser.email && details.password == adminUser.password) {
-      console.log("Logged in");
-    } else {
-      setError("Details do not match")
+    .then(response => response.json())
+    .then(json => {
+      setError(json.error)
+      if(json.error === null) {setUser({token: json.data.token}) }
+      console.log(json)
+    })
+    .catch(err => alert(err));
     }
-  }
+
 
   //
   const Logout = () => {
-    setUser({ name: "", email: ""});
+    setUser({ token: ""});
   }
 
   // if user.email state is not empty show text and logout, else show login form
   return (
     <React.Fragment>
       <div className="App">
-        {(user.email != "") ? (
-          <div className = "welcome">
-            <h2>Welcome, <span>{user.name}</span></h2>
+        {(user.token != "") ? (
+          <div className = "loginsuccess">
+            <h2>Welcome, <span>{user.token}</span></h2>
             <button onClick={Logout}>Logout</button>
           </div>
         ) : (
-          <LoginForm Login={Login} error={error} />
+          <LoginForm Login2={Login2} error={error} />
         )}
       </div>
     </React.Fragment>
