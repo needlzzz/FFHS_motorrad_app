@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 import '../css/style.css';
 
 // create hook, import Login and error props
-function LoginForm({ Login, error}) {
+function LoginForm({ Login2, error}) {
     
     // create state for details
     const [details, setDetails] = useState({email: "", password:""});
@@ -13,25 +13,8 @@ function LoginForm({ Login, error}) {
     // create function for handling submits
     const submitHandler = e => {
         e.preventDefault();
-
         Login2(details);
     }
-
-    //needs to be in login.js
-    const Login2 = (data) => {
-        fetch('http://localhost:3000/api/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(json => console.log(json));
-    }
-
-    //register (delete afterwards)
-    const test1 = {name: "Friday2", email: "friday2@gmail.com", password: "Test.1"}
 
     return (
         <form onSubmit = {submitHandler}>
