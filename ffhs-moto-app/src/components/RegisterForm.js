@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 import '../css/style.css';
 
 // create hook, import Register and error props
-function RegisterForm({ totesttomorrow, error}) {
+function RegisterForm({ Register, error}) {
     
     // create state for details
     const [details, setDetails] = useState({name: "", email: "", password: ""});
@@ -17,18 +17,7 @@ function RegisterForm({ totesttomorrow, error}) {
         Register(details);
     }
 
-    //needs to be in register.js
-    const Register = (data) => {
-        fetch('http://localhost:3000/api/user/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(json => console.log(json));
-        }
+    
 
     return (
         <form onSubmit = {submitHandler}>
