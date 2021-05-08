@@ -7,6 +7,7 @@ import '../css/style.css';
 // import
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
+import Login from './Login';
 
 // create hook
 const RegisterBody = () => {
@@ -40,7 +41,7 @@ const RegisterBody = () => {
         {(user.userId != "") ? (
           <div className = "registersuccess">
             <h2>You have been successfully registered, <span>{user.name}</span></h2>
-            <LoginForm />
+            <Login />
           </div>
         ) : (
           <RegisterForm Register={Register} error={error} />
