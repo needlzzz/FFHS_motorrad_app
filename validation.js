@@ -39,6 +39,8 @@ const registerValidation = (data) => {
   return schema.validate(data);
 };
 
+
+// needs to be improved; the validation should not be necessary?
 const loginValidation = (data) => {
   const schema = Joi.object({
     email: Joi.string()
