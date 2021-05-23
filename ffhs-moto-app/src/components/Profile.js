@@ -15,7 +15,8 @@ const Profile = () => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9iaW5obyIsImlkIjoiNjBhNzY4YzMzM2JjNGUzYTBjMTM0ZTFmIiwiaWF0IjoxNjIxNTg0MDkwfQ.x0S9JbzwQD791Oo5KiwjW-vXRom_l6rwhGGssw8WiNk'
+            'auth-token': localStorage.getItem('token'),
+            
         },
     })
     .then(response => response.json())
@@ -23,6 +24,7 @@ const Profile = () => {
       setError(json.error)
       if(json.error === null) {setProfile({name: "funktioniert"}) }
       console.log(json)
+      console.log("funktioniert")
     })
     .catch(err => alert(err));
     }

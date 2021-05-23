@@ -6,6 +6,7 @@ import '../css/style.css';
 
 // import
 import LoginForm from './LoginForm';
+import Profile from './Profile';
 
 // create hook
 const LoginBody = () => {
@@ -28,6 +29,10 @@ const LoginBody = () => {
       setError(json.error)
       if(json.error === null) {setUser({token: json.data.token}) }
       console.log(json)
+      localStorage.setItem('token', json.data.token);
+      
+    
+
     })
     .catch(err => alert(err));
     }
@@ -36,6 +41,9 @@ const LoginBody = () => {
   //
   const Logout = () => {
     setUser({ token: ""});
+    //to delete afterwards
+    const test= localStorage.getItem('token');
+    console.log(test)
   }
 
   // if user.email state is not empty show text and logout, else show login form
