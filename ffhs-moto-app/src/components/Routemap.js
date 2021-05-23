@@ -44,26 +44,26 @@ const Map = () => {
       </div>
 
       <div className='dropdownContainer'>
-        <select>
+        <select id='routeTypeDropdown'>
           <option selected disabled>
             --- Choose your route type ---
           </option>
-          <option>Sporty</option>
+          <option value='sporty'>Sporty</option>
           <option>Scenic</option>
         </select>
 
-        <select>
+        <select id='areaDropdown'>
           <option selected disabled>
             --- Choose your area ---
           </option>
           <option>Berne Area</option>
           <option>Lucerne area</option>
         </select>
-        <div>
-          <button id='routeBtn' onClick={asyncAPIandBackendCall}>
-            Get route!
-          </button>
-        </div>
+      </div>
+      <div>
+        <button id='routeBtn' onClick={asyncAPIandBackendCall}>
+          Get route!
+        </button>
       </div>
     </React.Fragment>
   );

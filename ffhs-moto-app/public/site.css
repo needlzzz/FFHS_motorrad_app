@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /***** CSS Styles for the Routemap Component *****/
 
 .map-container {

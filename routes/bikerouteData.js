@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 const BikeRouteCoordinates = require('../model/Bikeroutes');
 
+//const Userschema = require('../model/User');
+
 router.get('/', (req, res) => {
   res.send('this is bikeroutes!');
 });
@@ -19,7 +21,7 @@ router.post('/history', async (req, res) => {
   }); */
   console.log('REQUEST BODY: ', req.body);
   const coordinatesRequest = new BikeRouteCoordinates({
-    coordinates: req.body.bbox,
+    routeData: req.body,
   });
   /*   let data = req.body;
   console.log(data); */
@@ -31,7 +33,7 @@ router.post('/history', async (req, res) => {
 
     const response = await coordinatesRequest.save();
     console.log('User coordinates saved successfully: ');
-    res.json({ error: null, data: { coordinates: response.bbox } });
+    res.json({ error: null, data: { coordinates: response } });
 
     /* console.log(
       coordinatesRequest,

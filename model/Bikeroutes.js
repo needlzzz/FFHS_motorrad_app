@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 // create user schema and define collection "users"
 const bikeroutesSchema = new mongoose.Schema(
   {
-    coordinates: {
-      type: Array,
+    routeData: {
+      type: Object,
       required: true,
     },
     date: {
