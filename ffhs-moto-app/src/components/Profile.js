@@ -18,6 +18,7 @@ const Profile = () => {
             'auth-token': localStorage.getItem('token'),
             
         },
+        //credentials: 'include'
     })
     .then(response => response.json())
     .then(json => {

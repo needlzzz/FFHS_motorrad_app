@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cookieParser = require('cookie-parser');
 const db = mongoose.connection;
 
 // cors is for disabling CORS security policy
@@ -9,6 +10,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
+app.use(cookieParser());
 
 dotenv.config();
 
@@ -34,6 +36,7 @@ const bikerouteData = require("./routes/bikerouteData");
 
 // middlewares
 app.use(express.json()); // read request body as JSON object with body parser
+
 
 // route middlewares
 app.use("/api/user", authRoutes);
