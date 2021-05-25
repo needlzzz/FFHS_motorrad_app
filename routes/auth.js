@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 
 // import registerValidation and loginValidation from validation.js
-const { registerValidation, loginValidation } = require("../validation");
+const { registerValidation} = require("../validation");
 
 
 // register route POST
@@ -46,13 +46,11 @@ router.post("/register", async (req, res) => {
 
 // login route POST
 router.post("/login", async (req, res) => {
-  // validate login data (validation.js) and throw error details from JOI validation object (if any)
-  const { error } = loginValidation(req.body);
-  if (error) return res.status(400).json({ error: error.details[0].message });
 
   // check availability of email in request body in mongodb and throw error if email/user is not available
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).json({ error: "This email address does not exist" });
+  if (!user) 
+    return res.status(400).json({ error: "This email address does not exist" });
 
   // process the password with bcrypt and compare with hash password. Throw error if password is wrong.
   const validPassword = await bcrypt.compare(req.body.password, user.password);
@@ -62,14 +60,17 @@ router.post("/login", async (req, res) => {
   // if no errors occurred, create jwt token from payload data and secret key (.env)
   const token = jwt.sign(
     {
-      name: user.name,
       id: user._id,
+      name: user.name,  
     },
     process.env.TOKEN_SECRET
   );
   
   // save token in cookie
-  res.cookie('Authorization', token);  
+  res.cookie('Authorization', token, {
+    secure: false,
+    httpOnly: false,
+  });  
 
   // save token in header
   res.header("auth-token", token).json({
