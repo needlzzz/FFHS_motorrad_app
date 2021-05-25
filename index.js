@@ -37,8 +37,21 @@ const bikerouteData = require("./routes/bikerouteData");
 
 // middlewares
 app.use(express.json()); // read request body as JSON object with body parser
-app.use(cors()); // cors is for disabling CORS security policy
+//app.use(cors()); // cors is for disabling CORS security policy
+app.use(
+  cors({
+    origin: [
+      `${process.env.FRONT_URL}`,
+      'http://localhost:3000'
+    ],
+    credentials: true
+  })
+)
 app.use(cookieParser()); // parse cookies on incoming requests
+// app.use((req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// })
 
 // route middlewares
 app.use("/api/user", authRoutes);

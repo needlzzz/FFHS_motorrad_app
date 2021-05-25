@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 
+const cookieParser = require('cookie-parser');
+router.use(cookieParser()); 
+
 // import registerValidation and loginValidation from validation.js
 const { registerValidation} = require("../validation");
 
@@ -69,7 +72,7 @@ router.post("/login", async (req, res) => {
   // save token in cookie
   res.cookie('Authorization', token, {
     secure: false,
-    httpOnly: false,
+    httpOnly: true,
   });  
 
   // save token in header
