@@ -6,7 +6,7 @@ import '../css/style.css';
 
 const Profile = () => {
   //create state for profile data
-  const [profile, setProfile] = useState({userId: "", name: "", email: ""})
+  const [profile, setProfile] = useState({})
   const [error, setError] = useState("");
   
   //create get request on user's data
@@ -21,9 +21,14 @@ const Profile = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {setProfile({name: "funktioniert"}) }
+      if(json.error === null) {setProfile({data: json}) }
+      console.log('here comes the json')
       console.log(json)
+      console.log(Object.entries(json[0]))
+      //console.log(Object.entries(json[0]))
       console.log("funktioniert")
+      console.log("here comes the profile")
+      console.log(profile)
     })
     .catch(err => alert(err));
     }

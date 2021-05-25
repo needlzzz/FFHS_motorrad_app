@@ -6,10 +6,10 @@ const User = require("../model/User");
 // myProfile route GET
 router.get("/", (req, res) => {
   //can be deleted  
-  const token2 = req.cookies.Authorization;
-  console.log(`this is the profile.js ${token2}`)
+  const userId = req.cookies.UserId;
+  console.log(`this is the profile.js ${userId}`)
   // 
-  User.find({}, (err, result) => {
+  User.find({_id: userId}, {name: 1, email: 1, date: 1},(err, result) => {
   if(err)  {
     res.send(err);
     } else {

@@ -68,11 +68,19 @@ router.post("/login", async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
+
+  const userId = user._id;
   
   // save token in cookie with secure and httpOnly = true (XSS vulnerability)
   res.cookie('Authorization', token, {
     secure: true,
     httpOnly: true,
+  });
+  
+  // save userId in separate cookie with secure and httpOnly = false (no sensitive data)
+  res.cookie('UserId', userId, {
+    secure: false,
+    httpOnly: false,
   });  
 
   // save token in header
