@@ -68,11 +68,10 @@ router.post("/login", async (req, res) => {
     process.env.TOKEN_SECRET
   );
   
-  //can be deleted, test with jwt in cookie
-  res.cookie('Authorization', token);
-  // res.json({ Authorization});
-  
+  // save token in cookie
+  res.cookie('Authorization', token);  
 
+  // save token in header
   res.header("auth-token", token).json({
     error: null,
     data: {
