@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 
 const cookieParser = require('cookie-parser');
-router.use(cookieParser()); 
+router.use(cookieParser()); // ensure server uses cookie-parser in order to parse cookies on incoming requests
 
 // import registerValidation and loginValidation from validation.js
 const { registerValidation} = require("../validation");
