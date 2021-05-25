@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
     process.env.TOKEN_SECRET
   );
   
-  // save token in cookie
+  // save token in cookie with secure and httpOnly = true (XSS vulnerability)
   res.cookie('Authorization', token, {
     secure: true,
     httpOnly: true,

@@ -16,7 +16,7 @@ const Profile = () => {
         headers: {
             'Content-Type': 'application/json',            
         },
-        credentials: 'include'
+        credentials: 'include' // send a request with credentials included on same-origin and cross-origin calls
     })
     .then(response => response.json())
     .then(json => {
