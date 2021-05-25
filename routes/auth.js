@@ -71,7 +71,7 @@ router.post("/login", async (req, res) => {
   
   // save token in cookie
   res.cookie('Authorization', token, {
-    secure: false,
+    secure: true,
     httpOnly: true,
   });  
 
