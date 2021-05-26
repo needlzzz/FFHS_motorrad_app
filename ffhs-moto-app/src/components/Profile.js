@@ -1,16 +1,17 @@
 // import
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // import CSS
 import '../css/style.css';
 
 const Profile = () => {
   //create state for profile data
-  const [profile, setProfile] = useState({})
-  const [error, setError] = useState("");
+  const [profile, setProfile] = useState( [] );
+  const [history, setHistory] = useState( {name: "", email: "", date: "" } );
+  const [error, setError] = useState( "" );
   
-  //create get request on user's data
-  const MyData = (data) => {
+  
+  const myData = () => {
     fetch('http://localhost:3000/api/profile', {
         method: 'GET',
         headers: {
@@ -20,26 +21,39 @@ const Profile = () => {
     })
     .then(response => response.json())
     .then(json => {
-      setError(json.error)
-      if(json.error === null) {setProfile({data: json}) }
-      console.log('here comes the json')
-      console.log(json)
-      console.log(Object.entries(json[0]))
-      //console.log(Object.entries(json[0]))
-      console.log("funktioniert")
-      console.log("here comes the profile")
+      // if(json.error !== null) {
+      //   setError(json.error)
+      // } else{
+      //   setProfile(Object.entries(json[0]))
+      // }
+      setProfile(Object.entries(json[0]))
+      console.log(json[0].name)
+      setHistory({name: json[0].name, email: json[0].email, date: json[0].date})
+      
+      //console.log(error)
+      
+    })
+    .then(() => {
       console.log(profile)
+      console.log('test')
+      console.log(history)
     })
     .catch(err => alert(err));
-    }
-
+  }
     
+    
+  
+  // // load once initially with useEffect   
+  // useEffect( () => {
+  //   MyData();
+  // }, []);
   
   return (
     <React.Fragment>
       <div>
         <h1>Profile</h1>
-        <button onClick={MyData}>Show my data</button>
+        <button onClick={myData}>Show my data</button>
+        
       </div>
     </React.Fragment>
   );

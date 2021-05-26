@@ -31,7 +31,7 @@ const LoginBody = () => {
       if(json.error === null) {setUser({token: json.data.token}) }
       console.log(json)   
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
     }
 
 
