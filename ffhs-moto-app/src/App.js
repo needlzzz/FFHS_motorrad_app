@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 //import browserRouter, Route and Navlink from react-router-dom
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -22,10 +22,15 @@ import {UserContext} from "./components/Context";
 
 // provide routes and add header/footer component to Router
 function AppRouter() {
+  //store states at top level and share them with components in UserContext.Provider
+  const [user, setUser] = useState(null);
+
+  const value = useMemo(() => ({user, setUser}), [user ,setUser]);
+  
   return (
     <Router>
       <div>
-        <UserContext.Provider value="Hello from Context">
+        <UserContext.Provider value={value}>
           <Header />
           <Route exact path='/' component={Home} />
           <Route exact path='/home' component={Home} />
