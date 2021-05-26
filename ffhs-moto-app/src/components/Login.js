@@ -38,9 +38,7 @@ const LoginBody = () => {
   //
   const Logout = () => {
     setUser({ token: ""});
-    //to delete afterwards
-    const test= localStorage.getItem('token');
-    console.log(test)
+    
   }
 
   // if user.email state is not empty show text and logout, else show login form
@@ -49,7 +47,7 @@ const LoginBody = () => {
       <div className="App">
         {(user.token != "") ? (
           <div className = "loginsuccess">
-            <h2>Welcome, <span>{user.token}</span></h2>
+            <Profile />
             <button onClick={Logout}>Logout</button>
           </div>
         ) : (
