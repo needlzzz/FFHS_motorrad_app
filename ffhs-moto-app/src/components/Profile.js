@@ -6,8 +6,8 @@ import '../css/style.css';
 
 const Profile = () => {
   //create state for profile data
-  const [profile, setProfile] = useState( [] );
-  const [history, setHistory] = useState( {name: "", email: "", date: "" } );
+  const [history, setHistory] = useState( [] );
+  const [profile, setProfile] = useState( {name: "", email: "", date: "" } );
   const [error, setError] = useState( "" );
   
   
@@ -26,9 +26,9 @@ const Profile = () => {
       // } else{
       //   setProfile(Object.entries(json[0]))
       // }
-      setProfile(Object.entries(json[0]))
+      setHistory(Object.entries(json[0]))
       console.log(json[0].name)
-      setHistory({name: json[0].name, email: json[0].email, date: json[0].date})
+      setProfile({name: json[0].name, email: json[0].email, date: json[0].date})
       
       //console.log(error)
       
@@ -38,21 +38,34 @@ const Profile = () => {
       console.log('test')
       console.log(history)
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
   }
     
     
   
-  // // load once initially with useEffect   
-  // useEffect( () => {
-  //   MyData();
-  // }, []);
+  // load once initially with useEffect   
+  useEffect( () => {
+    myData();
+  }, []);
   
+
+  // render data from fetch get call 
   return (
     <React.Fragment>
       <div>
         <h1>Profile</h1>
-        <button onClick={myData}>Show my data</button>
+        <h2 className="profiletitle">User Data</h2>
+        <ul>
+          <li>Name: {profile.name}</li>
+          <li>Email: {profile.email}</li>
+          <li>Date of registration: {profile.date}</li>
+        </ul>
+        <h2 className="profiletitle">Search History</h2>
+        <ul>
+          {
+            history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
+          }
+        </ul>
         
       </div>
     </React.Fragment>

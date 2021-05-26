@@ -373,3 +373,9 @@ select {
 #leafletMapContainer {
   height: 50em;
 }
+
+
+/* test profile css*/
+.profiletitle{
+  color: green;
+}
