@@ -12,7 +12,7 @@ const TestBody = () => {
     <div>
       <h2>Home</h2>
       <div>{user}</div>
-      <button onClick={() => setUser('hey')}>change value</button>
+      <button onClick={() => setUser('hello')}>change value</button>
 
     </div>
   );
