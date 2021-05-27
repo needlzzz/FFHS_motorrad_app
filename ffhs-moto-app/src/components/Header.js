@@ -16,9 +16,17 @@ const Header = () => {
         <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
         
         {(myContext.loggedin != false) ? (
-          <button id='login' type='button'>
-          Logout
-        </button>
+          <>
+            <Link to='/login'>
+              <button id='login' type='button'>
+                Profile
+              </button>
+            </Link>
+            
+            <button id='login' type='button'>
+            Logout
+            </button>
+          </>
         ) : (
           <button id='login' type='button'>
           Login
@@ -36,9 +44,6 @@ const Header = () => {
           </li>
           <li>
             <Link to='/contact'>Contact form</Link>
-          </li>
-          <li>
-            <Link to='/profile'>MyProfile</Link>
           </li>
           <li>
             <Link to='/login'>Login</Link>

@@ -45,10 +45,10 @@ const Profile = () => {
     
     
   
-  // // load once initially with useEffect   
-  // useEffect( () => {
-  //   myData();
-  // }, []);
+  // load once initially with useEffect   
+  useEffect( () => {
+    myData();
+  }, []);
   
 
   // render data from fetch get call 
