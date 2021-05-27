@@ -1,14 +1,16 @@
 import React, {useState, useContext} from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
-import { UserContext } from "./Context"; // import Context component
+import { AppContext } from "./Context"; // import Context component
 import LoginForm from './LoginForm'; // import component
 import Profile from './Profile'; // import component
 
 // create hook
 const LoginBody = () => {
 
-  // create states
-  const [user, setUser] = useState({ token: "" });
+  // access "global" state object by useContext
+  const myContext = useContext(AppContext);
+  
+  // local state
   const [error, setError] = useState("");
 
   // create Login request, setStates with received data
@@ -24,7 +26,7 @@ const LoginBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {setUser({token: json.data.token}) }
+      if(json.error === null) {myContext.setLoggedin("true") }
       console.log(json)   
     })
     .catch(err => console.log(err));
@@ -33,7 +35,7 @@ const LoginBody = () => {
 
   //
   const Logout = () => {
-    setUser({ token: ""});
+    myContext.setLoggedin(false);
     
   }
 
@@ -41,7 +43,7 @@ const LoginBody = () => {
   return (
     <React.Fragment>
       <div className="App">
-        {(user.token != "") ? (
+        {(myContext.loggedin != false) ? (
           <div className = "loginsuccess">
             <Profile />
             <button onClick={Logout}>Logout</button>

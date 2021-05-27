@@ -1,20 +1,29 @@
 import React, {useContext} from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
 import { Link } from 'react-router-dom'; //import Link
-import { UserContext } from "./Context"; // import Context component
+import { AppContext } from "./Context"; // import Context component
 import motorbike2 from '../img/motorbike2.png'; // import images
 
 // create Header component
 const Header = () => {
-  const {user, setUser} = useContext(UserContext);
+  
+  // access "global" state object by useContext
+  const myContext = useContext(AppContext);
     
   return (
     <React.Fragment>
       <div id='menu_top'>
         <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
-        <button onClick={() => setUser('hey')} id='login' type='button'>
+        
+        {(myContext.loggedin != false) ? (
+          <button id='login' type='button'>
+          Logout
+        </button>
+        ) : (
+          <button id='login' type='button'>
           Login
         </button>
+        )}
       </div>
       <nav className='menu' id='myMenu'>
         <ul>

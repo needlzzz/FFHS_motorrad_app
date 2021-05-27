@@ -1,12 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
-import { UserContext } from "./Context"; // import Context component
+import { AppContext } from "./Context"; // import Context component
 
 const Profile = () => {
+  // access "global" state object by useContext
+  const myContext = useContext(AppContext);
+  
   //create state for profile data
   const [history, setHistory] = useState( [] );
   const [profile, setProfile] = useState( {name: "", email: "", date: "" } );
   const [error, setError] = useState( "" );
+  
   
   
   const myData = () => {
@@ -41,10 +45,10 @@ const Profile = () => {
     
     
   
-  // load once initially with useEffect   
-  useEffect( () => {
-    myData();
-  }, []);
+  // // load once initially with useEffect   
+  // useEffect( () => {
+  //   myData();
+  // }, []);
   
 
   // render data from fetch get call 
