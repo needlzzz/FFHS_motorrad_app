@@ -1,8 +1,6 @@
-// import
-import React, {useState, useEffect} from 'react';
-
-// import CSS
-import '../css/style.css';
+import React, {useState, useEffect, useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { UserContext } from "./Context"; // import Context component
 
 const Profile = () => {
   //create state for profile data

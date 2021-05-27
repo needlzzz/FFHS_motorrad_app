@@ -1,12 +1,8 @@
-// import
-import React, {useState} from 'react';
-
-// import CSS
-import '../css/style.css';
-
-// import
-import LoginForm from './LoginForm';
-import Profile from './Profile';
+import React, {useState, useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { UserContext } from "./Context"; // import Context component
+import LoginForm from './LoginForm'; // import component
+import Profile from './Profile'; // import component
 
 // create hook
 const LoginBody = () => {

@@ -1,13 +1,8 @@
-// import
-import React, {useContext} from 'react';
-import { Link } from 'react-router-dom';
-import { UserContext } from "./Context";
-
-// import css
-import '../css/style.css';
-
-//import images
-import motorbike2 from '../img/motorbike2.png';
+import React, {useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { Link } from 'react-router-dom'; //import Link
+import { UserContext } from "./Context"; // import Context component
+import motorbike2 from '../img/motorbike2.png'; // import images
 
 // create Header component
 const Header = () => {

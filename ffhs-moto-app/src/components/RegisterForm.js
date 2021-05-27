@@ -1,8 +1,7 @@
-// import
-import React, {useState} from 'react'
 
-// import CSS
-import '../css/style.css';
+import React, {useState, useContext} from 'react' // import hooks from React
+import '../css/style.css'; // import CSS
+
 
 // create hook, import Register and error props
 function RegisterForm({ Register, error}) {

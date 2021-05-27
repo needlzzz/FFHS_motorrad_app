@@ -1,13 +1,8 @@
-// import
-import React, {useState} from 'react';
-
-// import CSS
-import '../css/style.css';
-
-// import
-import RegisterForm from './RegisterForm';
-import LoginForm from './LoginForm';
-import Login from './Login';
+import React, {useState, useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import RegisterForm from './RegisterForm'; // import component
+import LoginForm from './LoginForm'; // import component
+import Login from './Login'; // import component
 
 // create hook
 const RegisterBody = () => {

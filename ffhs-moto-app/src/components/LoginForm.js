@@ -1,8 +1,6 @@
-// import
-import React, {useState} from 'react'
-
-// import CSS
-import '../css/style.css';
+import React, {useState, useContext} from 'react' // import hooks from React
+import '../css/style.css'; // import CSS
+import { UserContext } from "./Context"; // import Context component
 
 // create hook, import Login and error props
 function LoginForm({ Login, error}) {

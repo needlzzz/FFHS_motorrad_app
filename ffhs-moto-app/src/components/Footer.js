@@ -1,15 +1,12 @@
-// import 
-import React from 'react';
+import React, {useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { Link } from 'react-router-dom'; //import Link 
 
-// import css
-import '../css/style.css';
-import { Link } from 'react-router-dom';
 
-// import images
-import logoFb from '../img/logoFb.png';
-import logoTw from '../img/logoTw.png';
-import logoInsta from '../img/logoInsta.png';
-import logoContact from '../img/logoContact.png';
+import logoFb from '../img/logoFb.png'; // import images
+import logoTw from '../img/logoTw.png'; // import images
+import logoInsta from '../img/logoInsta.png'; // import images
+import logoContact from '../img/logoContact.png'; // import images
 
 
 // create Footer component

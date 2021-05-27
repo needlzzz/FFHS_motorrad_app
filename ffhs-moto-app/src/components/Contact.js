@@ -1,8 +1,8 @@
 //Willis Task
 
-import React, {useContext} from 'react';
-import '../css/style.css';
-import { UserContext } from "./Context";
+import React, {useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { UserContext } from "./Context"; // import Context component
 
 const TestBody = () => {
   // access "global" state by useContext
