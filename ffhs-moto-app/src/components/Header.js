@@ -16,7 +16,7 @@ const Header = () => {
   
   // burger-menu function for responsiveness
   const Burger = () => {
-    if(mobile=="") {setMobile('mobile')}
+    if(mobile==="") {setMobile('mobile')}
     else {
       setMobile('')
     }
