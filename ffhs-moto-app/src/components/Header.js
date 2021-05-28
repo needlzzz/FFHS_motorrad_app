@@ -44,9 +44,11 @@ const Header = () => {
               <img id="profileimg" src={profileimg} alt="Profile" />
             </Link>
             
-            <button onClick={Logout}  className="login-btn" type='button'>
-              Logout
-            </button>
+            <Link to='/login'>
+              <button onClick={Logout}  className="login-btn" type='button'>
+                Logout
+              </button>
+            </Link>
           </>
         ) : (
           <Link to='/login'>

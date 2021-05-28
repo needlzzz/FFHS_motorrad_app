@@ -49,19 +49,24 @@ const Profile = () => {
   return (
     <React.Fragment>
       <div className="profile-outer">
-        <h1>Profile</h1>
-        <p className="profiletitle">User Data</p>
-        <ul>
-          <li>Name: {profile.name}</li>
-          <li>Email: {profile.email}</li>
-          <li>Date of registration: {profile.date}</li>
-        </ul>
-        <p className="profiletitle">Search History</p>
-        <ul>
-          {
-            history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
-          }
-        </ul>
+        <h1 className="profile-title">Profile</h1>
+        <div className= "profile-inner">
+          <p className="profile-title2">User Data</p>
+          <ul className="profile-group">
+            <li><span className="profile-label">Name:</span> {profile.name}</li>
+            <li><span className="profile-label">Email:</span> {profile.email}</li>
+            <li><span className="profile-label">Date of registration:</span> {profile.date}</li>
+          </ul >
+        </div>
+        <div className="profile-inner" id="pt2">
+          <p className="profile-title2">Search History</p>
+          <ul className="profile-group">
+            {
+              history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
+            }
+          </ul>
+        </div>
+        
         
       </div>
     </React.Fragment>

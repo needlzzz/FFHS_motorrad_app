@@ -223,19 +223,47 @@ footer div img {
 
 /* NEW ===== PROFILE =====*/
 .profile-outer {
-  border: 1px solid black;
-  width: 80%;
+  padding-bottom: 2em;
+}
+.profile-title{
+  font-size: 3em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.profile-inner{
+  width: 70%;
   margin: auto;
-  background-color: #8FBC8F;
+  margin-bottom: 3em;
+  background-color: lightgrey;
   padding: 2em;
 }
-.profiletitle{
-  color: green;
-  text-align: center;
+.profile-title2{
   font-size: 2em;
+  text-align: center;
+  margin-top: 0em;
+  margin-bottom: 1em;
   font-weight: bold;
-
 }
+.profile-group{
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 0 0;
+  align-items: center;
+}
+.profile-group li {
+  width: 40%;
+  margin-top: 0.75em;
+}
+#pt2{
+  margin-top: 1.5em;
+}
+.profile-label {
+  font-weight: bold;
+  width: 12em;
+  display:inline-block;
+}
+
 
 /* NEW ===== LOGIN/LOGOUT/REGISTER ===== */
 .form-title {
@@ -243,8 +271,7 @@ footer div img {
   text-align: center;
   margin-top: 0em;
   margin-bottom: 1em;
-  font-weight: bold;
-  
+  font-weight: bold;  
 }
 .form-outer {
   width: 40em;
