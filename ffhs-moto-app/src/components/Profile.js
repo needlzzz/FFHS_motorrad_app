@@ -29,16 +29,10 @@ const Profile = () => {
       //   setProfile(Object.entries(json[0]))
       // }
       setHistory(Object.entries(json[0]))
-      console.log(json[0].name)
       setProfile({name: json[0].name, email: json[0].email, date: json[0].date})
       
       //console.log(error)
       
-    })
-    .then(() => {
-      console.log(profile)
-      console.log('test')
-      console.log(history)
     })
     .catch(err => console.log(err));
   }

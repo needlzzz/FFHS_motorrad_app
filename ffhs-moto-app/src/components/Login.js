@@ -3,6 +3,7 @@ import '../css/style.css'; // import CSS
 import { AppContext } from "./Context"; // import Context component
 import LoginForm from './LoginForm'; // import component
 import Profile from './Profile'; // import component
+import { Link } from 'react-router-dom'; //import Link
 
 // create hook
 const LoginBody = () => {
@@ -26,18 +27,12 @@ const LoginBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {myContext.setLoggedin("true") }
+      if(json.error === null) {myContext.setLoggedin(true) }
       console.log(json)   
     })
     .catch(err => console.log(err));
     }
 
-
-  //
-  const Logout = () => {
-    myContext.setLoggedin(false);
-    
-  }
 
   // if user.email state is not empty show text and logout, else show login form
   return (
@@ -46,10 +41,12 @@ const LoginBody = () => {
         {(myContext.loggedin != false) ? (
           <div className = "loginsuccess">
             <Profile />
-            <button onClick={Logout}>Logout</button>
           </div>
         ) : (
-          <LoginForm Login={Login} error={error} />
+          <>
+            <LoginForm Login={Login} error={error} />
+            <p>Not registered yet? Register <Link to='/register'>here</Link></p>
+          </>
         )}
       </div>
     </React.Fragment>
