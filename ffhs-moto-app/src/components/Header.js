@@ -3,6 +3,7 @@ import '../css/style.css'; // import CSS
 import { Link } from 'react-router-dom'; //import Link
 import { AppContext } from "./Context"; // import Context component
 import motorbike2 from '../img/motorbike2.png'; // import images
+import profileimg from '../img/Profile.png'; // import images
 
 // create Header component
 const Header = () => {
@@ -32,23 +33,24 @@ const Header = () => {
   return (
     <React.Fragment>
       <div id='menu_top'>
-        <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
+        <Link id="logolink" to='/home'>
+          <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
+        </Link>
+        
         
         {(myContext.loggedin != false) ? (
           <>
             <Link to='/login'>
-              <button id='profile' type='button'>
-                Profile
-              </button>
+              <img id="profileimg" src={profileimg} alt="Profile" />
             </Link>
             
-            <button onClick={Logout}  id='login' type='button'>
+            <button onClick={Logout}  className="login-btn" type='button'>
               Logout
             </button>
           </>
         ) : (
           <Link to='/login'>
-              <button id='login' type='button'>
+              <button className="login-btn" type='button'>
                 Login
               </button>
           </Link>        
@@ -60,7 +62,7 @@ const Header = () => {
             <Link to='/home'>Home</Link>
           </li>
           <li>
-            <Link className='current' to='/routes'>Route search</Link>
+            <Link to='/routes'>Route search</Link>
             
           </li>
           <li>

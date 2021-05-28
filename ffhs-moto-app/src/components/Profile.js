@@ -48,15 +48,15 @@ const Profile = () => {
   // render data from fetch get call 
   return (
     <React.Fragment>
-      <div>
+      <div className="profile-outer">
         <h1>Profile</h1>
-        <h2 className="profiletitle">User Data</h2>
+        <p className="profiletitle">User Data</p>
         <ul>
           <li>Name: {profile.name}</li>
           <li>Email: {profile.email}</li>
           <li>Date of registration: {profile.date}</li>
         </ul>
-        <h2 className="profiletitle">Search History</h2>
+        <p className="profiletitle">Search History</p>
         <ul>
           {
             history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)

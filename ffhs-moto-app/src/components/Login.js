@@ -45,7 +45,6 @@ const LoginBody = () => {
         ) : (
           <>
             <LoginForm Login={Login} error={error} />
-            <p>Not registered yet? Register <Link to='/register'>here</Link></p>
           </>
         )}
       </div>
