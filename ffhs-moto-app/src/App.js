@@ -18,19 +18,25 @@ import Profile from './components/Profile';
 import Register from './components/Register';
 import Routemap from './components/Routemap';
 
-import {UserContext} from "./components/Context";
+import {AppContext} from "./components/Context";
 
 // provide routes and add header/footer component to Router
 function AppRouter() {
-  //store states at top level and share them with components in UserContext.Provider
-  const [user, setUser] = useState(null);
-
-  const value = useMemo(() => ({user, setUser}), [user ,setUser]);
+  
+  //store states at top level and share them with components in AppContext.Provider
+  const [user, setUser] = useState(null); // define global var
+  const [loggedin, setLoggedin] = useState(false); // define global var
+  const information = { // create object to hold global vars and methods
+    user: user,
+    setUser,
+    loggedin: loggedin,
+    setLoggedin,
+  }
   
   return (
     <Router>
       <div>
-        <UserContext.Provider value={value}>
+        <AppContext.Provider value={information}>
           <Header />
           <Route exact path='/' component={Home} />
           <Route exact path='/home' component={Home} />
@@ -40,7 +46,7 @@ function AppRouter() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Footer />
-        </UserContext.Provider>
+        </AppContext.Provider>
       </div>
   </Router>
 

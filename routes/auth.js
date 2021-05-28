@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
     // write in console log that user has been created successfully
     console.log("User created successfully: ", response.name)
     // in case of success return the userId
-    res.json({ error: null, data: { userId: response._id, name: response.name, email: response.email } });
+    res.json({ error: null, data: { userId: response._id } });
   } catch (error) {
     res.status(400).json({ error });
   }
@@ -73,12 +73,14 @@ router.post("/login", async (req, res) => {
   
   // save token in cookie with secure and httpOnly = true (XSS vulnerability)
   res.cookie('Authorization', token, {
+    expires: new Date(Date.now() + 3600 * 1000),
     secure: true,
     httpOnly: true,
   });
   
   // save userId in separate cookie with secure and httpOnly = false (no sensitive data)
   res.cookie('UserId', userId, {
+    expires: new Date(Date.now() + 3600 * 1000),
     secure: false,
     httpOnly: false,
   });  
@@ -90,8 +92,27 @@ router.post("/login", async (req, res) => {
       token,
     },
   });
-  
-  
 });
+
+// logout route GET
+router.get("/logout", async (req, res) => {
+
+  // set httpOnly cookie value to 'none' and expire after 5 seconds
+  res.cookie('Authorization', 'none', {
+    expires: new Date(Date.now() + 5 * 1000),
+    secure: true,
+    httpOnly: true,
+  });
+
+  // set UserId cookie value to 'none' and expire after 5 seconds
+  res.cookie('UserId', 'none', {
+    expires: new Date(Date.now() + 5 * 1000),
+    secure: false,
+    httpOnly: false,
+  });
+
+  res.json({ error: null});
+});
+
 
 module.exports = router;

@@ -1,18 +1,20 @@
 //Willis Task
 
-import React, {useContext} from 'react';
-import '../css/style.css';
-import { UserContext } from "./Context";
+import React, {useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { AppContext } from "./Context"; // import Context component
 
 const TestBody = () => {
   // access "global" state by useContext
-  const {user, setUser} = useContext(UserContext);
+  const myContext = useContext(AppContext);
   
   return (
     <div>
       <h2>Home</h2>
-      <div>{user}</div>
-      <button onClick={() => setUser('hey')}>change value</button>
+      <div>{myContext.user}</div>
+      <button onClick={() => {myContext.setUser('hey')}}>change value</button>
+      <div>{myContext.loggedin}</div>
+      <button onClick={() => {myContext.setLoggedin(false)}}>change value</button>
 
     </div>
   );

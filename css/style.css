@@ -40,8 +40,7 @@ h1 {
 
 /* =====BASIC STYLING (MOBILE FIRST)===== */
 
-p,
-ul {
+p, ul {
   /*clearing out standard margins for p and ul*/
   margin: 0;
 }
@@ -219,6 +218,17 @@ footer div img {
   margin: 2%;
   align-self: center;
 }
+
+/*NEW =====Login / Logout / Register ===== */
+.form-outer, #t9 {
+  border: 1px solid green;
+  margin-left: 4em;
+}
+
+.form-title {
+  background-color: green;
+}
+
 
 /* =====FEEDBACK STYLES (MOBILE FIRST)==== */
 form ul {

@@ -1,8 +1,7 @@
-// import
-import React, {useState} from 'react'
-
-// import CSS
-import '../css/style.css';
+import React, {useState, useContext} from 'react' // import hooks from React
+import '../css/style.css'; // import CSS
+import { AppContext } from "./Context"; // import Context component
+import { Link } from 'react-router-dom'; //import Link
 
 // create hook, import Login and error props
 function LoginForm({ Login, error}) {
@@ -18,18 +17,26 @@ function LoginForm({ Login, error}) {
 
     return (
         <form onSubmit = {submitHandler}>
-            <div className= "form-inner">
-                <h2>Login </h2>
-                {(error != "") ? (<div className="error"> {error} </div>) : ""}
-                <div className = "form-group">
-                    <label htmlFor="email">Email: </label>
-                    <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value })} value={details.email} />
+            <div className= "form-outer">
+                <p className="form-title">Login </p>
+                <div className= "form-inner">
+                    {(error !== "") ? (<div className="form-group" id="form-login-error"> {error} </div>) : ""}
+                    <div className = "form-group">
+                        <label className="form-label" htmlFor="email">Email: </label>
+                        <input type="email" name="email" id="email" className="form-input" onChange={e => setDetails({...details, email: e.target.value })} value={details.email} />
+                    </div>
+                    <div className = "form-group">
+                        <label className="form-label" htmlFor="password">Password: </label>
+                        <input type="password" name="password" id="password" className="form-input" onChange={e => setDetails({...details, password: e.target.value })} value={details.password} />
+                    </div>
                 </div>
-                <div className = "form-group">
-                    <label htmlFor="password">Password: </label>
-                    <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value })} value={details.password} />
-                </div>
-                <input type="submit" value="LOGIN" />
+                <input className= "form-submit" type="submit" value="LOGIN" />
+                <p className="form-hint">Not registered yet?</p>
+                <Link to='/register'>
+                    <button className="form-submit" type='button'>
+                        Register here
+                    </button>
+                </Link>  
             </div>
         </form>
     )

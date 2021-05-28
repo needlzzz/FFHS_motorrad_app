@@ -1,18 +1,17 @@
-// import
-import React, {useState} from 'react';
-
-// import CSS
-import '../css/style.css';
-
-// import
-import LoginForm from './LoginForm';
-import Profile from './Profile';
+import React, {useState, useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { AppContext } from "./Context"; // import Context component
+import LoginForm from './LoginForm'; // import component
+import Profile from './Profile'; // import component
+import { Link } from 'react-router-dom'; //import Link
 
 // create hook
 const LoginBody = () => {
 
-  // create states
-  const [user, setUser] = useState({ token: "" });
+  // access "global" state object by useContext
+  const myContext = useContext(AppContext);
+  
+  // local state
   const [error, setError] = useState("");
 
   // create Login request, setStates with received data
@@ -28,30 +27,25 @@ const LoginBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {setUser({token: json.data.token}) }
+      if(json.error === null) {myContext.setLoggedin(true) }
       console.log(json)   
     })
     .catch(err => console.log(err));
     }
 
 
-  //
-  const Logout = () => {
-    setUser({ token: ""});
-    
-  }
-
   // if user.email state is not empty show text and logout, else show login form
   return (
     <React.Fragment>
       <div className="App">
-        {(user.token != "") ? (
+        {(myContext.loggedin !== false) ? (
           <div className = "loginsuccess">
             <Profile />
-            <button onClick={Logout}>Logout</button>
           </div>
         ) : (
-          <LoginForm Login={Login} error={error} />
+          <>
+            <LoginForm Login={Login} error={error} />
+          </>
         )}
       </div>
     </React.Fragment>

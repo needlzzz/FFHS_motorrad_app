@@ -1,14 +1,16 @@
-// import
-import React, {useState, useEffect} from 'react';
-
-// import CSS
-import '../css/style.css';
+import React, {useState, useEffect, useContext} from 'react'; // import hooks from React
+import '../css/style.css'; // import CSS
+import { AppContext } from "./Context"; // import Context component
 
 const Profile = () => {
+  // access "global" state object by useContext
+  const myContext = useContext(AppContext);
+  
   //create state for profile data
   const [history, setHistory] = useState( [] );
   const [profile, setProfile] = useState( {name: "", email: "", date: "" } );
   const [error, setError] = useState( "" );
+  
   
   
   const myData = () => {
@@ -27,16 +29,10 @@ const Profile = () => {
       //   setProfile(Object.entries(json[0]))
       // }
       setHistory(Object.entries(json[0]))
-      console.log(json[0].name)
       setProfile({name: json[0].name, email: json[0].email, date: json[0].date})
       
       //console.log(error)
       
-    })
-    .then(() => {
-      console.log(profile)
-      console.log('test')
-      console.log(history)
     })
     .catch(err => console.log(err));
   }
@@ -52,20 +48,25 @@ const Profile = () => {
   // render data from fetch get call 
   return (
     <React.Fragment>
-      <div>
-        <h1>Profile</h1>
-        <h2 className="profiletitle">User Data</h2>
-        <ul>
-          <li>Name: {profile.name}</li>
-          <li>Email: {profile.email}</li>
-          <li>Date of registration: {profile.date}</li>
-        </ul>
-        <h2 className="profiletitle">Search History</h2>
-        <ul>
-          {
-            history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
-          }
-        </ul>
+      <div className="profile-outer">
+        <h1 className="profile-title">Profile</h1>
+        <div className= "profile-inner">
+          <p className="profile-title2">User Data</p>
+          <ul className="profile-group">
+            <li><span className="profile-label">Name:</span> <span className="profile-value">{profile.name}</span></li>
+            <li><span className="profile-label">Email:</span> <span className="profile-value">{profile.email}</span></li>
+            <li><span className="profile-label">Date of registration:</span> <span className="profile-value">{profile.date}</span></li>
+          </ul >
+        </div>
+        <div className="profile-inner" id="pt2">
+          <p className="profile-title2">Search History</p>
+          <ul className="profile-group">
+            {
+              history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
+            }
+          </ul>
+        </div>
+        
         
       </div>
     </React.Fragment>
