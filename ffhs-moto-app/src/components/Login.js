@@ -16,34 +16,29 @@ const LoginBody = () => {
   const [error, setError] = useState("");
 
   // create Login request, setStates with received data
-  const Login2 = (data) => {
+  const Login = (data) => {
     fetch('http://localhost:3000/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
+        credentials: 'include', // send a request with credentials included on same-origin and cross-origin calls
         body: JSON.stringify(data),
     })
     .then(response => response.json())
     .then(json => {
       setError(json.error)
       if(json.error === null) {setUser({token: json.data.token}) }
-      console.log(json)
-      localStorage.setItem('token', json.data.token);
-      
-    
-
+      console.log(json)   
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
     }
 
 
   //
   const Logout = () => {
     setUser({ token: ""});
-    //to delete afterwards
-    const test= localStorage.getItem('token');
-    console.log(test)
+    
   }
 
   // if user.email state is not empty show text and logout, else show login form
@@ -52,11 +47,11 @@ const LoginBody = () => {
       <div className="App">
         {(user.token != "") ? (
           <div className = "loginsuccess">
-            <h2>Welcome, <span>{user.token}</span></h2>
+            <Profile />
             <button onClick={Logout}>Logout</button>
           </div>
         ) : (
-          <LoginForm Login2={Login2} error={error} />
+          <LoginForm Login={Login} error={error} />
         )}
       </div>
     </React.Fragment>

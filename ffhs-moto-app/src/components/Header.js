@@ -1,6 +1,7 @@
 // import
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from "./Context";
 
 // import css
 import '../css/style.css';
@@ -10,11 +11,13 @@ import motorbike2 from '../img/motorbike2.png';
 
 // create Header component
 const Header = () => {
+  const {user, setUser} = useContext(UserContext);
+    
   return (
     <React.Fragment>
       <div id='menu_top'>
         <img id='logo' img src={motorbike2} alt='Homepage logo'></img>
-        <button id='login' type='button'>
+        <button onClick={() => setUser('hey')} id='login' type='button'>
           Login
         </button>
       </div>

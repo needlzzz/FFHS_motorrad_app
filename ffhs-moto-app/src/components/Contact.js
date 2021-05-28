@@ -1,15 +1,20 @@
 //Willis Task
 
-import React from 'react';
+import React, {useContext} from 'react';
 import '../css/style.css';
+import { UserContext } from "./Context";
 
 const TestBody = () => {
+  // access "global" state by useContext
+  const {user, setUser} = useContext(UserContext);
+  
   return (
-    <React.Fragment>
-      <div>
-        <h1>Contact</h1>
-      </div>
-    </React.Fragment>
+    <div>
+      <h2>Home</h2>
+      <div>{user}</div>
+      <button onClick={() => setUser('hey')}>change value</button>
+
+    </div>
   );
 };
 

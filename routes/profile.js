@@ -1,14 +1,22 @@
 // import express
 const router = require("express").Router();
+const User = require("../model/User");
+
 
 // myProfile route GET
 router.get("/", (req, res) => {
-  res.json({
-    error: null,
-    data: {
-      user: req.user,
-    },
+  //can be deleted  
+  const userId = req.cookies.UserId;
+  console.log(`this is the profile.js ${userId}`)
+  // 
+  User.find({_id: userId}, {name: 1, email: 1, date: 1},(err, result) => {
+  if(err)  {
+    res.send(err);
+    } else {
+    res.send(result);
+    }
   });
+  
 });
 
 module.exports = router;

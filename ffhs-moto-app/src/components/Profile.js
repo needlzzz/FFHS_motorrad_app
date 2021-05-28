@@ -1,94 +1,76 @@
 // import
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // import CSS
 import '../css/style.css';
 
 const Profile = () => {
   //create state for profile data
-  const [profile, setProfile] = useState({userId: "", name: "", email: ""})
-  const [error, setError] = useState("");
+  const [history, setHistory] = useState( [] );
+  const [profile, setProfile] = useState( {name: "", email: "", date: "" } );
+  const [error, setError] = useState( "" );
   
-  //create get request on user's data
-  const MyData = (data) => {
+  
+  const myData = () => {
     fetch('http://localhost:3000/api/profile', {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
-            'auth-token': localStorage.getItem('token'),
-            
+            'Content-Type': 'application/json',            
         },
+        credentials: 'include' // send a request with credentials included on same-origin and cross-origin calls
     })
     .then(response => response.json())
     .then(json => {
-      setError(json.error)
-      if(json.error === null) {setProfile({name: "funktioniert"}) }
-      console.log(json)
-      console.log("funktioniert")
+      // if(json.error !== null) {
+      //   setError(json.error)
+      // } else{
+      //   setProfile(Object.entries(json[0]))
+      // }
+      setHistory(Object.entries(json[0]))
+      console.log(json[0].name)
+      setProfile({name: json[0].name, email: json[0].email, date: json[0].date})
+      
+      //console.log(error)
+      
     })
-    .catch(err => alert(err));
-    }
-
+    .then(() => {
+      console.log(profile)
+      console.log('test')
+      console.log(history)
+    })
+    .catch(err => console.log(err));
+  }
+    
     
   
+  // load once initially with useEffect   
+  useEffect( () => {
+    myData();
+  }, []);
+  
+
+  // render data from fetch get call 
   return (
     <React.Fragment>
       <div>
         <h1>Profile</h1>
-        <button onClick={MyData}>Show my data</button>
+        <h2 className="profiletitle">User Data</h2>
+        <ul>
+          <li>Name: {profile.name}</li>
+          <li>Email: {profile.email}</li>
+          <li>Date of registration: {profile.date}</li>
+        </ul>
+        <h2 className="profiletitle">Search History</h2>
+        <ul>
+          {
+            history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
+          }
+        </ul>
+        
       </div>
     </React.Fragment>
   );
 };
-
-// // create hook
-// const LoginBody = () => {
-
-//   // create states
-//   const [user, setUser] = useState({ token: "" });
-//   const [error, setError] = useState("");
-
-//   // create Login request, setStates with received data
-//   const Login2 = (data) => {
-//     fetch('http://localhost:3000/api/user/login', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//     })
-//     .then(response => response.json())
-//     .then(json => {
-//       setError(json.error)
-//       if(json.error === null) {setUser({token: json.data.token}) }
-//       console.log(json)
-//     })
-//     .catch(err => alert(err));
-//     }
-
-
-//   //
-//   const Logout = () => {
-//     setUser({ token: ""});
-//   }
-
-//   // if user.email state is not empty show text and logout, else show login form
-//   return (
-//     <React.Fragment>
-//       <div className="App">
-//         {(user.token != "") ? (
-//           <div className = "loginsuccess">
-//             <h2>Welcome, <span>{user.token}</span></h2>
-//             <button onClick={Logout}>Logout</button>
-//           </div>
-//         ) : (
-//           <LoginForm Login2={Login2} error={error} />
-//         )}
-//       </div>
-//     </React.Fragment>
-//   );
-// };
-
 
 export default Profile;
 

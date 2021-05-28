@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 import '../css/style.css';
 
 // create hook, import Login and error props
-function LoginForm({ Login2, error}) {
+function LoginForm({ Login, error}) {
     
     // create state for details
     const [details, setDetails] = useState({email: "", password:""});
@@ -13,7 +13,7 @@ function LoginForm({ Login2, error}) {
     // create function for handling submits
     const submitHandler = e => {
         e.preventDefault();
-        Login2(details);
+        Login(details);
     }
 
     return (

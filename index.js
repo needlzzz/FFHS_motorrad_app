@@ -2,13 +2,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cookieParser = require('cookie-parser');
+const cors = require("cors");
+
+
 const db = mongoose.connection;
 
-// cors is for disabling CORS security policy
-const cors = require("cors");
+
 const app = express();
 
-app.use(cors());
+
 
 dotenv.config();
 
@@ -34,6 +37,17 @@ const bikerouteData = require("./routes/bikerouteData");
 
 // middlewares
 app.use(express.json()); // read request body as JSON object with body parser
+//app.use(cors()); // cors is for disabling CORS security policy
+app.use(  // 
+  cors({
+    origin: [
+      `${process.env.FRONT_URL}`,
+      'http://localhost:3000'
+    ],
+    credentials: true
+  })
+)
+app.use(cookieParser()); // ensure server uses cookie-parser in order to parse cookies on incoming requests
 
 // route middlewares
 app.use("/api/user", authRoutes);
@@ -41,7 +55,8 @@ app.use("/api/profile", verifyToken, myProfileRoutes); //myProfile route protect
 app.use("/api/bikeroutes", bikerouteData);
 
 // define port
-app.listen(3000, () => console.log("server running at 3000"));
+const PORT = 3000
+app.listen(PORT, () => console.log(`server running at ${PORT}`));
 
 //this is to test if the post method sends the request body to the backend and if the backend can handle it
 app.post("/", (req, res) => {

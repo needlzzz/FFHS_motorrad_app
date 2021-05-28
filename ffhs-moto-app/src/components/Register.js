@@ -40,7 +40,7 @@ const RegisterBody = () => {
       <div className="App">
         {(user.userId != "") ? (
           <div className = "registersuccess">
-            <h2>You have been successfully registered, <span>{user.name}</span></h2>
+            <p>You have been successfully registered, <span>{user.name}</span></p>
             <Login />
           </div>
         ) : (
