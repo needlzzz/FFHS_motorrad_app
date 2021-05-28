@@ -23,7 +23,7 @@ function RegisterForm({ Register, error}) {
             <div className= "form-outer">
                 <p className="form-title">Register</p>
                 <div className= "form-inner">
-                    {(error != "") ? (<div className="form-group" id="form-register-error"> {error} </div>) : ""}
+                    {(error !== "") ? (<div className="form-group" id="form-register-error"> {error} </div>) : ""}
                     <div className = "form-group">
                         <label className="form-label" htmlFor="name">Name: </label>
                         <input type="text" name="name" id="name" className="form-input" onChange={e => setDetails({...details, name: e.target.value })} value={details.name} />

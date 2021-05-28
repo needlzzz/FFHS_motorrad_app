@@ -53,9 +53,9 @@ const Profile = () => {
         <div className= "profile-inner">
           <p className="profile-title2">User Data</p>
           <ul className="profile-group">
-            <li><span className="profile-label">Name:</span> {profile.name}</li>
-            <li><span className="profile-label">Email:</span> {profile.email}</li>
-            <li><span className="profile-label">Date of registration:</span> {profile.date}</li>
+            <li><span className="profile-label">Name:</span> <span className="profile-value">{profile.name}</span></li>
+            <li><span className="profile-label">Email:</span> <span className="profile-value">{profile.email}</span></li>
+            <li><span className="profile-label">Date of registration:</span> <span className="profile-value">{profile.date}</span></li>
           </ul >
         </div>
         <div className="profile-inner" id="pt2">

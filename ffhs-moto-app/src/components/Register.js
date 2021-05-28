@@ -8,7 +8,7 @@ import Login from './Login'; // import component
 const RegisterBody = () => {
 
   // create states (email not necessary probably)
-  const [user, setUser] = useState({userId: "", name: "", email: ""});
+  const [user, setUser] = useState({userId: ""});
   const [error, setError] = useState("");
 
   // create Register request, setStates with received data
@@ -23,7 +23,7 @@ const RegisterBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {setUser({email:json.data.email, userId: json.data.userId, name: json.data.name}) }
+      if(json.error === null) {setUser({userId: json.data.userId}) }
       console.log(json)
     })
     .catch(err => alert(err));
@@ -33,7 +33,7 @@ const RegisterBody = () => {
   return (
     <React.Fragment>
       <div className="App">
-        {(user.userId != "") ? (
+        {(user.userId !== "") ? (
           <div className = "registersuccess">
             <p>You have been successfully registered, <span>{user.name}</span></p>
             <Login />

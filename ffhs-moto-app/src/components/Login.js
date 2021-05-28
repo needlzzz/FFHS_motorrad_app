@@ -38,7 +38,7 @@ const LoginBody = () => {
   return (
     <React.Fragment>
       <div className="App">
-        {(myContext.loggedin != false) ? (
+        {(myContext.loggedin !== false) ? (
           <div className = "loginsuccess">
             <Profile />
           </div>

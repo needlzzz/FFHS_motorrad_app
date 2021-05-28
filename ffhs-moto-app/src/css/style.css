@@ -56,7 +56,7 @@ ul {
   list-style: none;
 }
 
-/* ====HEADER STYLES (MOBILE FIRST)====*/
+/* COMPLETED ====HEADER STYLES (MOBILE FIRST)====*/
 #menu_top {
   display: flex;
   flex-flow: row nowrap;
@@ -71,7 +71,6 @@ ul {
   background-color: white;
   color: darkgreen;
   border: 2px solid darkgreen;
-  
 }
 #logo {
   max-width: 70px;
@@ -83,60 +82,38 @@ ul {
   max-width: 70px;
   max-height: 50px;
 }
-
-
-.menu ul {
-  /*transform navigation into flexbox with flex-direction row*/
+.menu {
+  /*transform navigation into flexbox with flex-direction column*/
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   padding: 1em 0;
   border-top: 1px solid lightgrey;
   margin: auto 2.5%;
 }
-
-.menu ul li a {
-  /*remove text-decoration for all children*/
-  text-decoration: none;
+.menulink{
+  display: none; 
+  text-decoration: none; 
 }
-.menu ul li a:link, .menu ul li a:visited {
+.menulink:link, .menulink:visited {
   /*unvisited and visited link*/
   color: black;
 }
-
-.menu ul li a:hover, .menu ul li a:active {
-  /*mouse over link and selected link*/
-  color: darkgreen;
-}
-
-.menu ul li {
-  display: none;
-}
-.menu ul li.burger {
-  /*display only burger menu item*/
+#burger {
   display: block;
+  width: 1em;
   margin-left: auto;
+  order: -1;
+  align-self: flex-end;
 }
-.menu.responsive ul {
-  /*onclick: change menu flexbox direction to column*/
-  flex-direction: column;
-}
-.menu.responsive ul li {
+.mobile {
   /*onclick: display all flex items*/
   display: block;
 }
 
-.menu.responsive ul li.burger {
-  /*display burger menu as first flex-item aligned to the right*/
-  order: -1;
-  align-self: flex-end;
-}
 
-
-
-
-/* ====FOOTER STYLES (MOBILE FIRST)==== */
+/* COMPLETED ====FOOTER STYLES (MOBILE FIRST)==== */
 footer {
   /*basic footer styles and turn into flexbox*/
   border-top: 1px solid lightgrey;
@@ -198,29 +175,6 @@ footer div img {
   text-align: center;
 }
 
-@media all and (min-width: 100em) {
-  .flex-container {
-    width: 33.33%;
-  }
-}
-
-.flex-container1 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.RegisterBtn {
-  margin: 2%;
-  align-self: center;
-}
-
 /* NEW ===== PROFILE =====*/
 .profile-outer {
   padding-bottom: 2em;
@@ -252,20 +206,52 @@ footer div img {
   align-items: center;
 }
 .profile-group li {
-  width: 40%;
   margin-top: 0.75em;
 }
 #pt2{
   margin-top: 1.5em;
 }
+.profile-group li{
+  display: flex;
+  flex-flow: column nowrap;
+}
 .profile-label {
   font-weight: bold;
   width: 12em;
-  display:inline-block;
+  display: block;
+}
+.profile-value{
+  display: block;
+  width: 20em;
+}
+
+@media all and (min-width: 100em) {
+  .flex-container {
+    width: 33.33%;
+  }
+}
+
+.flex-container1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RegisterBtn {
+  margin: 2%;
+  align-self: center;
 }
 
 
-/* NEW ===== LOGIN/LOGOUT/REGISTER ===== */
+
+
+/* COMPLETED ===== LOGIN/LOGOUT/REGISTER ===== */
 .form-title {
   font-size: 3em;
   text-align: center;
@@ -274,8 +260,9 @@ footer div img {
   font-weight: bold;  
 }
 .form-outer {
-  width: 40em;
+  max-width: 40em;
   margin: auto;
+  margin-bottom: 3em;
   background-color: lightgrey;
   padding: 2em;
 }
@@ -284,8 +271,10 @@ footer div img {
   flex-flow: column wrap;
 }
 .form-group {
+  display: flex;
+  flex-flow: column nowrap;
   margin: 0.5em auto;
-  width: 30em;
+  max-width: 30em;
 }
 .form-error {
   display: block;
@@ -293,7 +282,7 @@ footer div img {
   margin-bottom: 1em;
 }
 .form-label {
-  display: inline-block;
+  display: block;
   width: 10em;
   text-align: left;
 }
@@ -304,7 +293,7 @@ footer div img {
   color: red;
 }
 .form-input {
-  display: inline-block;
+  display: block;
   width: 20em;
   height: 2em;
 }
@@ -322,65 +311,6 @@ footer div img {
   margin: auto;
 }
 
-
-
-
-
-
-
-
-/* =====FEEDBACK STYLES (MOBILE FIRST)==== */
-form ul {
-  /*clearing out form list styles*/
-  margin: 0;
-  padding: 0;
-}
-form {
-  /*form dimensions and styling*/
-  max-width: 50em;
-  padding: 1em;
-  margin: 2em auto;
-}
-form ul li {
-  /*turn each form element into flexbox with flex-direction column*/
-  display: flex;
-  flex-flow: column nowrap;
-  margin-bottom: 1em;
-}
-input[type="text"] {
-  /*adjust input form styles*/
-  height: 2em;
-  border: black 1px solid;
-}
-textarea {
-  /*adjust textarea form styles*/
-  height: 10em;
-  border: black 1px solid;
-  overflow: auto;
-  resize: none;
-}
-
-li.invalid {
-  /*when errormessage li-element is created apply styles*/
-  display: block;
-  color: red;
-  margin-top: -1em;
-}
-li.valid {
-  display: none;
-}
-p.response {
-  color: red;
-  margin-top: 1em;
-}
-.submitted {
-  display: none;
-}
-#chartContainer {
-  max-width: 300px;
-  margin: 1em auto;
-}
-
 @media screen and (min-width: 600px) {
   /* =====BASIC STYLING=====*/
   h1 {
@@ -392,55 +322,68 @@ p.response {
     font-size: 2.5em;
   }
 
-  /* ==== HEADER STYLES ==== */
-  .menu ul li {
+  /* COMPLETED ===== LOGIN/LOGOUT/REGISTER ===== */
+  .form-inner {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-group{
+    flex-flow: row nowrap;
+  }
+  .form-label{
+    flex: 0 0 10em;
+    text-align: start;
+    margin-top:auto;
+    margin-bottom: auto;
+    margin-right: 1em;
+    border: 1px solid black;
+  }
+  .form-input{
+    flex: 1 1 29em;
+  }
+
+  /* COMPLETED ==== HEADER STYLES ==== */
+  .menu{
+    flex-flow: row nowrap;
+  }
+  .menulink {
     /*show all navigation items except for burger menu*/
     display: block;
+    text-decoration: none;
     margin: 0 1em;
   }
-  .menu ul li:first-child {
+  .menulink:first-child {
     margin-left: 0;
   }
-  .menu ul li.burger {
+  #burger {
     display: none;
   }
 
-  /* ====FOOTER STYLES====*/
+  /* COMPLETED ====FOOTER STYLES====*/
   footer {
     flex-flow: row nowrap;
   }
-}
 
-@media screen and (min-width: 800px) {
-  /*angepasst*/
-  /* =====FEEDBACK STYLES====*/
-  form ul li {
-    /*change flex-direction for flexbox elements*/
-    flex-flow: row wrap;
+  /* COMPLETED ====PROFILE STYLES====*/
+  .profile-group li{
+  flex-flow: row nowrap;
   }
-  label {
-    /*fix labels at 18ems wide*/
-    flex: 0 0 18em;
-    text-align: end;
+  .profile-label{
+    flex: 0 0 10em;
+    text-align: start;
+    margin-top:auto;
+    margin-bottom: auto;
     margin-right: 1em;
   }
-  input,
-  textarea {
-    /*let form input/textarea fill whole width*/
-    flex: 1 1 29em; /*angepasst*/
-  }
-  input[type="submit"] {
-    flex: 0 0 10em;
-  }
-  li.invalid {
-    /*when error message is displayed with min-width800px viewport apply responsive styles*/
-    width: 29em;
-    margin-left: auto;
-  }
-  p.response {
-    text-align: center;
+  .profile-value{
+    width: 18em;
   }
 }
+
+
+
+
 
 /* ===== Route Search Page ===== */
 

@@ -20,7 +20,7 @@ function LoginForm({ Login, error}) {
             <div className= "form-outer">
                 <p className="form-title">Login </p>
                 <div className= "form-inner">
-                    {(error != "") ? (<div className="form-group" id="form-login-error"> {error} </div>) : ""}
+                    {(error !== "") ? (<div className="form-group" id="form-login-error"> {error} </div>) : ""}
                     <div className = "form-group">
                         <label className="form-label" htmlFor="email">Email: </label>
                         <input type="email" name="email" id="email" className="form-input" onChange={e => setDetails({...details, email: e.target.value })} value={details.email} />
