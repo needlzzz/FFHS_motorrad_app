@@ -38,7 +38,7 @@ const RegisterBody = () => {
         {(myContext.registered !== null) ? (
           <>
             <div className = "registersuccess">
-              <p className="form-success">You have been successfully registered, <span>{myContext.registered}</span></p>
+              <p className="form-success">You have been successfully registered, <span className="form-success2">{myContext.registered}</span></p>
             </div>
             <Login />
           </>

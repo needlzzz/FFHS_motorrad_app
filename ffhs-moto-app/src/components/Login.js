@@ -28,7 +28,7 @@ const LoginBody = () => {
       setError(json.error)
       if(json.error === null) {
         myContext.setLoggedin(true);
-        myContext.setRegistered(null); 
+        // myContext.setRegistered(null); 
       } 
     })
     .catch(err => console.log(err));

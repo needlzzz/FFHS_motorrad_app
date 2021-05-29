@@ -289,6 +289,14 @@ footer div img {
   text-align: center;
   margin: auto;
 }
+.form-success {
+  text-align: center;
+  margin-bottom: 2em;
+  color: darkgreen;
+}
+.form-success2 {
+  font-weight: bold;
+}
 
 @media all and (min-width: 100em) {
   .flex-container {
