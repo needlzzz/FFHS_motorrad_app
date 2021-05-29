@@ -20,21 +20,11 @@ const Profile = () => {
     })
     .then(response => response.json())
     .then(json => {
-      // if(json.error !== null) {
-      //   setError(json.error)
-      // } else{
-      //   setProfile(Object.entries(json[0]))
-      // }
       setHistory(Object.entries(json[0]))
-      setProfile({name: json[0].name, email: json[0].email, date: json[0].date})
-      
-      //console.log(error)
-      
+      setProfile({name: json[0].name, email: json[0].email, date: json[0].date})      
     })
     .catch(err => console.log(err));
   }
-    
-    
   
   // load once initially with useEffect   
   useEffect( () => {

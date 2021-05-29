@@ -28,7 +28,7 @@ const RegisterBody = () => {
       if(json.error === null) {myContext.setRegistered(json.data.name) }
       console.log(json)
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
     }
 
   // if user.email state is not empty show text and logout, else show login form
