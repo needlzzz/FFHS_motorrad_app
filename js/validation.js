@@ -31,14 +31,9 @@ const registerValidation = (data) => {
       }),
   });
   
-  // //write in console the validation error messages with no early
-  // const valResult= schema.validate(data, { abortEarly: false })
-  // console.log(valResult.error.details.map(errDetail => errDetail.type), valResult.error);
-  
   //return validation on schema
   return schema.validate(data);
 };
-
 
 module.exports = {
   registerValidation,
