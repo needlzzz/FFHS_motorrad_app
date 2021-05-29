@@ -7,7 +7,6 @@ const User = require("../model/User");
 router.get("/", (req, res) => {
   //can be deleted  
   const userId = req.cookies.UserId;
-  console.log(`this is the profile.js ${userId}`)
   // 
   User.find({_id: userId}, {name: 1, email: 1, date: 1},(err, result) => {
   if(err)  {
