@@ -26,7 +26,10 @@ const LoginBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {myContext.setLoggedin(true) } 
+      if(json.error === null) {
+        myContext.setLoggedin(true);
+        myContext.setRegistered(null); 
+      } 
     })
     .catch(err => console.log(err));
     }
@@ -36,7 +39,7 @@ const LoginBody = () => {
   return (
     <React.Fragment>
       <div className="App">
-        {(myContext.loggedin !== false) ? (
+        {(myContext.loggedin === true) ? (
           <div className = "loginsuccess">
             <Profile />
           </div>

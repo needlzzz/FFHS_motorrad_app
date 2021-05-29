@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
     // write in console log that user has been created successfully
     console.log("User created successfully: ", response.name)
     // in case of success return the userId
-    res.json({ error: null, data: { userId: response._id } });
+    res.json({ error: null, data: { name: response.name } });
   } catch (error) {
     res.status(400).json({ error });
   }

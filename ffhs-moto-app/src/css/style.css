@@ -46,8 +46,7 @@ h2 {
 
 /* =====BASIC STYLING (MOBILE FIRST)===== */
 
-p,
-ul {
+p, ul {
   /*clearing out standard margins for p and ul*/
   margin: 0;
 }
@@ -225,32 +224,6 @@ footer div img {
   width: 20em;
 }
 
-@media all and (min-width: 100em) {
-  .flex-container {
-    width: 33.33%;
-  }
-}
-
-.flex-container1 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.RegisterBtn {
-  margin: 2%;
-  align-self: center;
-}
-
-
-
-
 /* COMPLETED ===== LOGIN/LOGOUT/REGISTER ===== */
 .form-title {
   font-size: 3em;
@@ -281,6 +254,7 @@ footer div img {
   color: red;
   margin-bottom: 1em;
 }
+
 .form-label {
   display: block;
   width: 10em;
@@ -288,6 +262,11 @@ footer div img {
 }
 #form-login-error {
   color: red;
+  text-align: center;
+  margin-bottom: 1em;
+}
+#form-error-none {
+  display: none;
 }
 #form-register-error{
   color: red;
@@ -311,12 +290,32 @@ footer div img {
   margin: auto;
 }
 
+@media all and (min-width: 100em) {
+  .flex-container {
+    width: 33.33%;
+  }
+}
+.flex-container1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.RegisterBtn {
+  margin: 2%;
+  align-self: center;
+}
+
+
 @media screen and (min-width: 600px) {
   /* =====BASIC STYLING=====*/
   h1 {
     /*increase font size*/
     font-size: 4em;
-    
   }
   h2 {
     font-size: 2.5em;
@@ -330,6 +329,9 @@ footer div img {
   }
   .form-group{
     flex-flow: row nowrap;
+  }
+  #form-error-none {
+    display: none;
   }
   .form-label{
     flex: 0 0 10em;

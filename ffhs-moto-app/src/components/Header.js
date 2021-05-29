@@ -37,8 +37,10 @@ const Header = () => {
       if(json.error===null) {
         console.log(json);
         myContext.setLoggedin(false);
+        myContext.setRegistered(null)
       }   
     })
+    .catch(err => console.log(err));
   }
 
   return (

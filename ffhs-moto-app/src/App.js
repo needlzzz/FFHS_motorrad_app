@@ -24,11 +24,14 @@ function AppRouter() {
   //store states at top level and share them with components in AppContext.Provider
   const [user, setUser] = useState(null); // define global var
   const [loggedin, setLoggedin] = useState(false); // define global var
+  const [registered, setRegistered] = useState(null); // define global var
   const information = { // create object to hold global vars and methods
     user: user,
     setUser,
     loggedin: loggedin,
     setLoggedin,
+    registered: registered,
+    setRegistered,
   }
   
   return (
