@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react' // import hooks from React
+import React, {useState} from 'react' // import hooks from React
 import '../css/style.css'; // import CSS
-import { AppContext } from "./Context"; // import Context component
 import { Link } from 'react-router-dom'; //import Link
 
 // create hook, import Login and error props

@@ -3,7 +3,6 @@ import '../css/style.css'; // import CSS
 import { AppContext } from "./Context"; // import Context component
 import LoginForm from './LoginForm'; // import component
 import Profile from './Profile'; // import component
-import { Link } from 'react-router-dom'; //import Link
 
 // create hook
 const LoginBody = () => {

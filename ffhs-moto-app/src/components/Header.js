@@ -1,10 +1,9 @@
 import React, {useContext, useState} from 'react'; // import hooks from React
-import { useMediaQuery } from 'react-responsive'
 import '../css/style.css'; // import CSS
 import { Link } from 'react-router-dom'; //import Link
 import { AppContext } from "./Context"; // import Context component
 import motorbike2 from '../img/motorbike2.png'; // import images
-import profileimg from '../img/Profile.png'; // import images
+import profileimg from '../img/profile.png'; // import images
 import burgerimg from '../img/burgermenu.png'; // import images
 
 // create Header component
@@ -41,8 +40,6 @@ const Header = () => {
       }   
     })
   }
-
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
   return (
     <React.Fragment>

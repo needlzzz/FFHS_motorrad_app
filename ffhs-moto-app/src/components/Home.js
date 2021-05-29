@@ -2,7 +2,7 @@
 
 
 
-import React, {useContext} from 'react'; // import hooks from React
+import React from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
 
 const TestBody = () => {

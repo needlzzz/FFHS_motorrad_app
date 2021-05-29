@@ -1,7 +1,7 @@
-import React, {useState, useContext} from 'react'; // import hooks from React
+import React, {useState} from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
 import RegisterForm from './RegisterForm'; // import component
-import LoginForm from './LoginForm'; // import component
+
 import Login from './Login'; // import component
 
 // create hook
@@ -35,7 +35,7 @@ const RegisterBody = () => {
       <div className="App">
         {(user.userId !== "") ? (
           <div className = "registersuccess">
-            <p>You have been successfully registered, <span>{user.name}</span></p>
+            <p className="form-success">You have been successfully registered, <span>{user.name}</span></p>
             <Login />
           </div>
         ) : (
