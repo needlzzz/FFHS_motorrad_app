@@ -1,11 +1,30 @@
-import { asyncAPIandBackendCall } from '../js/openroute_api_calls';
+import {
+  asyncAPIandBackendCall,
+  APIresponse,
+  fetchDataFromAPI,
+} from '../js/openroute_api_calls';
 import React, { useRef, useEffect, useState, useContext } from 'react';
 // This library is for adding HTML-like js script files to a REACT component
 import ScriptTag from 'react-script-tag';
+
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+
+//mapbox directions code block
+
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
+
+var directions = new MapboxDirections({
+  accessToken:
+    'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow',
+  unit: 'metric',
+  profile: 'mapbox/driving',
+});
+
+//////
 
 // create Map component
 const Map = () => {
@@ -24,6 +43,7 @@ const Map = () => {
       center: [lng, lat],
       zoom: zoom,
     });
+    map.addControl(directions, 'top-left');
 
     map.on('move', () => {
       setLng(map.getCenter().lng.toFixed(4));
