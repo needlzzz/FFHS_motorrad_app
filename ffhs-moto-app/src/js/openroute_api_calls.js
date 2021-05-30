@@ -1,63 +1,86 @@
-//i must find a way to save the requested coordinates from the openrouteservice API
-//into a variable, which can then be sent to our backend and to the DB
+require('dotenv').config();
 
-//created 2 promises which will handled by the async function dowork()
+const mapboxAccessToken =
+  'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRrNzlhMzQwazJxa251eHQxYzU4MiJ9.pTqsaTuK9eOK-WluAgU0Eg';
 
-//const { func } = require("@hapi/joi");
-
-// let routeBtn = document.getElementById('routeBtn');
-
-// routeBtn.addEventListener('click', () => {
-//   console.log('button pressed');
-//   //getRouteData();
-//   /*   fetchDataFromAPI();
-//   sendDataToBackend(); */
-//   asyncAPIandBackendCall();
-// });
-
-//backend URL
-
-let route1Zurich = [];
+let APIresponse;
 let route2Zurich;
 let route1Lucerne;
 let route2Lucerne;
+let URLroute2Zurich;
+//const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESSTOKEN;
+
+// these are the route waypoints that will be sent in the URL to the mapbox API to get the route description
+let baseURL = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
+let URLrouteZurichSporty =
+  baseURL +
+  '8.302545064505125%2C46.97634644704135%3B8.138109268361632%2C46.98345689840207%3B8.023467410485722%2C46.9281284624702%3B8.023467410485722%2C46.86482591028306%3B8.069787353061145%2C46.81492255056756%3B8.124213285588866%2C46.79589955467398%3B8.190219203759227%2C46.86561765341676%3B8.234223149206173%2C46.890947268190814%3B8.303703063070174%2C46.97555633851931?alternatives=true&geometries=geojson&steps=true&access_token=' +
+  mapboxAccessToken;
+
+function whichRoute() {
+  let dropdownValue = document.getElementById('routeTypeDropdown').value;
+
+  switch (dropdownValue) {
+    case 'sporty':
+      console.log('this is the sporty case');
+      URLrouteZurichSporty = baseURL + URLrouteZurichSporty;
+      fetchDataFromAPI(URLrouteZurichSporty);
+    case 'scenic':
+      console.log('this is the scenic case');
+      break;
+  }
+
+  /* if (dropdownValue == 'sporty') {
+    //console.log('this routetype dropdown value worked!');
+    //fetchDataFromAPI(URLrouteZurichSporty);
+    return URLrouteZurichSporty;
+  } else {
+    console.log('this is the else');
+  } */
+}
 
 //this function makes the GET request to the external API
 
 function fetchDataFromAPI() {
-  let URLroute1Zurich =
-    'https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318';
+  // User selection route variables
+
+  //whichRoute();
+  //api.mapbox.com/directions/v5/mapbox/driving/8.302545064505125%2C46.97634644704135%3B8.138109268361632%2C46.98345689840207%3B8.023467410485722%2C46.9281284624702%3B8.023467410485722%2C46.86482591028306%3B8.069787353061145%2C46.81492255056756%3B8.124213285588866%2C46.79589955467398%3B8.190219203759227%2C46.86561765341676%3B8.234223149206173%2C46.890947268190814%3B8.303703063070174%2C46.97555633851931?alternatives=true&geometries=geojson&steps=true&access_token=pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRrNzlhMzQwazJxa251eHQxYzU4MiJ9.pTqsaTuK9eOK-WluAgU0Eg
+
+  //'https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318';
   return new Promise((resolve, reject) => {
     resolve(
-      fetch(URLroute1Zurich, { method: 'GET' }).then((res) => {
+      fetch(URLrouteZurichSporty, { method: 'GET' }).then((res) => {
         if (res.ok) {
           console.log('SUCCESS');
+
           return res.json();
         }
       })
     );
   })
     .then((data) => {
-      //route1Zurich = data;
-      route1Zurich = data;
+      APIresponse = data;
 
-      console.log(route1Zurich);
-      return route1Zurich;
+      console.log(APIresponse);
+      return APIresponse;
     })
     .catch((error) => {
       console.log(`This is the error-message: ${error}`);
     });
 }
 
-const sendDataToBackend = (route1Zurich) => {
-  let backendURL = 'http://localhost:3000/api/bikeroutes/history';
+const sendDataToBackend = (APIresponse) => {
+  //let backendURL = 'http://localhost:3000/api/bikeroutes/history'; // This is the backend URL for the userprofile route from roger 'http://localhost:3000/api/user';
   console.log('THIS IS SENDING IT!');
-  fetch(backendURL, {
+  fetch('http://localhost:3000/api/bikeroutes/history', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(route1Zurich),
+    credentials: 'include',
+
+    body: JSON.stringify(APIresponse),
   })
     .then((res) => {
       return res.json();
@@ -68,48 +91,18 @@ const sendDataToBackend = (route1Zurich) => {
 
 async function asyncAPIandBackendCall() {
   try {
+    //const routeEval = await whichRoute();
     const reponse1 = await fetchDataFromAPI();
-    const response2 = sendDataToBackend(reponse1);
+    sendDataToBackend(reponse1);
   } catch (err) {
     console.log(err);
   }
 }
 
-//const coordinates = {coordinates: [112221.1212]}
-
 export {
-  fetchDataFromAPI,
-  sendDataToBackend,
+  mapboxAccessToken,
+  baseURL,
   asyncAPIandBackendCall,
-  route1Zurich,
+  APIresponse,
+  fetchDataFromAPI,
 };
-
-/* fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then((response) => response.json())
-  .then((json) => console.log(json)); */
-// here belongs the code that sends the POST request to the /bikeroute route in the backend
-
-//XML http request
-/*const getRouteData = () => {
-  return new Promise((resolve, reject) => {
-    let openrouteXHR = new XMLHttpRequest();
-    let url = "";
-    let route1 =
-      "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318";
-    openrouteXHR.open("GET", route1);
-    openrouteXHR.setRequestHeader(
-      "Accept",
-      "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8"
-    );
-    openrouteXHR.send();
-    openrouteXHR.onreadystatechange = () => {
-      if (openrouteXHR.readyState === 4 && openrouteXHR.status === 200) {
-        resolve(openrouteXHR.responseText);
-
-      } else if (openrouteXHR.status >= 200) {
-        reject(openrouteXHR.statusText);
-        //console.log("not good");
-      }
-    };
-  });
-}; */

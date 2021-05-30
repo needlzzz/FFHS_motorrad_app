@@ -1,10 +1,7 @@
 // this file is used to execute the logi which will run, when a HTTP request matches this route
 
 const router = require('express').Router();
-const { number } = require('@hapi/joi');
-const express = require('express');
-const app = express();
-app.use(express.json());
+
 const BikeRouteCoordinates = require('../model/Bikeroutes');
 
 router.get('/', (req, res) => {
@@ -17,9 +14,10 @@ router.post('/history', async (req, res) => {
   /*  const route1 = new BikeRouteCoordinates({
     coordinates: [111111111111111.88, 111111111111111.99],
   }); */
-  console.log('REQUEST BODY: ', req.body);
+  console.log('REQUEST BODY: ', req.body.waypoints);
   const coordinatesRequest = new BikeRouteCoordinates({
-    coordinates: req.body.bbox,
+    routes: req.body.routes,
+    waypoints: req.body.waypoints,
   });
   /*   let data = req.body;
   console.log(data); */
@@ -30,8 +28,8 @@ router.post('/history', async (req, res) => {
     // write in console log that coordinates have been saved successfully
 
     const response = await coordinatesRequest.save();
-    console.log('User coordinates saved successfully: ');
-    res.json({ error: null, data: { coordinates: response.bbox } });
+    console.log('User coordinates saved successfully: ', response);
+    res.json({ error: null, data: { coordinates: response.waypoints } });
 
     /* console.log(
       coordinatesRequest,

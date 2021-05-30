@@ -7,10 +7,15 @@ const mongoose = require('mongoose');
 // create user schema and define collection "users"
 const bikeroutesSchema = new mongoose.Schema(
   {
-    coordinates: {
+    waypoints: {
       type: Array,
       required: true,
     },
+    routes: {
+      type: Array,
+      required: true,
+    },
+
     date: {
       type: Date,
       default: Date.now,
