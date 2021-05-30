@@ -1,12 +1,10 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+import React, { useRef, useState } from 'react';
 //import browserRouter, Route and Navlink from react-router-dom
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 //import App from './App';
 // import { Map } from './App';
 import reportWebVitals from './reportWebVitals';
-
-
 
 //import Components
 import Contact from './components/Contact';
@@ -26,11 +24,14 @@ function AppRouter() {
   //store states at top level and share them with components in AppContext.Provider
   const [user, setUser] = useState(null); // define global var
   const [loggedin, setLoggedin] = useState(false); // define global var
+  const [registered, setRegistered] = useState(null); // define global var
   const information = { // create object to hold global vars and methods
     user: user,
     setUser,
     loggedin: loggedin,
     setLoggedin,
+    registered: registered,
+    setRegistered,
   }
   
   return (

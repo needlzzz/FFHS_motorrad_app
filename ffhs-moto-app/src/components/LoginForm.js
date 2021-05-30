@@ -1,11 +1,13 @@
 import React, {useState, useContext} from 'react' // import hooks from React
-import '../css/style.css'; // import CSS
 import { AppContext } from "./Context"; // import Context component
+import '../css/style.css'; // import CSS
 import { Link } from 'react-router-dom'; //import Link
 
 // create hook, import Login and error props
 function LoginForm({ Login, error}) {
-    
+    // access "global" state object by useContext
+    const myContext = useContext(AppContext);
+
     // create state for details
     const [details, setDetails] = useState({email: "", password:""});
     
@@ -19,8 +21,8 @@ function LoginForm({ Login, error}) {
         <form onSubmit = {submitHandler}>
             <div className= "form-outer">
                 <p className="form-title">Login </p>
+                {(error === null) ? (<div id="form-error-none"></div>) : (<div id="form-login-error"> {error} </div>)}
                 <div className= "form-inner">
-                    {(error !== "") ? (<div className="form-group" id="form-login-error"> {error} </div>) : ""}
                     <div className = "form-group">
                         <label className="form-label" htmlFor="email">Email: </label>
                         <input type="email" name="email" id="email" className="form-input" onChange={e => setDetails({...details, email: e.target.value })} value={details.email} />
@@ -31,12 +33,18 @@ function LoginForm({ Login, error}) {
                     </div>
                 </div>
                 <input className= "form-submit" type="submit" value="LOGIN" />
-                <p className="form-hint">Not registered yet?</p>
-                <Link to='/register'>
-                    <button className="form-submit" type='button'>
-                        Register here
-                    </button>
-                </Link>  
+                {(myContext.registered !== null) ? (<div id="form-error-none"></div>) : (
+                    <>
+                        <p className="form-hint">Not registered yet?</p>
+                        <Link to='/register'>
+                            <button className="form-submit" type='button'>
+                                Register here
+                            </button>
+                        </Link> 
+                    </>
+                    )
+                }
+                 
             </div>
         </form>
     )

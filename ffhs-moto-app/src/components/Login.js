@@ -3,7 +3,6 @@ import '../css/style.css'; // import CSS
 import { AppContext } from "./Context"; // import Context component
 import LoginForm from './LoginForm'; // import component
 import Profile from './Profile'; // import component
-import { Link } from 'react-router-dom'; //import Link
 
 // create hook
 const LoginBody = () => {
@@ -27,8 +26,10 @@ const LoginBody = () => {
     .then(response => response.json())
     .then(json => {
       setError(json.error)
-      if(json.error === null) {myContext.setLoggedin(true) }
-      console.log(json)   
+      if(json.error === null) {
+        myContext.setLoggedin(true);
+        // myContext.setRegistered(null); 
+      } 
     })
     .catch(err => console.log(err));
     }
@@ -38,7 +39,7 @@ const LoginBody = () => {
   return (
     <React.Fragment>
       <div className="App">
-        {(myContext.loggedin !== false) ? (
+        {(myContext.loggedin === true) ? (
           <div className = "loginsuccess">
             <Profile />
           </div>

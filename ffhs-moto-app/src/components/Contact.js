@@ -15,6 +15,7 @@ const TestBody = () => {
       <button onClick={() => {myContext.setUser('hey')}}>change value</button>
       <div>{myContext.loggedin}</div>
       <button onClick={() => {myContext.setLoggedin(false)}}>change value</button>
+      <div>{myContext.registered}</div>
 
     </div>
   );

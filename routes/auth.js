@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 router.use(cookieParser()); // ensure server uses cookie-parser in order to parse cookies on incoming requests
 
 // import registerValidation and loginValidation from validation.js
-const { registerValidation} = require("../validation");
+const { registerValidation} = require("../js/validation");
 
 
 // register route POST
@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
     // write in console log that user has been created successfully
     console.log("User created successfully: ", response.name)
     // in case of success return the userId
-    res.json({ error: null, data: { userId: response._id } });
+    res.json({ error: null, data: { name: response.name } });
   } catch (error) {
     res.status(400).json({ error });
   }
@@ -71,47 +71,56 @@ router.post("/login", async (req, res) => {
 
   const userId = user._id;
   
-  // save token in cookie with secure and httpOnly = true (XSS vulnerability)
-  res.cookie('Authorization', token, {
-    expires: new Date(Date.now() + 3600 * 1000),
-    secure: true,
-    httpOnly: true,
-  });
-  
-  // save userId in separate cookie with secure and httpOnly = false (no sensitive data)
-  res.cookie('UserId', userId, {
-    expires: new Date(Date.now() + 3600 * 1000),
-    secure: false,
-    httpOnly: false,
-  });  
+  try{
+    // save token in cookie with secure and httpOnly = true (XSS vulnerability)
+    res.cookie('Authorization', token, {
+      expires: new Date(Date.now() + 3600 * 1000),
+      secure: true,
+      httpOnly: true,
+    });
+    
+    // save userId in separate cookie with secure and httpOnly = false (no sensitive data)
+    res.cookie('UserId', userId, {
+      expires: new Date(Date.now() + 3600 * 1000),
+      secure: false,
+      httpOnly: false,
+    });  
 
-  // save token in header
-  res.header("auth-token", token).json({
-    error: null,
-    data: {
-      token,
-    },
-  });
+    // save token in header
+    res.header("auth-token", token).json({
+      error: null,
+      data: {
+        token,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong. Please try logging in again" });
+  }
 });
 
 // logout route GET
 router.get("/logout", async (req, res) => {
 
-  // set httpOnly cookie value to 'none' and expire after 5 seconds
-  res.cookie('Authorization', 'none', {
-    expires: new Date(Date.now() + 5 * 1000),
-    secure: true,
-    httpOnly: true,
-  });
-
-  // set UserId cookie value to 'none' and expire after 5 seconds
-  res.cookie('UserId', 'none', {
-    expires: new Date(Date.now() + 5 * 1000),
-    secure: false,
-    httpOnly: false,
-  });
-
-  res.json({ error: null});
+  try{
+      // set httpOnly cookie value to 'none' and expire after 5 seconds
+      res.cookie('Authorization', 'none', {
+        expires: new Date(Date.now() + 5 * 1000),
+        secure: true,
+        httpOnly: true,
+      });
+  
+      // set UserId cookie value to 'none' and expire after 5 seconds
+      res.cookie('UserId', 'none', {
+        expires: new Date(Date.now() + 5 * 1000),
+        secure: false,
+        httpOnly: false,
+      });
+  
+      res.json({ error: null});
+  } catch (error) {
+    res.status(500).json({ error: "Could not loggout the user. Please try again" });
+  }
+  
 });
 
 

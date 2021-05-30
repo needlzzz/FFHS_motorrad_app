@@ -1,10 +1,13 @@
 
 import React, {useState, useContext} from 'react' // import hooks from React
+import { AppContext } from "./Context"; // import Context component
 import '../css/style.css'; // import CSS
 
 
 // create hook, import Register and error props
 function RegisterForm({ Register, error}) {
+    // access "global" state object by useContext
+    const myContext = useContext(AppContext);
     
     // create state for details
     const [details, setDetails] = useState({name: "", email: "", password: ""});
@@ -22,8 +25,8 @@ function RegisterForm({ Register, error}) {
         <form onSubmit = {submitHandler}>
             <div className= "form-outer">
                 <p className="form-title">Register</p>
+                {(error === null) ? (<div id="form-error-none"></div>) : (<div id="form-login-error"> {error} </div>)}
                 <div className= "form-inner">
-                    {(error !== "") ? (<div className="form-group" id="form-register-error"> {error} </div>) : ""}
                     <div className = "form-group">
                         <label className="form-label" htmlFor="name">Name: </label>
                         <input type="text" name="name" id="name" className="form-input" onChange={e => setDetails({...details, name: e.target.value })} value={details.name} />
