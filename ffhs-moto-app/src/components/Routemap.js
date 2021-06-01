@@ -21,8 +21,6 @@ import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
-//mapbox directions code block
-
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 
@@ -51,10 +49,6 @@ const Map = () => {
       zoom: zoom,
     });
 
-    /////////////// API Calls Codeblock
-
-    /////////////// End API Calls code block
-
     map.addControl(directions, 'top-left');
     map.addControl(Draw, 'top-right');
 
@@ -65,13 +59,9 @@ const Map = () => {
     });
 
     map.on('load', function () {
-      //fetchDataFromAPI();
       // ALL YOUR APPLICATION CODE
     });
 
-    // Create GeoJsonLayer
-
-    /////
     // Draw the Map Matching route as a new layer on the map
 
     function addRoute(coords) {
