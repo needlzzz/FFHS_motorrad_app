@@ -20,15 +20,38 @@ const Profile = () => {
     })
     .then(response => response.json())
     .then(json => {
-      setHistory(Object.entries(json[0]))
       setProfile({name: json[0].name, email: json[0].email, date: json[0].date})      
     })
     .catch(err => console.log(err));
   }
+
+  const myData2 = () => {
+    fetch('http://localhost:3000/api/profile/routes', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',            
+        },
+        credentials: 'include' // send a request with credentials included on same-origin and cross-origin calls
+    })
+    .then(response => response.json())
+    .then(json => {
+      let ty = []
+      for (let i=0; i < json.length; i++) {
+        ty.push(json[i]._id)
+      }
+      
+      setHistory(ty)
+          
+    })
+    .catch(err => console.log(err));
+  }
+
+
   
   // load once initially with useEffect   
   useEffect( () => {
     myData();
+    myData2();
   }, []);
   
 
@@ -49,7 +72,7 @@ const Profile = () => {
           <p className="profile-title2">Search History</p>
           <ul className="profile-group">
             {
-              history && history.length>0 && history.map((data) => <li key={data}>{data}</li>)
+              history && history.length>0 && history.map((data) => <li key={data}><span className="profile-label">Route:</span><span className="profile-value">{data}</span></li>)
             }
           </ul>
         </div>
