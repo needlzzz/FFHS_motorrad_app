@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 //import browserRouter, Route and Navlink from react-router-dom
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 //import App from './App';
 // import { Map } from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,28 +11,29 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
+import MapDirectionLayer from './components/MapDirectionLayer';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import Routemap from './components/Routemap';
 
-import {AppContext} from "./components/Context";
+import { AppContext } from './components/Context';
 
 // provide routes and add header/footer component to Router
 function AppRouter() {
-  
   //store states at top level and share them with components in AppContext.Provider
   const [user, setUser] = useState(null); // define global var
   const [loggedin, setLoggedin] = useState(false); // define global var
   const [registered, setRegistered] = useState(null); // define global var
-  const information = { // create object to hold global vars and methods
+  const information = {
+    // create object to hold global vars and methods
     user: user,
     setUser,
     loggedin: loggedin,
     setLoggedin,
     registered: registered,
     setRegistered,
-  }
-  
+  };
+
   return (
     <Router>
       <div>
@@ -49,17 +49,13 @@ function AppRouter() {
           <Footer />
         </AppContext.Provider>
       </div>
-  </Router>
-
+    </Router>
   );
 }
 
 export default AppRouter;
 
-
 // reportWebVitals();
-
-
 
 // import { render } from 'react-dom';
 // import Header from './components/Header';

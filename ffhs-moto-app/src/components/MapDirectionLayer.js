@@ -1,4 +1,10 @@
-import Map from '../components/Routemap';
+import React from 'react';
+import { render } from 'react-dom';
+import { StaticMap, MapContext, NavigationControl } from 'react-map-gl';
+import DeckGL, { GeoJsonLayer, ArcLayer } from 'deck.gl';
+//import { asyncAPIandBackendCall } from '../js/openroute_api_calls';
+
+/////// openroute API call file
 
 require('dotenv').config();
 
@@ -49,13 +55,12 @@ function fetchDataFromAPI() {
   // User selection route variables
 
   //whichRoute();
-  const URL =
-    'https://api.mapbox.com/directions/v5/mapbox/driving/8.302545064505125%2C46.97634644704135%3B8.138109268361632%2C46.98345689840207%3B8.023467410485722%2C46.9281284624702%3B8.023467410485722%2C46.86482591028306%3B8.069787353061145%2C46.81492255056756%3B8.124213285588866%2C46.79589955467398%3B8.190219203759227%2C46.86561765341676%3B8.234223149206173%2C46.890947268190814%3B8.303703063070174%2C46.97555633851931?alternatives=true&geometries=geojson&steps=true&access_token=pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRrNzlhMzQwazJxa251eHQxYzU4MiJ9.pTqsaTuK9eOK-WluAgU0Eg';
+  //api.mapbox.com/directions/v5/mapbox/driving/8.302545064505125%2C46.97634644704135%3B8.138109268361632%2C46.98345689840207%3B8.023467410485722%2C46.9281284624702%3B8.023467410485722%2C46.86482591028306%3B8.069787353061145%2C46.81492255056756%3B8.124213285588866%2C46.79589955467398%3B8.190219203759227%2C46.86561765341676%3B8.234223149206173%2C46.890947268190814%3B8.303703063070174%2C46.97555633851931?alternatives=true&geometries=geojson&steps=true&access_token=pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRrNzlhMzQwazJxa251eHQxYzU4MiJ9.pTqsaTuK9eOK-WluAgU0Eg
 
   //'https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248b53c2e2b177c42258f8caf73f94745ae&start=8.681495,49.41461&end=8.687872,49.420318';
   return new Promise((resolve, reject) => {
     resolve(
-      fetch(URL, { method: 'GET' }).then((res) => {
+      fetch(URLrouteZurichSporty, { method: 'GET' }).then((res) => {
         if (res.ok) {
           console.log('SUCCESS');
 
@@ -91,9 +96,7 @@ const sendDataToBackend = (APIresponse) => {
     .then((res) => {
       return res.json();
     })
-    .then((data) => {
-      console.log(data);
-    })
+    .then((data) => console.log(data))
     .catch((error) => console.log(error));
 };
 
@@ -115,3 +118,66 @@ export {
   APIresponse,
   fetchDataFromAPI,
 };
+
+///////// End
+
+// source: Natural Earth http://www.naturalearthdata.com/ via geojson.xyz
+
+const INITIAL_VIEW_STATE = {
+  latitude: 51.47,
+  longitude: 0.45,
+  zoom: 4,
+  bearing: 0,
+  pitch: 30,
+};
+
+const MAP_STYLE =
+  'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json';
+const NAV_CONTROL_STYLE = {
+  position: 'absolute',
+  top: 10,
+  left: 10,
+};
+
+function MapDirectionLayer() {
+  const onClick = (info) => {
+    if (info.object) {
+      // eslint-disable-next-line
+      alert(
+        `${info.object.properties.name} (${info.object.properties.abbrev})`
+      );
+    }
+  };
+
+  const layers = [
+    new GeoJsonLayer({
+      id: 'airports',
+      data: asyncAPIandBackendCall(),
+      // Styles
+      filled: true,
+      pointRadiusMinPixels: 2,
+      pointRadiusScale: 2000,
+      getRadius: (f) => 11 - f.properties.scalerank,
+      getFillColor: [200, 0, 80, 180],
+      // Interactive props
+      pickable: true,
+      autoHighlight: true,
+      onClick,
+    }),
+    ,
+  ];
+
+  return (
+    <DeckGL
+      controller={true}
+      layers={layers}
+      ContextProvider={MapContext.Provider}
+    >
+      <StaticMap mapStyle={MAP_STYLE} />
+      <NavigationControl style={NAV_CONTROL_STYLE} />
+    </DeckGL>
+  );
+}
+
+/* global document */
+export default MapDirectionLayer;

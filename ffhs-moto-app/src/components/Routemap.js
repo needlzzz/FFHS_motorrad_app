@@ -1,13 +1,22 @@
-import {
-  asyncAPIandBackendCall,
-  APIresponse,
-  fetchDataFromAPI,
-} from '../js/openroute_api_calls';
-import React, { useRef, useEffect, useState, useContext } from 'react';
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+} from 'react';
+import DrawRouteBtn from './DrawRouteBtn';
+import GetRouteBtn from './GetRouteBtn';
 // This library is for adding HTML-like js script files to a REACT component
 import ScriptTag from 'react-script-tag';
+import ReactGL, { Layer } from 'react-map-gl';
+import DeckGL, { GeoJsonLayer, ArcLayer } from 'deck.gl';
+
+import MapDirectionLayer from './MapDirectionLayer';
 
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
@@ -18,19 +27,17 @@ import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 
 var directions = new MapboxDirections({
-  accessToken:
-    'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow',
+  accessToken: process.env.REACT_APP_MAPBOX_ACCESSTOKEN,
   unit: 'metric',
   profile: 'mapbox/driving',
 });
 
-//////
+var Draw = new MapboxDraw();
 
 // create Map component
 const Map = () => {
   mapboxgl.workerClass = MapboxWorker;
-  mapboxgl.accessToken =
-    'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRuazByMHZlbDJwcDVic2l2ejlxayJ9.Et17UmFwk2GqHFiFTCUZow';
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESSTOKEN;
   const mapContainer = useRef();
   const [lng, setLng] = useState(8.490364469212963);
   const [lat, setLat] = useState(47.388359402434524);
@@ -43,7 +50,13 @@ const Map = () => {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    /////////////// API Calls Codeblock
+
+    /////////////// End API Calls code block
+
     map.addControl(directions, 'top-left');
+    map.addControl(Draw, 'top-right');
 
     map.on('move', () => {
       setLng(map.getCenter().lng.toFixed(4));
@@ -51,14 +64,61 @@ const Map = () => {
       setZoom(map.getZoom().toFixed(2));
     });
 
+    map.on('load', function () {
+      //fetchDataFromAPI();
+      // ALL YOUR APPLICATION CODE
+    });
+
+    // Create GeoJsonLayer
+
+    /////
+    // Draw the Map Matching route as a new layer on the map
+
+    function addRoute(coords) {
+      console.log('this is the addroute func');
+      // If a route is already loaded, remove it
+      if (map.getSource('route')) {
+        map.removeLayer('route');
+        map.removeSource('route');
+      } else {
+        // Add a new layer to the map
+        map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: 'apiresponse',
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            properties: {},
+            geometry: coords,
+          },
+
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round',
+          },
+          paint: {
+            'line-color': '#03AA46',
+            'line-width': 8,
+            'line-opacity': 0.8,
+          },
+        });
+      }
+    }
+
     return () => map.remove();
   }, []);
 
+  const initialView = {
+    latitude: 51.47,
+    longitude: 0.45,
+    zoom: 4,
+    bearing: 0,
+    pitch: 30,
+  };
+
   return (
     <React.Fragment>
-      <div className='sidebar'>
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
       <div id='mapboxgl-container'>
         <div className='map-container' ref={mapContainer} />
       </div>
@@ -80,9 +140,8 @@ const Map = () => {
           <option>Lucerne area</option>
         </select>
         <div>
-          <button id='routeBtn' onClick={asyncAPIandBackendCall}>
-            Get route!
-          </button>
+          <GetRouteBtn />
+          <DrawRouteBtn />
         </div>
       </div>
     </React.Fragment>
