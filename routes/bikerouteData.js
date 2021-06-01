@@ -8,16 +8,23 @@ router.get('/', (req, res) => {
   res.send('this is bikeroutes!');
 });
 
+
+
+
 // this is the route for post requests to /api/bikeroutes/history (check index.js)
 router.post('/history', async (req, res) => {
   // this is some testdata to test the route until the real data from the external API call can be used
   /*  const route1 = new BikeRouteCoordinates({
     coordinates: [111111111111111.88, 111111111111111.99],
   }); */
-  console.log('REQUEST BODY: ', req.body.waypoints);
+  //console.log('REQUEST BODY: ', req.body.waypoints);
+  
+  
+  
   const coordinatesRequest = new BikeRouteCoordinates({
     routes: req.body.routes,
-    waypoints: req.body.waypoints,
+    waypoints: req.body.waypoints, 
+    userConnected: req.body.userConnected,  
   });
   /*   let data = req.body;
   console.log(data); */
