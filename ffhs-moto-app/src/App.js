@@ -11,12 +11,15 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
-import MapDirectionLayer from './components/MapDirectionLayer';
+import MapDirectionLayer, {
+  fetchDataFromAPI,
+} from './components/MapDirectionLayer';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import Routemap from './components/Routemap';
 
 import { AppContext } from './components/Context';
+import { MapDataContext } from './components/MapDataContext';
 
 // provide routes and add header/footer component to Router
 function AppRouter() {
@@ -34,6 +37,8 @@ function AppRouter() {
     setRegistered,
   };
 
+  const testinfo = 'testinfo';
+
   return (
     <Router>
       <div>
@@ -41,6 +46,7 @@ function AppRouter() {
           <Header />
           <Route exact path='/' component={Home} />
           <Route exact path='/home' component={Home} />
+
           <Route exact path='/routes' component={Routemap} />
           <Route exact path='/profile' component={Profile} />
           <Route exact path='/contact' component={Contact} />
