@@ -65,6 +65,7 @@ const GetRouteBtn = () => {
         APIresponse = data;
 
         console.log(APIresponse);
+
         //addRoute(APIresponse);
         return APIresponse;
       })
@@ -107,9 +108,17 @@ const GetRouteBtn = () => {
 
   return (
     <div>
-      <button onClick={asyncAPIandBackendCall}>Get the damn route!</button>
+      <button
+        onClick={async () => {
+          await fetchDataFromAPI();
+        }}
+      >
+        Get the damn route!
+      </button>
     </div>
   );
 };
 
 export default GetRouteBtn;
+
+//<button onClick={asyncAPIandBackendCall} string={fetchDataFromAPI}>
