@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
   background-color: white;
   margin: 0; /*remove margin for body (i.e. header and footer)*/
 }
@@ -46,7 +46,8 @@ h2 {
 
 /* =====BASIC STYLING (MOBILE FIRST)===== */
 
-p, ul {
+p,
+ul {
   /*clearing out standard margins for p and ul*/
   margin: 0;
 }
@@ -74,10 +75,10 @@ ul {
 #logo {
   max-width: 70px;
 }
-#logolink{
+#logolink {
   margin-right: auto;
 }
-#profileimg{
+#profileimg {
   max-width: 70px;
   max-height: 50px;
 }
@@ -91,11 +92,12 @@ ul {
   border-top: 1px solid lightgrey;
   margin: auto 2.5%;
 }
-.menulink{
-  display: none; 
-  text-decoration: none; 
+.menulink {
+  display: none;
+  text-decoration: none;
 }
-.menulink:link, .menulink:visited {
+.menulink:link,
+.menulink:visited {
   /*unvisited and visited link*/
   color: black;
 }
@@ -110,7 +112,6 @@ ul {
   /*onclick: display all flex items*/
   display: block;
 }
-
 
 /* COMPLETED ====FOOTER STYLES (MOBILE FIRST)==== */
 footer {
@@ -149,24 +150,40 @@ footer div img {
 /* ===== Landing Page ===== */
 
 .responsive {
-  max-width: 60%;
+  max-width: 100%;
+
   height: auto;
+}
+
+.padding {
+  padding: 10px;
 }
 
 .flex-container {
   display: flex;
+
   flex-direction: column;
+
   width: 100%;
+
   margin-bottom: 4em;
 }
+
 #btnRegister {
   display: block;
+
   width: 30em;
+
   height: 3em;
+
   background-color: grey;
+
   border: 1px solid darkgreen;
+
   color: white;
+
   margin: 1em auto;
+
   margin-bottom: 4em;
 }
 
@@ -178,27 +195,27 @@ footer div img {
 .profile-outer {
   padding-bottom: 2em;
 }
-.profile-title{
+.profile-title {
   font-size: 3em;
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-.profile-inner{
+.profile-inner {
   width: 70%;
   margin: auto;
   margin-bottom: 3em;
   background-color: lightgrey;
   padding: 2em;
 }
-.profile-title2{
+.profile-title2 {
   font-size: 2em;
   text-align: center;
   margin-top: 0em;
   margin-bottom: 1em;
   font-weight: bold;
 }
-.profile-group{
+.profile-group {
   display: flex;
   flex-flow: column wrap;
   flex: 1 0 0;
@@ -207,10 +224,10 @@ footer div img {
 .profile-group li {
   margin-top: 0.75em;
 }
-#pt2{
+#pt2 {
   margin-top: 1.5em;
 }
-.profile-group li{
+.profile-group li {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -219,7 +236,7 @@ footer div img {
   width: 12em;
   display: block;
 }
-.profile-value{
+.profile-value {
   display: block;
   width: 20em;
 }
@@ -230,7 +247,7 @@ footer div img {
   text-align: center;
   margin-top: 0em;
   margin-bottom: 1em;
-  font-weight: bold;  
+  font-weight: bold;
 }
 .form-outer {
   max-width: 40em;
@@ -268,7 +285,7 @@ footer div img {
 #form-error-none {
   display: none;
 }
-#form-register-error{
+#form-register-error {
   color: red;
 }
 .form-input {
@@ -319,7 +336,6 @@ footer div img {
   align-self: center;
 }
 
-
 @media screen and (min-width: 600px) {
   /* =====BASIC STYLING=====*/
   h1 {
@@ -336,25 +352,25 @@ footer div img {
     align-items: center;
     justify-content: center;
   }
-  .form-group{
+  .form-group {
     flex-flow: row nowrap;
   }
   #form-error-none {
     display: none;
   }
-  .form-label{
+  .form-label {
     flex: 0 0 10em;
     text-align: start;
-    margin-top:auto;
+    margin-top: auto;
     margin-bottom: auto;
     margin-right: 1em;
   }
-  .form-input{
+  .form-input {
     flex: 1 1 29em;
   }
 
   /* COMPLETED ==== HEADER STYLES ==== */
-  .menu{
+  .menu {
     flex-flow: row nowrap;
   }
   .menulink {
@@ -376,24 +392,20 @@ footer div img {
   }
 
   /* COMPLETED ====PROFILE STYLES====*/
-  .profile-group li{
-  flex-flow: row nowrap;
+  .profile-group li {
+    flex-flow: row nowrap;
   }
-  .profile-label{
+  .profile-label {
     flex: 0 0 10em;
     text-align: start;
-    margin-top:auto;
+    margin-top: auto;
     margin-bottom: auto;
     margin-right: 1em;
   }
-  .profile-value{
+  .profile-value {
     width: 18em;
   }
 }
-
-
-
-
 
 /* ===== Route Search Page ===== */
 
@@ -434,5 +446,30 @@ select {
   height: 50em;
 }
 
+/* ===== Contact Form ===== */
 
+.textposition {
+  text-align: right;
 
+  padding-bottom: 20px;
+}
+
+.verticalaligntop {
+  vertical-align: top;
+}
+
+.floatright {
+  float: right;
+}
+
+.displayflex {
+  display: flex;
+}
+
+.contactform {
+  margin: auto;
+}
+
+.fixedwidth {
+  width: 300px;
+}

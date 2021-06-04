@@ -1,24 +1,36 @@
-import React, { useState, useContext } from 'react'; // import hooks from React
+import React, { useContext } from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
-import { AppContext } from './Context'; // import Context component
-import LoginForm from './LoginForm'; // import component
-import Profile from './Profile'; // import component
-import { Link } from 'react-router-dom'; //import Link
+import { Link } from 'react-router-dom'; //import Link 
+import gsr750 from '../img/gsr750.JPG'; // import images
 
-// create hook
-const LoginBody = () => {
-  // access "global" state object by useContext
-  const myContext = useContext(AppContext);
-
-  // local state
-  const [error, setError] = useState('');
-
-  // if user.email state is not empty show text and logout, else show login form
+const TestBody = () => {
   return (
     <React.Fragment>
-      <div className='App'></div>
+      <div>
+        <h1>Where biking becomes fun</h1>
+        <p class="plp">The online map for bike routes</p>
+        <Link to='register'><button id="btnRegister">Register Now</button> </Link>
+
+        <tbody width="100%">
+
+          <tr>
+            <td width="40%" className="padding">
+              <p>Save, share and get your optimal bike routes and get out there!</p><br></br>
+              <Link to='/routes'> <p><br></br>Learn more</p> </Link>
+            </td>
+            <td width="60%" className="padding">
+              <img src={gsr750} alt="motorbike" class="responsive"></img>
+            </td>
+          </tr>
+        </tbody>
+
+
+
+      </div>
     </React.Fragment>
   );
 };
 
-export default LoginBody;
+export default TestBody;
+
+
