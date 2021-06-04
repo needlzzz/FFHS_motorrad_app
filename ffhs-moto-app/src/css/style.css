@@ -473,3 +473,66 @@ select {
 .fixedwidth {
   width: 300px;
 }
+
+/***** CSS Styles for the Routemap Component *****/
+
+.map-container {
+  position: relative;
+  height: 50em;
+  width: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 4em;
+  margin-top: 2em;
+}
+
+#mapboxgl-container {
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+}
+
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #ffffff;
+  padding: 6px 12px;
+  font: 15px/24px monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+#header {
+  margin-bottom: 3em;
+  width: auto;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdownContainer {
+  padding-left: 1em;
+}
+
+.mapboxgl-canvas {
+  border: 1px solid green;
+}
+
+/***** RouteBtnContainers Styling *****/
+
+#emmentalRouteBtnContainer,
+#lucerneRouteBtnContainer,
+#getRouteBtnContainer {
+  padding: 8px;
+}
+
+.dropdownMenu {
+  margin: 8px;
+}
