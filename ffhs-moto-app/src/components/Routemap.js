@@ -1,3 +1,4 @@
+import { async } from './GetRouteBtn';
 import React, {
   useRef,
   useEffect,
@@ -128,6 +129,7 @@ const Map = (props) => {
       });
     }
 
+    // initial load of geoJson file (passing empty geoJson file, to not display anything)
     map.on('load', function () {
       map.addSource('bikeroutes', {
         type: 'geojson',
@@ -156,7 +158,12 @@ const Map = (props) => {
       });
     });
 
-    // Binding a click event to the emmentalRouteBtn to display the emmental route on the map
+    // Binding a click event to the emmentalRouteBtn to display the emmental route on the map (switching out empty geoJson file)
+    let getRouteBtn = document.getElementById('getRouteBtn');
+    getRouteBtn.addEventListener('click', (e) => {
+      map.getSource('bikeroutes').setData(routeEmmental);
+    });
+
     let emmentalRouteBtn = document.getElementById('emmentalRouteBtn');
     emmentalRouteBtn.addEventListener('click', (e) => {
       map.getSource('bikeroutes').setData(routeEmmental);
@@ -236,10 +243,9 @@ const Map = (props) => {
           <option>Lucerne area</option>
         </select>
         <div>
-          <MapDataContext.Provider value={APIresponse}>
-            <GetRouteBtn />
-            <DrawRouteBtn />
-          </MapDataContext.Provider>
+          <GetRouteBtn />
+          <DrawRouteBtn />
+
           <button id='emmentalRouteBtn'>Show emmental route</button>
           <button id='lucerneRouteBtn'>Show lucerne route</button>
         </div>

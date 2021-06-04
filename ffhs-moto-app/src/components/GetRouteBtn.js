@@ -108,12 +108,8 @@ const GetRouteBtn = () => {
 
   return (
     <div>
-      <button
-        onClick={async () => {
-          await fetchDataFromAPI();
-        }}
-      >
-        Get the damn route!
+      <button id='getRouteBtn' onClick={asyncAPIandBackendCall}>
+        Get route
       </button>
     </div>
   );

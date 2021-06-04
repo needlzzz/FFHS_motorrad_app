@@ -11,8 +11,12 @@ const bikeroutesSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
-    routes: {
-      type: Array,
+    distance: {
+      type: Number,
+      required: true,
+    },
+    duration: {
+      type: Number,
       required: true,
     },
 
@@ -22,7 +26,7 @@ const bikeroutesSchema = new mongoose.Schema(
     },
     userConnected: {
       type: String,
-    }
+    },
   },
   {
     collection: 'bikeroutes',
