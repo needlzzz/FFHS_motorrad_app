@@ -5,7 +5,6 @@ const GetRouteBtn = () => {
   // Script for making the API call
 
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESSTOKEN;
-  //'pk.eyJ1IjoibmVlZGx6enoiLCJhIjoiY2ttZmRrNzlhMzQwazJxa251eHQxYzU4MiJ9.pTqsaTuK9eOK-WluAgU0Eg';
 
   let APIresponse;
 
@@ -107,7 +106,7 @@ const GetRouteBtn = () => {
   }
 
   return (
-    <div>
+    <div id='getRouteBtnContainer'>
       <button id='getRouteBtn' onClick={asyncAPIandBackendCall}>
         Get route
       </button>

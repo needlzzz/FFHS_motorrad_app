@@ -1,23 +1,13 @@
-import { async } from './GetRouteBtn';
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useContext,
-  useCallback,
-} from 'react';
-import DrawRouteBtn from './DrawRouteBtn';
-import GetRouteBtn from './GetRouteBtn';
-// This library is for adding HTML-like js script files to a REACT component
-import ScriptTag from 'react-script-tag';
-import ReactGL, { Layer } from 'react-map-gl';
-import DeckGL, { GeoJsonLayer, ArcLayer } from 'deck.gl';
+import React, { useRef, useEffect, useState } from 'react';
 
-import MapDirectionLayer, {
-  APIresponse,
-  fetchDataFromAPI,
-} from './MapDirectionLayer';
-import { MapDataContext } from './MapDataContext';
+// imported components
+import GetRouteBtn from './GetRouteBtn';
+import EmmentalRouteBtn from './EmmentalRouteBtn';
+import LucerneRouteBtn from './LucerneRouteBtn';
+
+// This library is for adding HTML-like js script files to a REACT component
+
+import { APIresponse } from './MapDirectionLayer';
 
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
@@ -98,7 +88,7 @@ var directions = new MapboxDirections({
 var Draw = new MapboxDraw();
 
 // create Map component
-const Map = (props) => {
+const Map = () => {
   mapboxgl.workerClass = MapboxWorker;
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESSTOKEN;
   const mapContainer = useRef();
@@ -224,10 +214,9 @@ const Map = (props) => {
       <div id='mapboxgl-container'>
         <div className='map-container' ref={mapContainer} />
       </div>
-      <div> {APIresponse} </div>
 
       <div className='dropdownContainer'>
-        <select>
+        <select className='dropdownMenu'>
           <option selected disabled>
             --- Choose your route type ---
           </option>
@@ -235,7 +224,7 @@ const Map = (props) => {
           <option>Scenic</option>
         </select>
 
-        <select>
+        <select className='dropdownMenu'>
           <option selected disabled>
             --- Choose your area ---
           </option>
@@ -244,10 +233,8 @@ const Map = (props) => {
         </select>
         <div>
           <GetRouteBtn />
-          <DrawRouteBtn />
-
-          <button id='emmentalRouteBtn'>Show emmental route</button>
-          <button id='lucerneRouteBtn'>Show lucerne route</button>
+          <EmmentalRouteBtn />
+          <LucerneRouteBtn />
         </div>
       </div>
     </React.Fragment>
