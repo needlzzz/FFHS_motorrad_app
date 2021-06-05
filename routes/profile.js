@@ -24,7 +24,7 @@ router.get('/routes', (req, res) => {
 
   //
   Bikeroutes.find(
-    { userConnected: 'UserId=j%3A%2260aa8d5ec98ffd5086f1932b%22' },
+    { userConnected: req.cookies.UserId },
     { distance: 1 },
     (err, result) => {
       if (err) {
