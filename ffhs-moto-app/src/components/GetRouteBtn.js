@@ -61,13 +61,8 @@ const GetRouteBtn = () => {
       );
     })
       .then((data) => {
-        let cookieUser = { userConnected: document.cookie };
-        let merge = { ...data, ...cookieUser };
-        APIresponse = merge;
-        console.log(APIresponse);
-
         //addRoute(APIresponse);
-        return APIresponse;
+        return data;
       })
       .catch((error) => {
         console.log(`This is the error-message: ${error}`);
