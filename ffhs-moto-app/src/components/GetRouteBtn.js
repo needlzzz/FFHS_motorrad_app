@@ -61,8 +61,9 @@ const GetRouteBtn = () => {
       );
     })
       .then((data) => {
-        APIresponse = data;
-
+        let cookieUser = { userConnected: document.cookie };
+        let merge = { ...data, ...cookieUser };
+        APIresponse = merge;
         console.log(APIresponse);
 
         //addRoute(APIresponse);
