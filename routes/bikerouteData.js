@@ -14,7 +14,7 @@ router.post('/history', async (req, res) => {
     distance: req.body.routes[0].distance,
     duration: req.body.routes[0].duration,
     waypoints: req.body.waypoints,
-    userConnected: req.body.userConnected,
+    userConnected: req.cookies.UserId,
   });
   /*   let data = req.body;
   console.log(data); */
