@@ -61,7 +61,13 @@ const GetRouteBtn = () => {
       );
     })
       .then((data) => {
-        //addRoute(APIresponse);
+        console.log(data.routes[0].distance);
+        let container = document.getElementById('apiResponseContainer');
+
+        container.innerHTML =
+          '------- This is just for showing the APIresponse (please check the console for more details) -------: ' +
+          '\n' +
+          JSON.stringify(data.routes[0].distance);
         return data;
       })
       .catch((error) => {
@@ -102,11 +108,14 @@ const GetRouteBtn = () => {
   }
 
   return (
-    <div id='getRouteBtnContainer'>
-      <button id='getRouteBtn' onClick={asyncAPIandBackendCall}>
-        Get route
-      </button>
-    </div>
+    <>
+      <div id='getRouteBtnContainer'>
+        <button id='getRouteBtn' onClick={asyncAPIandBackendCall}>
+          Get route
+        </button>
+      </div>
+      <div id='apiResponseContainer'></div>
+    </>
   );
 };
 
