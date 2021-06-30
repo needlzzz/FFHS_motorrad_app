@@ -1,0 +1,17 @@
+version: '3'
+services:
+  react-app:
+    image: needlzzz/motoappfrontend:1.0
+    stdin_open: true
+    ports:
+      - '2000:2000'
+  backend:
+    image: needlzzz/motoapp:1.0
+    depends_on:
+      - mongo
+    ports:
+      - '3000:3000'
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
