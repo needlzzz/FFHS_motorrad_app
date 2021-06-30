@@ -52,8 +52,8 @@ app.use('/api/profile', verifyToken, myProfileRoutes); //myProfile route protect
 app.use('/api/bikeroutes', bikerouteData);
 
 // define port
-const PORT = 3000;
-app.listen(PORT, () => console.log(`server running at ${PORT}`));
+const port = process.env.PORT;
+app.listen(port, () => console.log(`server running at ${port}`));
 
 //this is to test if the post method sends the request body to the backend and if the backend can handle it
 app.post('/', (req, res) => {
