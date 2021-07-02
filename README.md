@@ -5,6 +5,7 @@
 
 <h2>Current state of the application:</h2>
 
+- User registration implemented
 - Login implemented
 - JWT token implemented
 - Map implemented with controls
@@ -12,6 +13,7 @@
 - Get Route directions via external API call
 - Backend with handlers implemented
 - Running MongoDb using mongoose framework
+- Persisting data to MongoDb
 
 <h2>Not yet implemented:</h2>
 
