@@ -1,6 +1,5 @@
-# FFHS_toeff_app
 
-<h1>This is our FFHS school project.</h1>
+<h1>FFHS school project - motoapp</h1>
 
 ---
 
@@ -14,13 +13,14 @@
 - Backend with handlers implemented
 - Running MongoDb using mongoose framework
 
-<h2>Not yet working:</h2>
+<h2>Not yet implemented:</h2>
 
 - Displaying route on map using the data from the external API call
+- Final styling of the frontend
+- Displaying route information under user profile
 
 ---
 
-mockups see here: https://ffhsrwm.invisionapp.com/freehand/WireFrame-Moto-Project-oRcGAEwCe
 
 <h2>Installation with docker image</h2>
 
@@ -44,7 +44,13 @@ mockups see here: https://ffhsrwm.invisionapp.com/freehand/WireFrame-Moto-Projec
     <li>Open browser with <b>http://localhost:2000/</b>
 </ul>
 
------Service Worker-----
+
+
+<h2>Service Worker</h2>
 ServiceWorker has been implemented for index.html with sw_cached_pages.js and sw_main.js.
 The sw_main.js registers the service worker, while the sw_cached_pages.js installs and activates the service worker.
 Thanks to the service worker (and the cache-build-up), index.html can be viewed offline.
+
+<h2>Mockups</h2>
+The mockups can be found here: https://ffhsrwm.invisionapp.com/freehand/WireFrame-Moto-Project-oRcGAEwCe
+
