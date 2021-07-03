@@ -38,7 +38,7 @@ const Profile = () => {
       .then((json) => {
         let ty = [];
         for (let i = 0; i < json.length; i++) {
-          ty.push(json[i]._id);
+          ty.push(json[i].distance);
         }
 
         setHistory(ty);
