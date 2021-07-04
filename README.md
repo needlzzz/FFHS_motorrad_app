@@ -49,9 +49,8 @@ Users can sign up and get access to a map, that shows popular motorcycle routes.
 <h2>Regular installation on local machine</h2>
 
 <ul>
-    <li>Make sure you are in the root folder of the project <b>npm install</b></li> 
-    <li><b>cd ffhs-moto-app</b> (that is where the frontend REACT application is)</li>
-    <li>npm install</li>
+    <li>Make sure you are in the root folder of the project --> <b>npm install</b></li> 
+    <li><b>cd ffhs-moto-app</b> (that is where the frontend REACT application is) --> <b>npm install</b></li>
     <li>Start the REACT application with <b>npm start</b> (Make sure you are in ffhs-moto-app folder of the project)</li>
     <li>Start the Backend with <b>npm start</b></li>
     <li>Open browser with <b>http://localhost:2000/</b>
