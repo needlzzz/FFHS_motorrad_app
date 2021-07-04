@@ -1,8 +1,8 @@
 //import mongoose
 const mongoose = require("mongoose");
 
-// create user schema and define collection "users"
-const userSchema = new mongoose.Schema({
+// create user schema and define collection "contact"
+const contactSchema = new mongoose.Schema({
     // define object name and its properties
     name: {
       type: String,
@@ -19,22 +19,17 @@ const userSchema = new mongoose.Schema({
       max: 255,
     },
     // define object password and its properties
-    password: {
+    comments: {
       type: String,
       required: true,
-      min: 6,
-      max: 1024,
-    },
-    // define object date
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+      min: 1,
+      max: 1000,
+    }, 
   }, 
   {
-    collection: "users"
+    collection: "contact"
   }
 );
 
-// export user schema model as "User"
-module.exports = mongoose.model("User", userSchema);
+// export contact schema model as "contact"
+module.exports = mongoose.model("Contact", contactSchema);

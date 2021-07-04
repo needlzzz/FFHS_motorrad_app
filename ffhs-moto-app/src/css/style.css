@@ -448,6 +448,13 @@ select {
 
 /* ===== Contact Form ===== */
 
+
+#succ1 {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  text-align: center;
+  color:green;
+}
 .textposition {
   text-align: right;
 
