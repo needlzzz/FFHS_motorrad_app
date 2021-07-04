@@ -33,6 +33,7 @@ const authRoutes = require('./routes/auth');
 const myProfileRoutes = require('./routes/profile');
 const verifyToken = require('./routes/validate-token');
 const bikerouteData = require('./routes/bikerouteData');
+const contactRoute = require('./routes/contact');
 
 // middlewares
 app.use(express.json()); // read request body as JSON object with body parser
@@ -50,6 +51,7 @@ app.use(cookieParser()); // ensure server uses cookie-parser in order to parse c
 app.use('/api/user', authRoutes);
 app.use('/api/profile', verifyToken, myProfileRoutes); //myProfile route protected with jwt token
 app.use('/api/bikeroutes', bikerouteData);
+app.use('/api/contact', contactRoute);
 
 // define port
 const port = process.env.PORT;
