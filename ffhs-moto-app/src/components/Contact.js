@@ -1,6 +1,5 @@
-import React, { Fragment, useContext, useState } from 'react'; // import hooks from React
+import React, { Fragment, useState } from 'react'; // import hooks from React
 import '../css/style.css'; // import CSS
-import { AppContext } from "./Context"; // import Context component
 
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -38,11 +37,11 @@ const Contact = () => {
     <Fragment>
       <h1>Contact us</h1>
 
-      <div className="displayflex">
+      <div className="displayflex form-outer">
         <form action="#" id="submit" className="contactform">
           <tr className="">
             <td className="textposition">
-              <label for="t1">Your name? *&nbsp;</label>
+              <label htmlFor="t1">Your name? *&nbsp;</label>
             </td>
 
             <td>
@@ -51,7 +50,7 @@ const Contact = () => {
           </tr>
           <tr className="">
             <td className="textposition">
-              <label for="t2">Your e-mail address? *&nbsp;</label>
+              <label htmlFor="t2">Your e-mail address? *&nbsp;</label>
             </td>
 
             <td>
@@ -60,7 +59,7 @@ const Contact = () => {
           </tr>
           <tr className = "verticalaligntop">
             <td className = "textposition">
-              <label for = "ta1">What can we do better? *&nbsp;</label>
+              <label htmlFor = "ta1">What can we do better? *&nbsp;</label>
             </td>
 
             <td>
@@ -80,8 +79,6 @@ const Contact = () => {
                   console.log("SUBMIT", name, email, comments);
                   const successParagraph = document.getElementById("succ1");
                   successParagraph.innerHTML= `Contact form has been successfully submitted, ${name}.`;
-                  
-
                 }
                 else {
                   console.log("email not valid")
