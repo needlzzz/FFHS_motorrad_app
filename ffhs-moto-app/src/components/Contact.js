@@ -76,17 +76,24 @@ const Contact = () => {
                 event.preventDefault()
                 event.stopPropagation()
                 if (validateEmail(email)) {
-                  sendContact()
-                  console.log("SUBMIT", name, email, comments)
+                  sendContact();
+                  console.log("SUBMIT", name, email, comments);
+                  const successParagraph = document.getElementById("succ1");
+                  successParagraph.innerHTML= `Contact form has been successfully submitted, ${name}.`;
+                  
+
                 }
                 else {
                   console.log("email not valid")
                 }
+
               }} />
             </td>
           </tr>
         </form>
+        
       </div>
+      <p id="succ1"></p>
     </Fragment >
   )
 }
