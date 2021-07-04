@@ -20,9 +20,6 @@ router.get('/', (req, res) => {
 
 // myProfile route GET
 router.get('/routes', (req, res) => {
-  //const userId = req.cookies.UserId;
-
-  //
   Bikeroutes.find(
     { userConnected: req.cookies.UserId },
     { distance: 1 },
@@ -30,6 +27,7 @@ router.get('/routes', (req, res) => {
       if (err) {
         res.send(err);
       } else {
+        console.log(result)
         res.send(result);
       }
     }
