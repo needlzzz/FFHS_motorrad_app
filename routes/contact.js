@@ -7,13 +7,13 @@ router.use(cookieParser()); // ensure server uses cookie-parser in order to pars
 
 
 // contact route POST
-router.post("/contact", async (req, res) => {
+router.post("/submit", async (req, res) => {
     
     // create contact object with data from request body
     const contact = new Contact({
       name: req.body.name,
       email: req.body.email,
-      comment: req.body.contact,
+      comments: req.body.comments,
     });
   
     try {

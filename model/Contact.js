@@ -19,7 +19,7 @@ const contactSchema = new mongoose.Schema({
       max: 255,
     },
     // define object password and its properties
-    comment: {
+    comments: {
       type: String,
       required: true,
       min: 1,

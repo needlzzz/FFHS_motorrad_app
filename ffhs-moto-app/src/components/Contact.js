@@ -7,23 +7,18 @@ const validateEmail = (email) => {
   return re.test(String(email).toLowerCase());
 }
 
-const TestBody = () => {
-  // access "global" state by useContext
-  const myContext = useContext(AppContext);
-}
-
 const Contact = () => {
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [comments, setComments] = useState()
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comments, setComments] = useState("");
 
   const sendContact = () => {
-    fetch('http://localhost:3000/api/contact', {
+    fetch('http://localhost:3000/api/contact/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, emailAddress: email, comments }),
+      body: JSON.stringify({ name: name, email: email, comments: comments }),
     })
       .then(response => response.json())
       .then(json => {
@@ -54,30 +49,24 @@ const Contact = () => {
               <input className="fixedwidth" type="text" name="name" id="t1" onChange={(event) => { setName(event.target.value) }} />
             </td>
           </tr>
-
-
-
-
           <tr className="">
             <td className="textposition">
               <label for="t2">Your e-mail address? *&nbsp;</label>
             </td>
 
             <td>
-              <input className="fixedwidth" type="text" name="email" id="t2" onChange={(event) => { setEmail(event.target.value) }} />
+              <input className="fixedwidth" type="text" name="email" id="t2" onChange={(event) => { setEmail(event.target.value)} } />
             </td>
           </tr>
-
-          <tr className=" verticalaligntop">
-            <td className="textposition">
-              <label for="ta1">What can we do better? *&nbsp;</label>
+          <tr className = "verticalaligntop">
+            <td className = "textposition">
+              <label for = "ta1">What can we do better? *&nbsp;</label>
             </td>
 
             <td>
               <textarea className="fixedwidth" name="comments" rows="5" id="ta1" onChange={(event) => { setComments(event.target.value) }}></textarea>
             </td>
           </tr>
-
           <tr>
             <td></td>
 
