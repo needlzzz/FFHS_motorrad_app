@@ -3,6 +3,17 @@
 
 ---
 
+<h2>Tech Stack used for this project:</h2> <br>
+MERN Stack
+
+---
+
+<h2>What does this application do? </h2><br>
+Users can sign up and get access to a map, that shows popular motorcycle routes.
+
+
+---
+
 <h2>Current state of the application:</h2>
 
 - User registration implemented
